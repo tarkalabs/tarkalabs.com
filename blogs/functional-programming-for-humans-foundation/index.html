@@ -46,17 +46,15 @@ point.</p>
 <li>FP doesn’t make you cool. It may do a little bit of idiot-proofing though.</li>
 </ul>
 <figure><img src="/blog/functional-programming-for-humans-foundation/I-ate-monad-for-breakfast-and-two-endofunctors-for-lunch.webp" alt="I ate a monad for breakfast and two endofunctors for lunch"><figcaption>I ate a monad for breakfast and two endofunctors for lunch</figcaption></figure>
-<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">                             . . .</code></pre></div>
+<hr>
 <p>Today we’ll go through a few jargon to set the stage for upcoming adventures. I’ll stick to dumb JavaScript for code examples. Let’s keep Haskell/Elixir show off for later, hold peace it’ll come.</p>
 <ol>
 <li>Pure functions</li>
 <li>Immutability</li>
 <li>Side effects</li>
-<li>
-<p>Higher order functions</p>
-<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">                        .  .  .</code></pre></div>
-</li>
+<li>Higher order functions</li>
 </ol>
+<hr>
 <p><strong>Pure functions</strong></p>
 <figure><img src="/blog/functional-programming-for-humans-foundation/Purity-Matters.webp" alt="Walter while likes pure blue crystals"><figcaption>Walter while likes pure blue crystals</figcaption></figure>
 <p>The simplest and most important concept of functional programming is to make code outputs consistent. The same input(s) should give the same output. As simple as that. No T&#x26;C applied.</p>
@@ -99,7 +97,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getRandomNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getRandomNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 6</span></code></pre></div>
 <p>However rudimentary, that gives a general idea. A pure function will always be consistent. Impure ones can and will backstab you in most unexpected places. Imagine, one time your bank account shows $150,000 and you refresh the page to see $150. Good enough for a minor heart attack, aye?</p>
-<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">                         .   .   .</code></pre></div>
+<hr>
 <h2 id="immutability"><a href="#immutability" aria-hidden="true"><span class="icon icon-link"></span></a>Immutability</h2>
 <figure><img src="/blog/functional-programming-for-humans-foundation/Lets-define-mutation-first.webp" alt="Let’s define mutation first"><figcaption>Let’s define mutation first</figcaption></figure>
 <figure><img src="/blog/functional-programming-for-humans-foundation/Sheldon-from-BBT-doesnt-like-changes.webp" alt="Sheldon from BBT doesn’t like changes. Triggers his OCD."><figcaption>Sheldon from BBT doesn’t like changes. Triggers his OCD.</figcaption></figure>
@@ -136,11 +134,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>It becomes easy for the language’s internal tools to clean the used memory, aka, garbage collection.</li>
 <li>An implicit guarantee that value will remain consistent throughout the life of a variable.</li>
 <li>A ton of predictability in the code. You can just skim a few lines and tell what the value is at any point in time, without reading the entire code.</li>
-<li>
-<p><strong>Idiot proofing. You know that someone else won’t modify what you read the first time. Ah! Do those edited WhatsApp messages ring a bell?</strong></p>
-<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">                    .   .   .</code></pre></div>
-</li>
+<li><strong>Idiot proofing. You know that someone else won’t modify what you read the first time. Ah! Do those edited WhatsApp messages ring a bell?</strong></li>
 </ol>
+<hr>
 <h2 id="higher-order-functions"><a href="#higher-order-functions" aria-hidden="true"><span class="icon icon-link"></span></a>Higher order functions</h2>
 <p>This one ain’t much. Simply said, a function can take and return functions too, just like it plays with regular data.</p>
 <p>Depending on your previous programming experience this may look normal or whaaaat. I expect no in-between experience.</p>
@@ -163,7 +159,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">const</span> doubledNumbers <span class="token operator">=</span> <span class="token function">map</span><span class="token punctuation">(</span>numbers<span class="token punctuation">,</span> <span class="token parameter">number</span> <span class="token operator">=></span> number <span class="token operator">*</span> <span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// Example usage</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>doubledNumbers<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [2, 4, 6, 8, 10]</span></code></pre></div>
-<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">                    .   .   .</code></pre></div>
+<hr>
 <h2 id="side-effects"><a href="#side-effects" aria-hidden="true"><span class="icon icon-link"></span></a>Side Effects</h2>
 <figure><img src="/blog/functional-programming-for-humans-foundation/Now-I-Am-Become-Death-the-Destroyer-of-Worlds.webp" alt="Now I Am Become Death, the Destroyer of Worlds"><figcaption>Now I Am Become Death, the Destroyer of Worlds</figcaption></figure>
 <p>Here the real trouble starts. As the name suggests, your code will poke its nose into things that are beyond its scope. If the function modifies or triggers something that’s outside its scope, it can wake the dead from graves. We may never know the full extent of what this external call did until you are neck deep in that call stack rabbit hole.</p>
@@ -190,9 +186,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token function">viewArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 1,2,3,4</span></code></pre></div>
 <p>These functions are making side effects on the numbers array. Our good user Sinjo is compulsively printing arrays using <code class="language-inline-text">viewArray</code> function and getting the same results everywhere, pseudo-smiling in purity. Then someone called this <code class="language-inline-text">addNumber(4)</code> and now his system is broken and he doesn’t even know why.</p>
 <p>Sinjo wants answers, Sinjo wants justice! ❤️‍🩹</p>
-<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">                    .   .  .</code></pre></div>
+<hr>
 <p>That’s all folks for today. Reflect on this jargon list. Whatever we went through should give a clear idea about what problems we are trying to solve. In the next piece, we’ll get our hands dirty with some deeper concepts. Ciao.</p>
-<figure><img src="/blog/functional-programming-for-humans-foundation/That-all-for-today.webp" alt="alt text"><figcaption>alt text</figcaption></figure>
+<figure><img src="/blog/functional-programming-for-humans-foundation/That-all-for-today.webp" alt="The End"><figcaption>The End</figcaption></figure>
 </div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/sameer.e3cce085.jpg" alt="Sameer Kumar" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Sameer Kumar</p><p class="body-jetbrains-size-10" data-v-996dafb6>
             Technical Consultant
           </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><!----></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/using-tarka-chat-in-your-react-vue-apps" class="blog-card" data-v-996dafb6><img src="/assets/img/Photo-by-Volodymyr-Hryshchenko-on-Unsplash.97698903.webp" alt="Using Tarka Chat in your React/Vue apps" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Using Tarka Chat in your React/Vue apps</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
