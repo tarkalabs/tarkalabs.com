@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Rate limiting for distributed environments · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="Rate limiting for distributed environments · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="Different ways to architect distributed environments with rate limiting code snippets available"><meta data-vue-tag="ssr" property="og:image" content="/assets/img/rate-limiting-for-distributed-environments.4f1d96b6.webp"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /web - 5 min read
+      </p><h1 class="title" data-v-996dafb6>Rate limiting for distributed environments</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/harman.9bd8c31a.jpg" alt="Harman Sohanpal" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Harman Sohanpal</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div></div><img src="/assets/img/rate-limiting-for-distributed-environments.4f1d96b6.webp" alt="Rate limiting for distributed environments" class="header-img" data-v-996dafb6><div class="toc-wrapper" data-v-996dafb6><h2 class="heading-size-7" data-v-996dafb6>Table of contents</h2><div class="toc" data-v-996dafb6><a href="#content" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/01</p><p data-v-996dafb6>Intro</p></a><a href="#toc-section-1" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/02</p><p data-v-996dafb6>Rate Limiting simplified</p></a><a href="#toc-section-2" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/03</p><p data-v-996dafb6>Approach</p></a><a href="#toc-section-3" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/04</p><p data-v-996dafb6>Why persistent?</p></a><a href="#toc-section-4" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/05</p><p data-v-996dafb6>Implementation</p></a></div></div><div id="content" class="content" data-v-996dafb6><p>As a developer, scaling up and ensuring things get processed as fast as possible sounds exciting and challenging. However, in real-life scenarios, we can get into situations where we must slow things for a process to work. This is where rate limiting comes in handy.</p>
+<p>We faced a problem where a 3rd party was rate limiting us on per minute, hour, and day basis. We implemented a persistent token bucket algorithm in Golang to solve this problem which works in distributed environments across deployments.</p>
+<p>Let’s understand it step by step.</p>
+<h1 id="toc-section-1"><a href="#rate-limiting-simplified" aria-hidden="true"><span class="icon icon-link"></span></a>Rate Limiting simplified</h1>
+<figure><img src="/blog/rate-limiting-for-distributed-environments/system-design-1.webp" alt="System Design I"><figcaption>System Design I</figcaption></figure>
+<p>Taking a simple design above, we have a product where users interact with System 1, capable of handling 10 requests per second. However, for the whole process to complete, it must go through System 2 and System 3, which are processing at a slower rate. In 1 minute, we get 600 requests in System 1, but only 5 can be processed in System 2 and 1 in System 3. This leads to requests getting accumulated in System 2 and System 3. This can be handled in 2 ways (ensuring no request gets dropped):</p>
+<ul>
+<li>If we have control of System 2, we can attach a queue between System 1 and System 2 to ensure every request keeps getting into a queue capable of storing unlimited messages, and System 2 can process requests at the capable rates.</li>
+</ul>
+<figure><img src="/blog/rate-limiting-for-distributed-environments/system-design-2.webp" alt="System Design II"><figcaption>System Design II</figcaption></figure>
+<ul>
+<li>If we do not have control over System 2, we might get into a situation where System 2 will reject any requests after a required rate, and requests will start getting dropped, leading to data loss and business. In such a scenario, it is the responsibility of System 1 to send data at the speed the following system can handle.</li>
+</ul>
+<figure><img src="/blog/rate-limiting-for-distributed-environments/system-design-3.webp" alt="System Design III"><figcaption>System Design III</figcaption></figure>
+<h1 id="toc-section-2"><a href="#approach" aria-hidden="true"><span class="icon icon-link"></span></a>Approach</h1>
+<p>We considered <a href="https://en.wikipedia.org/wiki/Leaky_bucket" target="_blank" rel="nofollow noopener noreferrer">Leaky bucket</a> and <a href="https://en.wikipedia.org/wiki/Token_bucket" target="_blank" rel="nofollow noopener noreferrer">Token bucket</a> rate limiting algorithms to solve the problem at hand. Given that our input traffic was inconsistent and we had to allow large bursts at a faster pace, we picked the token bucket algorithm over the constant rate leaky bucket. We had to manage three buckets (minute bucket, hour bucket, and day bucket) to manage multiple system limits.</p>
+<h1 id="toc-section-3"><a href="#why-persistent" aria-hidden="true"><span class="icon icon-link"></span></a>Why persistent?</h1>
+<p>This could have been handled using local variables and blocking go channels. However, in case a deployment happens, or as we are spread across distributed environments, local variables and channels won’t work as they have to be persistent across environments and deployments. To handle this, instead of storing tokens in local variables, we used the REDIS cache to store the tokens for each bucket.</p>
+<h1 id="toc-section-4"><a href="#implementation" aria-hidden="true"><span class="icon icon-link"></span></a>Implementation</h1>
+<p>The first step is to set up the Cron Scheduler and Redis and initialise the token bucket object.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+  <span class="token string">"fmt"</span>
+  <span class="token string">"time"</span>
+  <span class="token string">"context"</span>
+  <span class="token string">"github.com/go-co-op/gocron"</span>
+  <span class="token string">"github.com/go-redis/redis/v8"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">type</span> TokenBucket <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  minuteLimit <span class="token builtin">int</span>
+  hourLimit   <span class="token builtin">int</span>
+  dayLimit    <span class="token builtin">int</span>
+  redisClient redis<span class="token punctuation">.</span>Cmdable
+  scheduler   <span class="token operator">*</span>gocron<span class="token punctuation">.</span>Scheduler
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  scheduler <span class="token operator">:=</span> gocron<span class="token punctuation">.</span><span class="token function">NewScheduler</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>UTC<span class="token punctuation">)</span>
+
+  <span class="token comment">// Define redis client as per config</span>
+  client <span class="token operator">:=</span> redis<span class="token punctuation">.</span><span class="token function">NewClient</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>redis<span class="token punctuation">.</span>Options <span class="token punctuation">{</span>
+    Addr<span class="token punctuation">:</span> <span class="token string">"localhost:6379"</span><span class="token punctuation">,</span>
+    DB<span class="token punctuation">:</span>   <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  tokenBucket <span class="token operator">:=</span> TokenBucket <span class="token punctuation">{</span>
+    minuteLimit<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    hourLimit<span class="token punctuation">:</span>   <span class="token number">10</span><span class="token punctuation">,</span>
+    dayLimit<span class="token punctuation">:</span>    <span class="token number">100</span><span class="token punctuation">,</span>
+    redisClient<span class="token punctuation">:</span> client<span class="token punctuation">,</span>
+    scheduler<span class="token punctuation">:</span>   scheduler<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Next step is to schedule cron jobs to add tokens into REDIS at a required time intervals based on different limits. We used this <a href="https://github.com/go-co-op/gocron" target="_blank" rel="nofollow noopener noreferrer">package</a> to schedule cron jobs.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Schedule Crons to fill token buckets</span>
+  err <span class="token operator">:=</span> tokenBucket<span class="token punctuation">.</span><span class="token function">scheduleTokenFillCron</span><span class="token punctuation">(</span>tokenBucket<span class="token punctuation">.</span>dayLimit<span class="token punctuation">,</span> <span class="token string">"day"</span><span class="token punctuation">,</span> <span class="token string">"0 0 * * *"</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  err <span class="token operator">=</span> tokenBucket<span class="token punctuation">.</span><span class="token function">scheduleTokenFillCron</span><span class="token punctuation">(</span>tokenBucket<span class="token punctuation">.</span>hourLimit<span class="token punctuation">,</span> <span class="token string">"hour"</span><span class="token punctuation">,</span> <span class="token string">"0 * * * *"</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  err <span class="token operator">=</span> tokenBucket<span class="token punctuation">.</span><span class="token function">scheduleTokenFillCron</span><span class="token punctuation">(</span>tokenBucket<span class="token punctuation">.</span>minuteLimit<span class="token punctuation">,</span> <span class="token string">"minute"</span><span class="token punctuation">,</span> <span class="token string">"* * * * *"</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  scheduler<span class="token punctuation">.</span><span class="token function">StartAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>tb <span class="token operator">*</span>TokenBucket<span class="token punctuation">)</span> <span class="token function">scheduleTokenFillCron</span><span class="token punctuation">(</span>limit <span class="token builtin">int</span><span class="token punctuation">,</span> limitType <span class="token builtin">string</span><span class="token punctuation">,</span> cronExp <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> limit <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Using different REDIS keys for each type of token bucket</span>
+    key <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s_limit_for_process"</span><span class="token punctuation">,</span> limitType<span class="token punctuation">)</span>
+    <span class="token comment">// Check if the key already exists in REDIS</span>
+    limitExists<span class="token punctuation">,</span> err <span class="token operator">:=</span> tb<span class="token punctuation">.</span>redisClient<span class="token punctuation">.</span><span class="token function">Exists</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> limitExists <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+      <span class="token comment">// This is the first time we are running this code, create the key in REDIS with the required tokens</span>
+      err <span class="token operator">=</span> tb<span class="token punctuation">.</span><span class="token function">addTokens</span><span class="token punctuation">(</span>limit<span class="token punctuation">,</span> limitType<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> tb<span class="token punctuation">.</span>scheduler<span class="token punctuation">.</span><span class="token function">Cron</span><span class="token punctuation">(</span>cronExp<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Do</span><span class="token punctuation">(</span>tb<span class="token punctuation">.</span>addTokens<span class="token punctuation">,</span> limit<span class="token punctuation">,</span> limitType<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>tb <span class="token operator">*</span>TokenBucket<span class="token punctuation">)</span> <span class="token function">addTokens</span><span class="token punctuation">(</span>limit <span class="token builtin">int</span><span class="token punctuation">,</span> limitType <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  key <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s_limit_for_process"</span><span class="token punctuation">,</span> limitType<span class="token punctuation">)</span>
+  <span class="token keyword">for</span> i<span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> limit<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Add tokens to this key based on value of i, value of the token does not matter only unique tokens matter</span>
+    resp <span class="token operator">:=</span> tb<span class="token punctuation">.</span>redisClient<span class="token punctuation">.</span><span class="token function">SAdd</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> resp<span class="token punctuation">.</span><span class="token function">Err</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> resp<span class="token punctuation">.</span><span class="token function">Err</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>The code above assumes the day limit as 100, hourly limit as 10, and per minute limit as 1. We use the go cron scheduler to schedule cron jobs every minute, hour, and day to refill the tokens. When the code is run for the first time, the key is added to REDIS and every subsequent call to addTokens keeps renewing the already used tokens. For adding tokens, to keep things simple we just add the index of the for loop but any token can be used for that.</p>
+<p>The next step is to read the tokens before a process, which in turn, needs to respect the rate limits. Given we have to follow all 3 limits, we try to fetch the day token first, followed by the hour and minute token. <strong>getToken</strong> is a blocking call, and the process is blocked till all three tokens are not retrieved. Below is the code snippet to get tokens:</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  tb<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token string">"day"</span><span class="token punctuation">)</span>
+  tb<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token string">"hour"</span>
+  tb<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token string">"minute"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>tb <span class="token operator">*</span>TokenBucket<span class="token punctuation">)</span> <span class="token function">getToken</span><span class="token punctuation">(</span>limitType <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  done <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+  <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">{</span>
+      key <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s_limit_for_process"</span><span class="token punctuation">,</span> limitType<span class="token punctuation">)</span>
+      storeToken<span class="token punctuation">,</span> err <span class="token operator">:=</span> tb<span class="token punctuation">.</span>redisClient<span class="token punctuation">.</span><span class="token function">SPop</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">if</span> err <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        done <span class="token operator">&lt;-</span> storeToken
+        <span class="token keyword">break</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token operator">&lt;-</span>done
+  <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>getToken is a blocking call that keeps trying to pop a token from REDIS till it gets one. Till the time it does not get a token, a boolean channel blocks it. Once it gets the token, the function returns and tries to fetch the token for the next limit.</p>
+<p>The above <strong>getToken</strong> code has one limitation. For example, if all the day tokens have been used for that day, the next day’s tokens will be replenished, say in 22 hours. The <strong>getToken</strong> method will keep calling pop on REDIS and will not get any results every time. To solve this, we can block this process till the next trigger to <strong>addTokens</strong> as per the cron schedule and start retrying after that to save resources. The updated code snippet for <strong>getToken</strong> is added below:</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">getToken</span><span class="token punctuation">(</span><span class="token string">"day"</span><span class="token punctuation">)</span>
+  <span class="token function">getToken</span><span class="token punctuation">(</span><span class="token string">"hour"</span><span class="token punctuation">)</span>
+  <span class="token function">getToken</span><span class="token punctuation">(</span><span class="token string">"minute"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>tb <span class="token operator">*</span>TokenBucket<span class="token punctuation">)</span> <span class="token function">getToken</span><span class="token punctuation">(</span>limitType <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  done <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+  <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">{</span>
+      key <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s_limit_for_process"</span><span class="token punctuation">,</span> limitType<span class="token punctuation">)</span>
+      storeToken<span class="token punctuation">,</span> err <span class="token operator">:=</span> tb<span class="token punctuation">.</span>redisClient<span class="token punctuation">.</span><span class="token function">SPop</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">if</span> err <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        done <span class="token operator">&lt;-</span> storeToken
+        <span class="token keyword">break</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        tb<span class="token punctuation">.</span><span class="token function">waitTillNextTick</span><span class="token punctuation">(</span>limitType<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token operator">&lt;-</span>done
+  <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>tb<span class="token operator">*</span> TokenBucket<span class="token punctuation">)</span> <span class="token function">waitTillNextTick</span><span class="token punctuation">(</span>limitType <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> cronExp <span class="token builtin">string</span>
+
+  <span class="token keyword">if</span> limitType <span class="token operator">==</span> <span class="token string">"day"</span> <span class="token punctuation">{</span>
+    cronExp <span class="token operator">=</span> <span class="token string">"0 0 * * *"</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> limitType <span class="token operator">==</span> <span class="token string">"hour"</span> <span class="token punctuation">{</span>
+    cronExp <span class="token operator">=</span> <span class="token string">"0 * * * *"</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> limitType <span class="token operator">==</span> <span class="token string">"minute"</span> <span class="token punctuation">{</span>
+    cronExp <span class="token operator">=</span> <span class="token string">"* * * * *"</span>
+  <span class="token punctuation">}</span>
+
+  done <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">bool</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// Schedule a cron to run only once to unblock the channel</span>
+  tb<span class="token punctuation">.</span>scheduler<span class="token punctuation">.</span><span class="token function">Cron</span><span class="token punctuation">(</span>cronExp<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">LimitRunsTo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Do</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    done <span class="token operator">&lt;-</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token operator">&lt;-</span>done
+  <span class="token comment">// Sleeping here to give some time to routine to add tokens</span>
+  time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>The above code adds another method called <strong>waitTillNextTick</strong> which allows to wait using a channel and only use POP after the addTokens call has been made to ensure we do not keep popping without any use.</p>
+<p>The complete code can be found <a href="https://github.com/sohanpalh/token_bucket_go" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<h3 id="limitations"><a href="#limitations" aria-hidden="true"><span class="icon icon-link"></span></a>Limitations:</h3>
+<p>The above token bucket algorithm helped us integrate into our 3rd party, respecting all the rate limitations. However, there is one limitation in our flow: The algorithm gets the token only at the start of the process. Some of our processes take more than an hour to complete. Hence at any moment, we can have more than per minute or per hour limit processes in progress.</p>
+<p>If your application has a hard limit on the number of processes in progress at a given point in time and each process is time-consuming, the process to refill the tokens should keep an account of the number of processes in progress and only replenish if the process has been completed.</p>
+<p>That’s all folks! I would love to hear about your experiences with rate limiting and the algorithms you followed.</p>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/harman.9bd8c31a.jpg" alt="Harman Sohanpal" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Harman Sohanpal</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><!----></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/smart-contracts-store-information" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="Blockchain FTW" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Blockchain as public ledger</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Rahul Nitin Padalkar   5 min read
+            </p></div></a><a href="/blogs/using-tarka-chat-in-your-react-vue-apps" class="blog-card" data-v-996dafb6><img src="/assets/img/Photo-by-Volodymyr-Hryshchenko-on-Unsplash.97698903.webp" alt="Using Tarka Chat in your React/Vue apps" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Using Tarka Chat in your React/Vue apps</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Shamil Siddique   5 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

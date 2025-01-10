@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Effortlessly update YouTube videos on your Gridsome site · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="Effortlessly update YouTube videos on your Gridsome site · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="How to build an auto-updating YouTube feed on your site using the YouTube API and Gridsome for Vue.js with step-by-step instructions and code samples."><meta data-vue-tag="ssr" property="og:image" content="/assets/img/effortlessly-update-youtube-videos-on-your-gridsome-site.dbd4fb18.webp"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /web - 10 min read
+      </p><h1 class="title" data-v-996dafb6>Effortlessly update YouTube videos on your Gridsome site</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/bitman.9f5fc4e7.png" alt="Ajith Renjala" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Ajith Renjala</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            A tarkan
+          </p></div></div></div><img src="/assets/img/effortlessly-update-youtube-videos-on-your-gridsome-site.dbd4fb18.webp" alt="Effortlessly update YouTube videos on your Gridsome site" class="header-img" data-v-996dafb6><div class="toc-wrapper" data-v-996dafb6><h2 class="heading-size-7" data-v-996dafb6>Table of contents</h2><div class="toc" data-v-996dafb6><a href="#content" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/01</p><p data-v-996dafb6>Intro</p></a><a href="#toc-section-1" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/02</p><p data-v-996dafb6>YouTube API Overview</p></a><a href="#toc-section-2" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/03</p><p data-v-996dafb6>Get PlaylistId</p></a><a href="#toc-section-3" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/04</p><p data-v-996dafb6>Get Playlist Items</p></a><a href="#toc-section-4" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/05</p><p data-v-996dafb6>Getting a Channel’s Uploads</p></a><a href="#toc-section-5" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/06</p><p data-v-996dafb6>Get Video Duration</p></a><a href="#toc-section-6" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/07</p><p data-v-996dafb6>Video Details API</p></a><a href="#toc-section-7" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/08</p><p data-v-996dafb6>Parse ISO 8601 Duration Strings</p></a><a href="#toc-section-8" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/09</p><p data-v-996dafb6>Displaying the YouTube API Data</p></a><a href="#toc-section-9" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/10</p><p data-v-996dafb6>Creating a Vue.js Component</p></a><a href="#toc-section-10" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/11</p><p data-v-996dafb6>Wrapping up</p></a></div></div><div id="content" class="content" data-v-996dafb6><p>Gridsome is a free and open-source <a href="https://gridsome.org/docs/jamstack/" target="_blank" rel="nofollow noopener noreferrer">Jamstack framework</a> for building fast and modern websites with <a href="https://vuejs.org/" target="_blank" rel="nofollow noopener noreferrer">Vue.js</a>. It uses the GraphQL query language to access and transform data from various sources, including APIs, databases, and local files. It also includes built-in support for static site generation, which makes it a great choice for creating static blogs, documentation sites, and e-commerce storefronts.</p>
+<p>With Gridsome, you have a few different options for working with data, however, in this article, we’ll look at a specific challenge of importing recently uploaded videos from a YouTube channel using the <a href="https://developers.google.com/youtube/v3" target="_blank" rel="nofollow noopener noreferrer">YouTube Data API</a>.</p>
+<p>Let’s get started. [<a href="#toc-section-10">Click here for TL,DR</a>]</p>
+<p>We will present the YouTube videos in a two-column grid format, as shown in the image below:</p>
+<figure><img src="/blog/effortlessly-update-youtube-videos-on-your-gridsome-site/tarka-screenshot.webp" alt="Screenshot from [www.tarkalabs.com](http://www.tarkalabs.com/)"><figcaption>Screenshot from <a href="http://www.tarkalabs.com/">www.tarkalabs.com</a></figcaption></figure>
+<h1 id="toc-section-1"><a href="#youtube-api-overview" aria-hidden="true"><span class="icon icon-link"></span></a>YouTube API Overview</h1>
+<p>We’ll use Fireship.io, one of my favorite YouTube channels, for our demonstration, so we’ll need to use the REST APIs that YouTube provides to import the <a href="https://www.youtube.com/@Fireship/videos" target="_blank" rel="nofollow noopener noreferrer">recently uploaded videos</a>.</p>
+<p>Here is the API Reference guide for <a href="https://developers.google.com/youtube/v3/docs" target="_blank" rel="nofollow noopener noreferrer">The YouTube Data API</a>.</p>
+<p>But before we get started, we’ll need an <a href="https://developers.google.com/youtube/v3/getting-started#before-you-start" target="_blank" rel="nofollow noopener noreferrer">API key</a> so that we can authenticate and identify the submitted API requests. Follow the instructions to obtain the key.</p>
+<p>Note that YouTube uses playlists to identify special collections of videos (such as uploaded videos and positively rated/liked videos) for a channel. We are interested in a playlist of uploaded videos, so we must obtain the <code class="language-inline-text">playlistId</code> for this playlist.</p>
+<h1 id="toc-section-2"><a href="#get-playlistid" aria-hidden="true"><span class="icon icon-link"></span></a>Get PlaylistId</h1>
+<p><a href="https://developers.google.com/youtube/v3/docs/channels/list#try-it" target="_blank" rel="nofollow noopener noreferrer">https://developers.google.com/youtube/v3/docs/channels/list#try-it</a></p>
+<p>We can use the channels resource to retrieve the ‘playlist IDs’ of special collections for uploaded and liked videos by specifying either the channel’s user ID or the channel ID itself.</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">GET https://youtube.googleapis.com/youtube/v3/channels?part<span class="token operator">=</span>contentDetails<span class="token operator">&amp;</span><span class="token assign-left variable">forUsername</span><span class="token operator">=</span>GoogleDevelopers<span class="token operator">&amp;</span><span class="token assign-left variable">key</span><span class="token operator">=</span><span class="token punctuation">[</span>YOUR_API_KEY<span class="token punctuation">]</span></code></pre></div>
+<p>The playlist ID is available as a value for “likes” and “uploads” in the response object under <code class="language-inline-text">relatedPlaylists</code> copy the <code class="language-inline-text">uploads</code> playlist ID.</p>
+<div class="gridsome-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token property">"contentDetails"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"relatedPlaylists"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"likes"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token property">"uploads"</span><span class="token operator">:</span> <span class="token string">"UU_x5XG1OV2P6uZZ5FSM9Ttw"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>Note:</strong><br>
+If your response does not contain the expected result, try specifying the channel ID instead of the YouTube username. This <a href="https://support.google.com/youtube/answer/3250431?hl=en" target="_blank" rel="nofollow noopener noreferrer">guide</a> will help you find the channel ID. Alternatively, see this Stack Overflow <a href="https://stackoverflow.com/q/14366648/1835803" target="_blank" rel="nofollow noopener noreferrer">thread</a>.</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">GET https://youtube.googleapis.com/youtube/v3/channels?part<span class="token operator">=</span>contentDetails<span class="token operator">&amp;</span><span class="token assign-left variable">id</span><span class="token operator">=</span>UCsBjURrPoezykLs9EqgamOA<span class="token operator">&amp;</span><span class="token assign-left variable">key</span><span class="token operator">=</span><span class="token punctuation">[</span>YOUR_API_KEY<span class="token punctuation">]</span></code></pre></div>
+<p>There you have it; we were able to determine the <code class="language-inline-text">playlistId</code> for uploads to the Fireship.io channel using the channel ID.</p>
+<p>Next, for the obtained <code class="language-inline-text">playlistId</code> retrieve the playlist items, i.e. videos in the “uploads” playlist.</p>
+<h1 id="toc-section-3"><a href="#get-playlist-items" aria-hidden="true"><span class="icon icon-link"></span></a>Get Playlist Items</h1>
+<p><a href="https://developers.google.com/youtube/v3/docs/playlistItems/list#try-it" target="_blank" rel="nofollow noopener noreferrer">https://developers.google.com/youtube/v3/docs/playlistItems/list#try-it</a></p>
+<p>With the help of the <code class="language-inline-text">playlistitems</code> resource, you can obtain a list of recently uploaded videos by simply providing the <code class="language-inline-text">playlistId</code> and optionally <code class="language-inline-text">maxResults</code> (the default value is 5).</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">GET https://youtube.googleapis.com/youtube/v3/playlistItems?part<span class="token operator">=</span>contentDetails%2Cid%2Csnippet%2Cstatus<span class="token operator">&amp;</span><span class="token assign-left variable">maxResults</span><span class="token operator">=</span><span class="token number">20</span><span class="token operator">&amp;</span><span class="token assign-left variable">playlistId</span><span class="token operator">=</span>UUsBjURrPoezykLs9EqgamOA<span class="token operator">&amp;</span><span class="token assign-left variable">key</span><span class="token operator">=</span><span class="token punctuation">[</span>YOUR_API_KEY<span class="token punctuation">]</span></code></pre></div>
+<p>You can learn more by watching <a href="https://youtu.be/RjUlmco7v2M" target="_blank" rel="nofollow noopener noreferrer">this helpful video</a> from Google Developers.</p>
+<h1 id="toc-section-4"><a href="#getting-a-channels-uploads" aria-hidden="true"><span class="icon icon-link"></span></a>Getting a Channel’s Uploads</h1>
+<p>With all of our YouTube Data API knowledge, let’s go ahead and implement the API to fetch recent uploads in a javascript module.</p>
+<p>The following function is named <code class="language-inline-text">fetchRecentTalks,</code> and it is an async function that sends a GET request to the YouTube Data API to get information about videos in a given playlist. If the request is successful, the function will extract the relevant data from the response and return an array of objects, each representing a video in the playlist.</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// YouTubeUploads.jsconst youtubeKey = "[YOUR_API_KEY]"</span>
+<span class="token keyword">const</span> playlistId <span class="token operator">=</span> <span class="token string">"UUsBjURrPoezykLs9EqgamOA"</span>
+<span class="token keyword">const</span> maxRecentTalks <span class="token operator">=</span> <span class="token string">"20"</span><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fetchRecentTalks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Create a new URL object with the base URL for the YouTube Data API</span>
+  <span class="token keyword">const</span> videosUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>
+    <span class="token string">"https://youtube.googleapis.com/youtube/v3/playlistItems"</span>
+  <span class="token punctuation">)</span>
+  <span class="token comment">// Set the necessary query parameters on the URL</span>
+  videosUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"part"</span><span class="token punctuation">,</span> <span class="token string">"snippet"</span><span class="token punctuation">)</span>
+  videosUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"maxResults"</span><span class="token punctuation">,</span> maxRecentTalks<span class="token punctuation">)</span>
+  videosUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"playlistId"</span><span class="token punctuation">,</span> playlistId<span class="token punctuation">)</span>
+  videosUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">,</span> youtubeKey<span class="token punctuation">)</span>  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Send a GET request to the API with the constructed URL</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>videosUrl<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// If the response is not successful (i.e. not in the 2xx range), throw an error</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">HTTP error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>response<span class="token punctuation">.</span>status<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> items <span class="token punctuation">}</span> <span class="token operator">=</span> data
+    <span class="token comment">// Map the items array to an array of talks with the desired properties</span>
+    <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// Extract the videoId from the snippet</span>
+      <span class="token keyword">let</span> videoId <span class="token operator">=</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>resourceId<span class="token punctuation">.</span>videoId
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">id</span><span class="token operator">:</span> item<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+        <span class="token literal-property property">position</span><span class="token operator">:</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>position<span class="token punctuation">,</span>
+        <span class="token literal-property property">videoId</span><span class="token operator">:</span> videoId<span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> item<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+        <span class="token literal-property property">publishedAt</span><span class="token operator">:</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>publishedAt<span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+        <span class="token literal-property property">description</span><span class="token operator">:</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>description<span class="token punctuation">,</span>
+        <span class="token comment">// Concatenate the video ID with the base URL to get the full video URL</span>
+        <span class="token literal-property property">videoUrl</span><span class="token operator">:</span> <span class="token string">"https://youtu.be/"</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>videoId<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">videoEmbedUrl</span><span class="token operator">:</span> <span class="token string">"https://www.youtube.com/embed/"</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>videoId<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">thumbnails</span><span class="token operator">:</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>thumbnails<span class="token punctuation">,</span>
+        <span class="token comment">// TODO: We don't have duration information yet.</span>
+        <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token string">"NA"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If there is an error, log it to the console</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Could not get talks: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>In our implementation, we used <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank" rel="nofollow noopener noreferrer">async-await</a>. However, you are free to explicitly configure promise chains or even use an HTTP client library like <a href="https://github.com/axios/axios" target="_blank" rel="nofollow noopener noreferrer">axios</a>.</p>
+<h1 id="toc-section-5"><a href="#get-video-duration" aria-hidden="true"><span class="icon icon-link"></span></a>Get Video Duration</h1>
+<p>If you recall the design requirement, we need to display the duration of the video in minutes. However, that information wasn’t available in the previous API call to resource. Instead, we are required to use the videos’ resource.</p>
+<p><a href="https://developers.google.com/youtube/v3/docs/videos/list#try-it" target="_blank" rel="nofollow noopener noreferrer">https://developers.google.com/youtube/v3/docs/videos/list#try-it</a></p>
+<p>Now, remember that because we are dealing with a collection of videos (up to 20 videos based on <code class="language-inline-text">maxRecentTalks</code>), retrieving details about a specific video by looping through playlist items is not the best option. There is a better way; the ‘id’ parameter accepts a list of YouTube video IDs separated by commas. This means that the same API can retrieve data for a collection of videos as well.</p>
+<p>In your API request, you can therefore include one or more video IDs.</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">GET https://youtube.googleapis.com/youtube/v3/videos?part<span class="token operator">=</span>snippet%2CcontentDetails%2Cstatistics<span class="token operator">&amp;</span><span class="token assign-left variable">id</span><span class="token operator">=</span>eaedq1Jl2fc%2C1v_TEnpqHXE%2CzBZgdTb-dns%2CaXOChLn5ZdQ%2ClkIFF4maKMU<span class="token operator">&amp;</span><span class="token assign-left variable">key</span><span class="token operator">=</span><span class="token punctuation">[</span>YOUR_API_KEY<span class="token punctuation">]</span></code></pre></div>
+<p><strong>Determine Quota Cost</strong></p>
+<p>Another important consideration when submitting requests to the YouTube Data API is the quota cost for calling each API method. Every API request has a quota cost of at least one point, even if the request is invalid.</p>
+<div style="width: 100%; display: block;">
+  <iframe     src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fgiphy.com%2Fembed%2FxAe3BXJVr9tJscgei5%2Ftwitter%2Fiframe&amp;display_name=Giphy&amp;url=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fv1.Y2lkPTc5MGI3NjExYjU4NGYxYjgxZjc0OTQwZDliMjcyMDFlMjk4Y2U0Y2FlN2U4NGMzYiZjdD1n%2FxAe3BXJVr9tJscgei5%2Fgiphy-downsized-large.gif&amp;image=https%3A%2F%2Fi.giphy.com%2Fmedia%2FxAe3BXJVr9tJscgei5%2Fgiphy-downsized-large.gif&amp;key=a19fcc184b9711e1b4764040d3dc5c07&amp;type=text%2Fhtml&amp;schema=giphy"
+    allowfullscreen=""
+    frameborder="0"
+    width="100%"
+    height="400px"
+    title="Plumber Martin Tv Show GIF by Martin - Find &amp; Share on GIPHY"
+    scrolling="no"
+    style="display: block; max-width: 100%;"
+  ></iframe>
+</div>
+<p>Checkout this <a href="https://developers.google.com/youtube/v3/determine_quota_cost" target="_blank" rel="nofollow noopener noreferrer">Quota Calculator</a> for more information.</p>
+<h1 id="toc-section-6"><a href="#video-details-api" aria-hidden="true"><span class="icon icon-link"></span></a><strong>Video Details API</strong></h1>
+<p>Let’s go ahead and implement the API to retrieve information about videos based on their IDs. Because we are only interested in duration of the video, specifying, <code class="language-inline-text">contentDetails</code>as the value for ‘part’ is sufficient.</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">/// YouTubeUploads.js</span>
+<span class="token comment">//..</span>
+<span class="token comment">//...</span>
+<span class="token comment">//....</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">getVideoDetails</span><span class="token punctuation">(</span><span class="token parameter">videoIds</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// create a URL object with the YouTube API endpoint</span>
+  <span class="token keyword">const</span> videoUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"https://youtube.googleapis.com/youtube/v3/videos"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// set query parameters to request the content details of the specified video</span>
+  videoUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"part"</span><span class="token punctuation">,</span> <span class="token string">"contentDetails"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  videoUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> videoIds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  videoUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">,</span> youtubeKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>videoUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">HTTP error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>response<span class="token punctuation">.</span>status<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// extract the content details and map it to respective videoID</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> items <span class="token punctuation">}</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> Object<span class="token punctuation">.</span><span class="token function">fromEntries</span><span class="token punctuation">(</span>items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">[</span>i<span class="token punctuation">.</span>id<span class="token punctuation">,</span> i<span class="token punctuation">.</span>contentDetails<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// log an error message if the request fails</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Could not get video details: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Copy over the <code class="language-inline-text">getVideoDetails</code> function, which sends a <code class="language-inline-text">GET</code> request to the YouTube API in order to retrieve the content details for the specified video IDs. To make it easier to look up video details using a video ID, let’s associate each video ID with its content details, which typically include information such as the video duration, dimensions, definition, etc.</p>
+<p>Now, modify the <code class="language-inline-text">fetchRecentTalks</code> function and address the duration TODO.</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fetchRecentTalks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ..</span>
+  <span class="token comment">// ...</span>
+  <span class="token comment">// ......</span>
+
+  <span class="token comment">// **** insert this ***</span>
+  <span class="token comment">// fetch video details(such as duration) using videoId</span>
+  <span class="token keyword">const</span> videoIds <span class="token operator">=</span> items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>resourceId<span class="token punctuation">.</span>videoId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> videoDetails <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getVideoDetails</span><span class="token punctuation">(</span>videoIds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Map the items array to an array of talks with the desired properties</span>
+  <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Extract the videoId from the snippet</span>
+    <span class="token keyword">let</span> videoId <span class="token operator">=</span> item<span class="token punctuation">.</span>snippet<span class="token punctuation">.</span>resourceId<span class="token punctuation">.</span>videoId<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ..</span>
+      <span class="token comment">// ...</span>
+      <span class="token comment">// ....</span>
+      <span class="token comment">// *** update this ***</span>
+      <span class="token literal-property property">duration</span><span class="token operator">:</span> videoDetails<span class="token punctuation">[</span>videoId<span class="token punctuation">]</span><span class="token punctuation">.</span>duration
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// ..</span>
+  <span class="token comment">// ....</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Wonderful!</p>
+<p>But wait, the format of the duration string isn’t what we want. Instead, the format is <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations" target="_blank" rel="nofollow noopener noreferrer">ISO 8601</a>. So we must figure out how to parse ISO 8601 duration strings in JavaScript.</p>
+<h1 id="toc-section-7"><a href="#parse-iso-8601-duration-strings" aria-hidden="true"><span class="icon icon-link"></span></a>Parse ISO 8601 Duration Strings</h1>
+<p>There are a few options for parsing ISO 8601 duration strings in JS, but none of them are native solutions <a href="https://tc39.es/proposal-temporal/docs/duration.html" target="_blank" rel="nofollow noopener noreferrer">yet</a>. There are numerous open-source software programs and libraries available, including the popular library — <a href="https://momentjs.com/" target="_blank" rel="nofollow noopener noreferrer">moment.js</a>.</p>
+<p>Make the following change to make it complete:</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> moment <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"moment"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//..</span>
+<span class="token comment">//....</span>
+<span class="token comment">// Replace following line in `fetchRecentTalks`</span>
+<span class="token literal-property property">duration</span><span class="token operator">:</span> moment<span class="token punctuation">.</span><span class="token function">duration</span><span class="token punctuation">(</span>videoDetails<span class="token punctuation">[</span>videoId<span class="token punctuation">]</span><span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">humanize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>As an alternative, take a look at my suggestion on this Stack Overflow <a href="https://stackoverflow.com/a/74743033/1835803" target="_blank" rel="nofollow noopener noreferrer">thread</a>.</p>
+<h1 id="toc-section-8"><a href="#displaying-the-youtube-api-data" aria-hidden="true"><span class="icon icon-link"></span></a>Displaying the YouTube API Data</h1>
+<p>There are primarily two ways to import external data into our Gridsome site after retrieving it from a REST API data source.</p>
+<p>We can use the <a href="https://gridsome.org/docs/data-store-api/" target="_blank" rel="nofollow noopener noreferrer">Data Store API</a> to add external data to the store and make it available on the GraphQL data layer. You will then be able to query that data in your Vue components’ <code class="language-inline-text">page-query</code> and <code class="language-inline-text">static-query</code> tags.</p>
+<p>However, this isn’t ideal for our current requirement because we want to keep it out of the generated markup and refresh data after each page load.</p>
+<p>This can be done by loading our data using the <code class="language-inline-text">mounted</code> hook.</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fetchRecentTalks <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../utils/YouTubeUploads"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">talks</span><span class="token operator">:</span> <span class="token keyword">null</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">async</span> <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchRecentTalks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>talks <span class="token operator">=</span> results<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>Check out Gridsome documentation on <a href="https://gridsome.org/docs/client-side-data/" target="_blank" rel="nofollow noopener noreferrer">Client-side data</a> for more.</p>
+<h1 id="toc-section-9"><a href="#creating-a-vuejs-component" aria-hidden="true"><span class="icon icon-link"></span></a>Creating a Vue.js Component</h1>
+<p>Finally, it’s time to put on our magician’s hat and start working on the front-end component.</p>
+<p>🎩🪄✨</p>
+<p>We’ll begin with a component called <code class="language-inline-text">Talks.vue</code>, which implements the two-column grid. The component is shown here in all its splendor.</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>template<span class="token operator">></span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"talks"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>h3<span class="token operator">></span>_talks<span class="token operator">&lt;</span><span class="token operator">/</span>h3<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"talks-group"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-left"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>div
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span>
+          v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(talk, i) in col1Tiles"</span>
+          <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"i"</span>
+          @click<span class="token operator">=</span><span class="token string">"showTalk(talk.videoEmbedUrl)"</span>
+        <span class="token operator">></span>
+          <span class="token operator">&lt;</span>TalkTile <span class="token operator">:</span>talk<span class="token operator">=</span><span class="token string">"talk"</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col right"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>div
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span>
+          v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(talk, i) in col2Tiles"</span>
+          <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"i"</span>
+          @click<span class="token operator">=</span><span class="token string">"showTalk(talk.videoEmbedUrl)"</span>
+        <span class="token operator">></span>
+          <span class="token operator">&lt;</span>TalkTile <span class="token operator">:</span>talk<span class="token operator">=</span><span class="token string">"talk"</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>Modal <span class="token operator">:</span>show<span class="token operator">=</span><span class="token string">"modalVisible"</span> <span class="token operator">:</span>close<span class="token operator">-</span>handler<span class="token operator">=</span><span class="token string">"hideTalk"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>iframe
+        width<span class="token operator">=</span><span class="token string">"100%"</span>
+        height<span class="token operator">=</span><span class="token string">"100%"</span>
+        <span class="token operator">:</span>src<span class="token operator">=</span><span class="token string">"talkUrl"</span>
+        frameborder<span class="token operator">=</span><span class="token string">"0"</span>
+        allow<span class="token operator">=</span><span class="token string">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span>
+        allowfullscreen
+      <span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>iframe<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Modal<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>style lang<span class="token operator">=</span><span class="token string">"scss"</span> scoped<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">></span>
+@<span class="token keyword">import</span> <span class="token string">"../assets/vars.scss"</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span>talks <span class="token punctuation">{</span>
+  margin<span class="token operator">-</span>bottom<span class="token operator">:</span> 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">.</span>talks<span class="token operator">-</span>group <span class="token punctuation">{</span>
+  <span class="token literal-property property">display</span><span class="token operator">:</span> grid<span class="token punctuation">;</span>
+  grid<span class="token operator">-</span>template<span class="token operator">-</span>columns<span class="token operator">:</span> 1fr 1fr<span class="token punctuation">;</span>
+  column<span class="token operator">-</span>gap<span class="token operator">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token punctuation">.</span>right <span class="token punctuation">{</span>
+    margin<span class="token operator">-</span>top<span class="token operator">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span>item <span class="token punctuation">{</span>
+    margin<span class="token operator">-</span>bottom<span class="token operator">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@media #<span class="token punctuation">{</span>$medium<span class="token operator">-</span>only<span class="token punctuation">}</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span>talks<span class="token operator">-</span>group <span class="token punctuation">{</span>
+    column<span class="token operator">-</span>gap<span class="token operator">:</span> 16px<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span>item <span class="token punctuation">{</span>
+      margin<span class="token operator">-</span>bottom<span class="token operator">:</span> 16px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@media #<span class="token punctuation">{</span>$small<span class="token operator">-</span>and<span class="token operator">-</span>down<span class="token punctuation">}</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span>talks<span class="token operator">-</span>group <span class="token punctuation">{</span>
+    grid<span class="token operator">-</span>template<span class="token operator">-</span>columns<span class="token operator">:</span> 1fr<span class="token punctuation">;</span>
+    column<span class="token operator">-</span>gap<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span>right <span class="token punctuation">{</span>
+      margin<span class="token operator">-</span>top<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>item <span class="token punctuation">{</span>
+      margin<span class="token operator">-</span>bottom<span class="token operator">:</span> 16px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+<span class="token keyword">import</span> Modal <span class="token keyword">from</span> <span class="token string">"./Modal"</span>
+<span class="token keyword">import</span> TalkTile <span class="token keyword">from</span> <span class="token string">"./TalkTile.vue"</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> fetchRecentTalks <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../utils/YouTubeUploads"</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> Modal<span class="token punctuation">,</span> TalkTile <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">allTalks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">modalVisible</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">talkUrl</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">async</span> <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchRecentTalks</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>allTalks <span class="token operator">=</span> results
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">col1Tiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>allTalks<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">col2Tiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>allTalks<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">showTalk</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>talkUrl <span class="token operator">=</span> url
+      <span class="token keyword">this</span><span class="token punctuation">.</span>modalVisible <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">hideTalk</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>modalVisible <span class="token operator">=</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre></div>
+<p>This component fetches a list of recent talks from our <code class="language-inline-text">YoutubeUploads</code> module and displays them in a grid. The user can click on a talk to open a modal that displays the talk’s video. Note: The modal’s implementation is beyond the scope of this post.</p>
+<p>As you can see, for maintainability, readability, and other reasons, I separated the implementation of each tile into a separate component called <code class="language-inline-text">TalkTile.vue</code>.</p>
+<p>This is what it does:</p>
+<div class="gridsome-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>template<span class="token operator">></span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"talk"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>img <span class="token operator">:</span>src<span class="token operator">=</span><span class="token string">"thumbnailUrl"</span> <span class="token operator">:</span>alt<span class="token operator">=</span><span class="token string">"talk.title"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"talk-details"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">></span><span class="token operator">|</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+      <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"title"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span> talk<span class="token punctuation">.</span>title <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"duration"</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span> talk<span class="token punctuation">.</span>duration <span class="token punctuation">}</span><span class="token punctuation">}</span> video<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>style lang<span class="token operator">=</span><span class="token string">"scss"</span> scoped<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">></span>
+<span class="token punctuation">.</span>talk <span class="token punctuation">{</span>
+  box<span class="token operator">-</span>sizing<span class="token operator">:</span> border<span class="token operator">-</span>box<span class="token punctuation">;</span>
+  <span class="token literal-property property">display</span><span class="token operator">:</span> flex<span class="token punctuation">;</span>
+  flex<span class="token operator">-</span>direction<span class="token operator">:</span> column<span class="token punctuation">;</span>
+  justify<span class="token operator">-</span>content<span class="token operator">:</span> flex<span class="token operator">-</span>start<span class="token punctuation">;</span>
+  <span class="token literal-property property">gap</span><span class="token operator">:</span> 16px<span class="token punctuation">;</span>
+  <span class="token literal-property property">position</span><span class="token operator">:</span> relative<span class="token punctuation">;</span>
+  <span class="token literal-property property">overflow</span><span class="token operator">:</span> hidden<span class="token punctuation">;</span>
+
+  img <span class="token punctuation">{</span>
+    max<span class="token operator">-</span>width<span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>
+    max<span class="token operator">-</span>height<span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">.</span>talk<span class="token operator">-</span>details <span class="token punctuation">{</span>
+  <span class="token literal-property property">display</span><span class="token operator">:</span> flex<span class="token punctuation">;</span>
+  align<span class="token operator">-</span>items<span class="token operator">:</span> flex<span class="token operator">-</span>start<span class="token punctuation">;</span>
+  <span class="token literal-property property">gap</span><span class="token operator">:</span> 24px<span class="token punctuation">;</span>
+  <span class="token literal-property property">cursor</span><span class="token operator">:</span> pointer<span class="token punctuation">;</span>
+  font<span class="token operator">-</span>family<span class="token operator">:</span> <span class="token string">"heading"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">.</span>icon <span class="token punctuation">{</span>
+    font<span class="token operator">-</span>size<span class="token operator">:</span> 2rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span>title <span class="token punctuation">{</span>
+    <span class="token literal-property property">display</span><span class="token operator">:</span> flex<span class="token punctuation">;</span>
+    flex<span class="token operator">-</span>direction<span class="token operator">:</span> column<span class="token punctuation">;</span>
+    align<span class="token operator">-</span>items<span class="token operator">:</span> flex<span class="token operator">-</span>start<span class="token punctuation">;</span>
+    <span class="token literal-property property">padding</span><span class="token operator">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token literal-property property">gap</span><span class="token operator">:</span> 8px<span class="token punctuation">;</span>
+    font<span class="token operator">-</span>size<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">.</span>25rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span>duration <span class="token punctuation">{</span>
+    font<span class="token operator">-</span>family<span class="token operator">:</span> <span class="token string">"body-jetbrains"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"talk"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">thumbnailUrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>talk<span class="token punctuation">.</span>thumbnails<span class="token punctuation">.</span>maxres
+        <span class="token operator">?</span> <span class="token keyword">this</span><span class="token punctuation">.</span>talk<span class="token punctuation">.</span>thumbnails<span class="token punctuation">.</span>maxres<span class="token punctuation">.</span>url
+        <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>talk<span class="token punctuation">.</span>thumbnails<span class="token punctuation">.</span>high<span class="token punctuation">.</span>url
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre></div>
+<p>The component expects to receive a “talk” object as a prop, which it uses to populate the template with the relevant information. It also has a computed property called <code class="language-inline-text">thumbnailUrl</code> that determines the URL of the thumbnail image to display based on the availability of different thumbnail sizes.</p>
+<p>Let’s take a look at the final result now.</p>
+<p>Hit refresh!</p>
+<img src="/blog/effortlessly-update-youtube-videos-on-your-gridsome-site/tarka-video-thumnails.webp">
+<p>That’s perfect!</p>
+<h1 id="toc-section-10"><a href="#wrapping-up" aria-hidden="true"><span class="icon icon-link"></span></a>Wrapping up</h1>
+<p>This tutorial demonstrated how to easily create a YouTube videos feed in a Gridsome site, similar to YouTube’s landing <a href="https://www.youtube.com/" target="_blank" rel="nofollow noopener noreferrer">page</a>, albeit with a small design twist.</p>
+<p>It certainly involved jumping over a few hurdles, so let’s recap what we’ve learned:</p>
+<ul>
+<li>Gridsome is a free and open-source Jamstack solution built with Vue.js, one of the most loved web framework of our time.</li>
+<li>We use the <a href="https://developers.google.com/youtube/v3/docs" target="_blank" rel="nofollow noopener noreferrer">YouTube Data API</a> to request data from a YouTube channel’s feed, and each request must be authenticated using an <a href="https://developers.google.com/youtube/v3/getting-started#before-you-start" target="_blank" rel="nofollow noopener noreferrer">API key</a>.</li>
+<li>Remember that each request, including invalid ones, has a point-based quota cost.</li>
+<li>Uploaded videos for a channel are identified as playlists, and a fetch request can be made using a playlist’s unique identifier (id). Hence, knowing the playlist id of the uploaded videos playlist becomes a prerequisite.</li>
+<li>As a first step, the user ID or channel ID of a channel is used to determine the playlist id for uploads.</li>
+<li>A request to the playlist items endpoint with the <code class="language-inline-text">playlistid</code> parameter returns a list of recently uploaded videos.</li>
+<li>The duration of a video is obtained via an additional request to the video’s endpoint, and the duration data is formatted in ISO 8601 duration strings. Thus, a further conversion to a format that humans can understand is required.</li>
+<li>Using Vue.js, we then created a grid-style interface with custom styles.</li>
+</ul>
+<p>Hope this helps. Good luck with your implementation.</p>
+<p>P.S. I love responding to comments. So keep ‘em coming.</p>
+<blockquote>
+<p><strong>Hey there! I’m Ajith! I’m an iOS developer by day and tinker with web frameworks by night. Currently building immersive mobile experiences @</strong> <a href="https://tarkalabs.com/" target="_blank" rel="nofollow noopener noreferrer"><strong>Tarka Labs</strong></a><strong><em>. The</em> intersection of design and code fascinates me. I also occasionally blog at</strong> <a href="https://ajith.blog/" target="_blank" rel="nofollow noopener noreferrer"><strong><em>https://ajith.blog</em></strong></a><strong><em>.</em></strong></p>
+</blockquote>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/bitman.9f5fc4e7.png" alt="Ajith Renjala" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Ajith Renjala</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            A tarkan
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thiking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><a href="https://medium.com/@ajithrnayak" target="_blank" class="heading-size-9" data-v-996dafb6>
+          Medium
+        </a></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/smart-contracts-store-information" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="Blockchain FTW" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Blockchain as public ledger</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Rahul Nitin Padalkar   5 min read
+            </p></div></a><a href="/blogs/using-tarka-chat-in-your-react-vue-apps" class="blog-card" data-v-996dafb6><img src="/assets/img/Photo-by-Volodymyr-Hryshchenko-on-Unsplash.97698903.webp" alt="Using Tarka Chat in your React/Vue apps" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Using Tarka Chat in your React/Vue apps</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Shamil Siddique   5 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

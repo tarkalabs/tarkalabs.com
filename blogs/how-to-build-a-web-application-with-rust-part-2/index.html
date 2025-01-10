@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>How to build a Web Application with Rust: Part II · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="How to build a Web Application with Rust: Part II · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="How to build a Web Application with Rust: Part II"><meta data-vue-tag="ssr" property="og:image" content="/assets/img/how-to-build-a-web-application-with-rust-part-2.28dd32ed.webp"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /web - 2 min read
+      </p><h1 class="title" data-v-996dafb6>How to build a Web Application with Rust: Part II</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/dhruva.ddea2a05.jpg" alt="Dhruva Sagar" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Dhruva Sagar</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div></div><img src="/assets/img/how-to-build-a-web-application-with-rust-part-2.28dd32ed.webp" alt="How to build a Web Application with Rust: Part II" class="header-img" data-v-996dafb6><div class="toc-wrapper" data-v-996dafb6><h2 class="heading-size-7" data-v-996dafb6>Table of contents</h2><div class="toc" data-v-996dafb6><a href="#content" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/01</p><p data-v-996dafb6>Intro</p></a><a href="#toc-section-1" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/02</p><p data-v-996dafb6>The Code</p></a><a href="#toc-section-2" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/03</p><p data-v-996dafb6>The Gist</p></a><a href="#toc-section-3" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/04</p><p data-v-996dafb6>Conclusion</p></a></div></div><div id="content" class="content" data-v-996dafb6><p>In continuation with my video series on <a href="https://www.youtube.com/watch?v=Wmq3etdwCbM&#x26;list=PLz51_WNhdOqv7S5pnycKySU_4PpCagU4Q" target="_blank" rel="nofollow noopener noreferrer">youtube</a>, on building a Web Application with <a href="https://www.rust-lang.org/" target="_blank" rel="nofollow noopener noreferrer">Rust</a> keeping a strong emphasis on best practices, in Part II, I showcased how to establish connection to a postgres database and manage migrations with the help of <a href="https://github.com/launchbadge/sqlx" target="_blank" rel="nofollow noopener noreferrer">sqlx</a>.</p>
+<p>You can find the video here :</p>
+<iframe 
+  width="100%" 
+  height="315" 
+  src="https://www.youtube.com/embed/c9qSGUHgE1c" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen
+  style="max-width:600px;border:1px solid #ccc;"
+  loading="lazy">
+</iframe>
+<h1 id="toc-section-1"><a href="#the-code" aria-hidden="true"><span class="icon icon-link"></span></a>The Code</h1>
+<p>You can find the source code I am building in this series over at <a href="https://github.com/dhruvasagar/url-mapper-rs" target="_blank" rel="nofollow noopener noreferrer">github</a>. Here’s the db module :</p>
+<div class="gridsome-highlight" data-language="rust"><pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> <span class="token namespace">sqlx<span class="token punctuation">::</span></span><span class="token punctuation">{</span>migrate<span class="token punctuation">,</span> <span class="token class-name">Pool</span><span class="token punctuation">,</span> <span class="token class-name">Postgres</span><span class="token punctuation">,</span> <span class="token namespace">postgres<span class="token punctuation">::</span></span><span class="token class-name">PgPoolOptions</span><span class="token punctuation">,</span> <span class="token class-name">FromRow</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token namespace">serde<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token class-name">Serialize</span><span class="token punctuation">,</span> <span class="token class-name">Deserialize</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token namespace">anyhow<span class="token punctuation">::</span></span><span class="token class-name">Result</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token module-declaration namespace"><span class="token punctuation">::</span>config<span class="token punctuation">::</span></span><span class="token constant">CONFIG</span><span class="token punctuation">;</span>
+
+<span class="token attribute attr-name">#[derive(Debug, FromRow, Clone, Serialize, Deserialize)]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">UrlMap</span> <span class="token punctuation">{</span>
+    key<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">impl</span> <span class="token class-name">UrlMap</span> <span class="token punctuation">{</span>
+    <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span> url<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">{</span>
+        <span class="token keyword">Self</span> <span class="token punctuation">{</span> key<span class="token punctuation">,</span> url <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">DB</span> <span class="token punctuation">{</span>
+    <span class="token keyword">pub</span> pool<span class="token punctuation">:</span> <span class="token class-name">Pool</span><span class="token operator">&lt;</span><span class="token class-name">Postgres</span><span class="token operator">></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">impl</span> <span class="token constant">DB</span> <span class="token punctuation">{</span>
+    <span class="token keyword">pub</span> <span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token keyword">Self</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> pool <span class="token operator">=</span> <span class="token class-name">PgPoolOptions</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">max_connections</span><span class="token punctuation">(</span><span class="token constant">CONFIG</span><span class="token punctuation">.</span>database<span class="token punctuation">.</span>max_connections<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token constant">CONFIG</span><span class="token punctuation">.</span>database<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token keyword">await</span><span class="token operator">?</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">let</span> migrator <span class="token operator">=</span> <span class="token macro property">migrate!</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        migrator
+            <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>pool<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token keyword">await</span><span class="token operator">?</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token keyword">Self</span> <span class="token punctuation">{</span> pool <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gridsome-highlight" data-language="rust"><pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> <span class="token namespace">anyhow<span class="token punctuation">::</span></span><span class="token class-name">Result</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token module-declaration namespace"><span class="token punctuation">::</span>config<span class="token punctuation">::</span></span><span class="token constant">CONFIG</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token module-declaration namespace"><span class="token punctuation">::</span>db<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token constant">DB</span><span class="token punctuation">,</span> <span class="token class-name">UrlMap</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">mod</span> <span class="token module-declaration namespace">config</span><span class="token punctuation">;</span>
+<span class="token keyword">mod</span> <span class="token module-declaration namespace">db</span><span class="token punctuation">;</span>
+
+<span class="token attribute attr-name">#[tokio::main]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span>
+        <span class="token string">"host: {}, port: {}, database.url: {}"</span><span class="token punctuation">,</span>
+        <span class="token constant">CONFIG</span><span class="token punctuation">.</span>host<span class="token punctuation">,</span> <span class="token constant">CONFIG</span><span class="token punctuation">.</span>port<span class="token punctuation">,</span> <span class="token constant">CONFIG</span><span class="token punctuation">.</span>database<span class="token punctuation">.</span>url
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> db <span class="token operator">=</span> <span class="token constant">DB</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token namespace">sqlx<span class="token punctuation">::</span></span><span class="token function">query_as</span><span class="token punctuation">::</span><span class="token operator">&lt;</span>_<span class="token punctuation">,</span> <span class="token class-name">UrlMap</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token string">"select * from url_maps"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">fetch_all</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>db<span class="token punctuation">.</span>pool<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token keyword">await</span><span class="token operator">?</span><span class="token punctuation">;</span>
+
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"results: {:?}"</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h1 id="toc-section-2"><a href="#the-gist" aria-hidden="true"><span class="icon icon-link"></span></a>The Gist</h1>
+<p>We create a struct <code class="language-inline-text">DB</code> to hold a reference to a connection pool for Postgres. Within the constructor we utilize sqlx apis to instantiate a connection pool using the configurations from our config model we setup previously in <a href="https://blog.tarkalabs.com/building-a-web-application-with-rust-part-i-configuration-c21319ae626e" target="_blank" rel="nofollow noopener noreferrer">Part I</a>. We also execute our migrations automatically. SQLX ensures only migrations that haven’t been executed previously are executed.</p>
+<p>We also define <code class="language-inline-text">UrlMap</code> , our data model which represents our data for mapping a<code class="language-inline-text">key</code> to a <code class="language-inline-text">url</code> within the <code class="language-inline-text">url_maps</code> table.</p>
+<p>We instantiate an instance of <code class="language-inline-text">DB</code> struct in our main function and use the connection pool reference from that to execute a query to fetch data from the <code class="language-inline-text">url_maps</code> table and print it out to the console.</p>
+<p>This sets up the database for our Url Mapper application, that we’re building as part of this series and we’ll be utilizing this to build our service and a CRUD API in the coming episodes.</p>
+<h1 id="toc-section-3"><a href="#conclusion" aria-hidden="true"><span class="icon icon-link"></span></a>Conclusion</h1>
+<p>​
+We learn how to utilize sqlx apis to do the following :</p>
+<ul>
+<li>Establish connection to the database, setup a connection pool for performance</li>
+<li>Build a model<code class="language-inline-text">UrlMap</code> to represent data</li>
+<li>
+<p>Execute query and parse the results as <code class="language-inline-text">UrlMap</code> type
+​</p>
+<blockquote>
+<p>Hello Montreal! We’ll be at the <a href="https://startupfestival.com/" target="_blank" rel="nofollow noopener noreferrer">Startupfest ’22</a> all three days, so drop by and say hi. We’d love to see what you’re building, and early birds get a free (limited) design audit or tech consultation. DM us on Twitter (<a href="https://twitter.com/tarkalabs" target="_blank" rel="nofollow noopener noreferrer">@tarkalabs</a>) and let’s talk.</p>
+</blockquote>
+</li>
+</ul>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/dhruva.ddea2a05.jpg" alt="Dhruva Sagar" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Dhruva Sagar</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><a href="https://medium.com/@dhruvasagar" target="_blank" class="heading-size-9" data-v-996dafb6>
+          Medium
+        </a></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/smart-contracts-store-information" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="Blockchain FTW" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Blockchain as public ledger</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Rahul Nitin Padalkar   5 min read
+            </p></div></a><a href="/blogs/using-tarka-chat-in-your-react-vue-apps" class="blog-card" data-v-996dafb6><img src="/assets/img/Photo-by-Volodymyr-Hryshchenko-on-Unsplash.97698903.webp" alt="Using Tarka Chat in your React/Vue apps" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Using Tarka Chat in your React/Vue apps</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Shamil Siddique   5 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

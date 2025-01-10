@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Automating cluster creation with Terraform on DigitalOcean · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="Automating cluster creation with Terraform on DigitalOcean · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="Automating cluster creation with Terraform on DigitalOcean"><meta data-vue-tag="ssr" property="og:image" content="/assets/img/default-cover.55254b66.png"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /devops - 4 min read
+      </p><h1 class="title" data-v-996dafb6>Automating cluster creation with Terraform on DigitalOcean</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/vagmi.2ed35375.jpg" alt="Vagmi Mudumbai" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Vagmi Mudumbai</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div></div><img src="/assets/img/default-cover.55254b66.png" alt="Automating cluster creation with Terraform on DigitalOcean" class="header-img" data-v-996dafb6><!----><div id="content" class="content" data-v-996dafb6><p>In our previous <a href="https://medium.com/tarkalabs/infrastructure-as-code-for-developers-152a93dd2f2e" target="_blank" rel="nofollow noopener noreferrer">introduction to devops tools</a>, we introduced terraform but did not go into a lot of details. So let’s dig a little deeper and setup a simple three node cluster with terraform. Terraform, as with many of <a href="https://www.hashicorp.com/" target="_blank" rel="nofollow noopener noreferrer">Hashicorp’s</a> software, is a single binary. You can <a href="https://www.terraform.io/downloads.html" target="_blank" rel="nofollow noopener noreferrer">download terraform</a> for your platform and add it to your path. Or if you are on a mac, you can <code class="language-inline-text">brew install terraform</code>.</p>
+<p>We are going to use DigitalOcean as the cloud platform. They have been adding a lot of features to their platform like Private Networking, Load balancers, S3 compatible object store, CDN etc. You would need an API key that DigitalOcean calls a <a href="https://cloud.digitalocean.com/account/api/tokens" target="_blank" rel="nofollow noopener noreferrer">Personal Access Token</a> to interact with the DO API.</p>
+<p>Lets create an empty folder and put in the following in a file called <code class="language-inline-text">main.tf</code>. The file can be called anything but <code class="language-inline-text">main.tf</code> seems to be the convention. Terraform process all the files in the current directory to construct the object graph.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"># main<span class="token punctuation">.</span>tf
+provider <span class="token string">"digitalocean"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></div>
+<p>The <a href="https://www.terraform.io/docs/providers/do/index.html" target="_blank" rel="nofollow noopener noreferrer">DigitalOcean provider</a> requires that you set the token as a part of the provider configuration or expects an environment variable called <code class="language-inline-text">DIGITALOCEAN_TOKEN</code> to be present. I prefer setting this sort of configuration as an environment variable. Now you can run <code class="language-inline-text">terraform init</code> on the command line. It will detect that you need the DigitalOcean Provider plugin and download it into the <code class="language-inline-text">.terraform</code> folder.</p>
+<p>Now before we create an droplet, we need to import or upload our SSH key. I have created a new SSH keypair using <code class="language-inline-text">ssh-keygen</code>. I have created an SSH key with the name <code class="language-inline-text">dotf</code> and its corresponding public key <code class="language-inline-text">dotf.pub</code>.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">variable <span class="token string">"ssh_pub_key"</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>resource <span class="token string">"digitalocean_ssh_key"</span> <span class="token string">"tfsshkey"</span> <span class="token punctuation">{</span>
+    name <span class="token operator">=</span> <span class="token string">"tfkey"</span>
+    public_key <span class="token operator">=</span> <span class="token string">"${file("</span>$<span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span>ssh_pub_key<span class="token punctuation">}</span><span class="token string">")}"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>I have setup the <code class="language-inline-text">ssh_pub_key</code> variable to point to the path to my <code class="language-inline-text">.pub</code> file by setting the environment variable <code class="language-inline-text">TF_VAR_ssh_pub_key</code>. Notice that I have interpolated the <code class="language-inline-text">ssh_pub_key</code> variable and used the <code class="language-inline-text">file()</code> function to read its contents for the <code class="language-inline-text">tfsshkey</code> resource. It does seem a little weird to nest double quotes though.</p>
+<p>Now that we have imported the SSH key, let’s create the droplets. In this example, we’ll be using the <code class="language-inline-text">blr1</code> region (Bangalore) and a Ubuntu 16.04 image. I am also referring to the SSH key we created earlier so that we’ll be able to log into the machine.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">resource <span class="token string">"digitalocean_droplet"</span> <span class="token string">"controller"</span> <span class="token punctuation">{</span>
+    image <span class="token operator">=</span> <span class="token string">"ubuntu-16-04-x64"</span>
+    name <span class="token operator">=</span> <span class="token string">"controller"</span>
+    region <span class="token operator">=</span> <span class="token string">"blr1"</span>
+    ssh_keys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"${digitalocean_ssh_key.tfsshkey.id}"</span><span class="token punctuation">]</span>
+    size <span class="token operator">=</span> <span class="token string">"4gb"</span>
+    private_networking <span class="token operator">=</span> <span class="token string">"true"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>This creates a machine with name <code class="language-inline-text">controller</code> and sets up private networking. Unfortunately, DigitalOcean does not allow you to create a VPC like Amazon and hence we cannot specify the private ip address ahead of time.</p>
+<p>Let’s also create a resource for our nodes. We need two of them. So, we can use the <code class="language-inline-text">count</code> argument to specify the number of droplets we need.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">resource <span class="token string">"digitalocean_droplet"</span> <span class="token string">"nodes"</span> <span class="token punctuation">{</span>
+    count <span class="token operator">=</span> <span class="token number">2</span>
+    image <span class="token operator">=</span> <span class="token string">"ubuntu-16-04-x64"</span>
+    name <span class="token operator">=</span> <span class="token string">"node-0${count.index+1}"</span>
+    region <span class="token operator">=</span> <span class="token string">"blr1"</span>
+    ssh_keys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"${digitalocean_ssh_key.tfsshkey.id}"</span><span class="token punctuation">]</span>
+    size <span class="token operator">=</span> <span class="token string">"4gb"</span>
+    private_networking <span class="token operator">=</span> <span class="token string">"true"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Notice that we have interpolated the <code class="language-inline-text">name</code> argument with the index. So this will create two droplets with names <code class="language-inline-text">node-01</code>and <code class="language-inline-text">node-02</code>.</p>
+<p>We are almost done. We now need to instruct terraform to store the state in DigitalOcean Spaces. <a href="https://www.digitalocean.com/products/spaces/" target="_blank" rel="nofollow noopener noreferrer">DigitalOcean Spaces</a> is a S3 compatible service to store objects. You can create your Spaces API keys from the same page that you created your Personal Access Token. We can simply use the S3 backend to store our state into DigitalOcean secrets. You need to store the key and the secret it generates to <code class="language-inline-text">AWS_ACCESS_KEY_ID</code> and the <code class="language-inline-text">AWS_SECRET_ACCESS_KEY</code> environment variables. Our backend configuration looks a bit like this.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">terraform <span class="token punctuation">{</span>
+    backend <span class="token string">"s3"</span> <span class="token punctuation">{</span>
+        bucket <span class="token operator">=</span> <span class="token string">"&lt;bucketname>"</span>
+        region <span class="token operator">=</span> <span class="token string">"us-east-1"</span> # required but totally ignored
+        endpoint <span class="token operator">=</span> <span class="token string">"https://sgp1.digitaloceanspaces.com"</span>
+        key <span class="token operator">=</span> <span class="token string">"state-store/tf.tfstate"</span>
+
+        # Hey DO Spaces is only S3 compatible not exactly S3
+        skip_credentials_validation <span class="token operator">=</span> <span class="token boolean">true</span>
+        skip_get_ec2_platforms <span class="token operator">=</span> <span class="token boolean">true</span>
+        skip_requesting_account_id <span class="token operator">=</span> <span class="token boolean">true</span>
+        skip_metadata_api_check <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Now to access the IP addresses of our terraform script temporarily, we’ll configure them as outputs.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">output <span class="token string">"controller_ip_address"</span> <span class="token punctuation">{</span>
+    value <span class="token operator">=</span> <span class="token string">"${digitalocean_droplet.controller.ipv4_address}"</span>
+<span class="token punctuation">}</span>
+output <span class="token string">"controller_private_ip_address"</span> <span class="token punctuation">{</span>
+    value <span class="token operator">=</span> <span class="token string">"${digitalocean_droplet.controller.ipv4_address_private}"</span>
+<span class="token punctuation">}</span>
+output <span class="token string">"node_ip_address"</span> <span class="token punctuation">{</span>
+    value <span class="token operator">=</span> <span class="token string">"${digitalocean_droplet.nodes.*.ipv4_address}"</span>
+<span class="token punctuation">}</span>
+output <span class="token string">"node_private_ip_address"</span> <span class="token punctuation">{</span>
+    value <span class="token operator">=</span> <span class="token string">"${digitalocean_droplet.nodes.*.ipv4_address_private}"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>You can now run the following on the console.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">$ terraform init
+<span class="token operator">...</span>
+$ terraform plan
+<span class="token operator">...</span>
+$ terraform apply
+<span class="token operator">...</span></code></pre></div>
+<p>Now this will create the SSH key and three droplets. You can test if the setup is working by SSH’ing into the machines using the following command. You can access the outputs using the <code class="language-inline-text">terraform output</code> command. Note that <code class="language-inline-text">dotf</code> is my private key that I created earlier using <code class="language-inline-text">ssh-keygen</code>.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">ssh <span class="token operator">-</span>i dotf <span class="token operator">-</span>l root  $<span class="token punctuation">(</span>terraform output controller_ip_address<span class="token punctuation">)</span></code></pre></div>
+<p>Our terraform output in JSON looks a bit like this.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">$ terraform output <span class="token operator">-</span>json
+<span class="token punctuation">{</span>
+    <span class="token string">"controller_ip_address"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"sensitive"</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span>
+        <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"142.93.216.119"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"controller_private_ip_address"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"sensitive"</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span>
+        <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"10.139.80.8"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"node_ip_address"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"sensitive"</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"list"</span><span class="token punctuation">,</span>
+        <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"142.93.210.32"</span><span class="token punctuation">,</span>
+            <span class="token string">"142.93.216.89"</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"node_private_ip_address"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"sensitive"</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"list"</span><span class="token punctuation">,</span>
+        <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"10.139.80.13"</span><span class="token punctuation">,</span>
+            <span class="token string">"10.139.80.3"</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Now we can SSH into it by referring to the node IP using <a href="https://stedolan.github.io/jq/" target="_blank" rel="nofollow noopener noreferrer">jq</a>.</p>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">ssh <span class="token operator">-</span>i dotf <span class="token operator">-</span>l root  $<span class="token punctuation">(</span>terraform output <span class="token operator">-</span>json node_ip_address <span class="token operator">|</span> jq <span class="token operator">-</span>r <span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre></div>
+<p>Next in the series, we’ll setup an ansible script to setup an etcd cluster and demonstrate how it can be integrated with terraform. Follow the publication to get notified when we publish the next article.</p>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/vagmi.2ed35375.jpg" alt="Vagmi Mudumbai" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Vagmi Mudumbai</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><a href="https://vagmi.medium.com/" target="_blank" class="heading-size-9" data-v-996dafb6>
+          Medium
+        </a></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/opentext-magellan-aks-unofficial-deployment-guide" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="OpenText Magellan and AKS: An unofficial deployment guide" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/devops</p><h3 data-v-996dafb6>OpenText Magellan and AKS: An unofficial deployment guide</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Shamil Siddique   11 min read
+            </p></div></a><a href="/blogs/aws-ecs-monitoring-solution" class="blog-card" data-v-996dafb6><img src="/assets/img/cover.48fab8a3.gif" alt="The only in-depth AWS ECS monitoring solution you'll need" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/devops</p><h3 data-v-996dafb6>The only in-depth AWS ECS monitoring solution you'll need</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Madhava Reddy SV   6 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

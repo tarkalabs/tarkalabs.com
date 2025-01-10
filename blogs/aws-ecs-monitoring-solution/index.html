@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>The only in-depth AWS ECS monitoring solution you&#x27;ll need · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="The only in-depth AWS ECS monitoring solution you&#x27;ll need · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="This is a detailed blog on how to set up in-depth AWS ECS monitoring. The bundled alerts that come with ECS are inadequate. DevOps teams need more insight to be efficient."><meta data-vue-tag="ssr" property="og:image" content="/assets/img/cover.48fab8a3.gif"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /devops - 6 min read
+      </p><h1 class="title" data-v-996dafb6>The only in-depth AWS ECS monitoring solution you'll need</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/madhava.695f658a.jpg" alt="Madhava Reddy SV" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Madhava Reddy SV</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            DevOps
+          </p></div></div></div><img src="/assets/img/cover.48fab8a3.gif" alt="The only in-depth AWS ECS monitoring solution you'll need" class="header-img" data-v-996dafb6><!----><div id="content" class="content" data-v-996dafb6><p>Are you an Engineering Manager or DevOps Lead looking for a proactive monitoring solution for Amazon Elastic Container Service (ECS)? By now, you should be fed up with the basic metrics that ECS provides and in a hunt for a new sophisticated monitoring solution (like me!). If this is you, then you are in the right place.</p>
+<blockquote>
+<p>In this article, I will help you revamp your ECS monitoring to the next level without any third-party agents. Brace for impact!</p>
+</blockquote>
+<h2 id="choosing-the-right-alerts"><a href="#choosing-the-right-alerts" aria-hidden="true"><span class="icon icon-link"></span></a>Choosing the right alerts</h2>
+<p>Here are the only alerts you’ll need for in-depth view into ECS health, based on my experience as a Senior DevOps Consultant.</p>
+<p><em>(Click on the link to jump directly to the relevant sections)</em></p>
+<ol>
+<li><a href="#ecs-deployment-failure-notification">Deployment failures</a></li>
+<li><a href="#ecs-service-task-placement-failure-notification">Task placement failures</a></li>
+<li><a href="#ecs-service-tasks-health-check-failures">Health check failures of services</a></li>
+<li><a href="#ecs-service-task-kills-due-to-out-of-memory-notification">Services that are killed due to OOM</a></li>
+<li><a href="#ecs-service-auto-scaling-notifications">ECS service auto-scaling events</a></li>
+<li><a href="#aws-auto-scaling-group-notifications">Autoscaling group notifications</a></li>
+<li><a href="#ecs-agent-disconnected-notifications">ECS agent disconnected events</a></li>
+<li><a href="#spot-instance-interruption-handling-for-ecs-instances">Spot instances interruption handling for ECS clusters</a></li>
+</ol>
+<p>I haven’t listed any CPU / memory alerts, as anyone can configure them easily. We can use any Infrastructure as Code (IaC) provider to configure the alerting infrastructure. But, for the sake of simplicity, I am using AWS CloudFormation today. A few alerts will be invoked directly through the Amazon EventBridge rule with filters, and others might require a schedule to run periodically.</p>
+<h2 id="prerequisites"><a href="#prerequisites" aria-hidden="true"><span class="icon icon-link"></span></a>Prerequisites</h2>
+<ol>
+<li>Download the <a href="https://gist.github.com/SVMadhavaReddy/54df84fe74e5279e8cb147a44c22bde9#file-aws-cloudwatch-query-events-rb" target="_blank" rel="nofollow noopener noreferrer">aws-cloudwatch-query-events.rb</a> script, which will be used for configuring alerts.</li>
+<li><a href="https://gist.github.com/SVMadhavaReddy/bd612cee261e6ca5a341770171b3d3d2#file-alert-router-with-ecs-oom-kills-example-yaml" target="_blank" rel="nofollow noopener noreferrer">Click here</a> to view a complete example of the CloudFormation template.</li>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_cwe_events.html" target="_blank" rel="nofollow noopener noreferrer">Click here</a> to view AWS CloudWatch reference objects for ECS events</li>
+</ol>
+<h2 id="using-inputtransformer-to-invoke-alert-router-lambda-function"><a href="#using-inputtransformer-to-invoke-alert-router-lambda-function" aria-hidden="true"><span class="icon icon-link"></span></a>Using InputTransformer to invoke Alert Router Lambda function</h2>
+<p>You can parse all the fields available from the AWS event and transform them as mentioned below.</p>
+<p>Here, I have shown an example of ECS event parsing.</p>
+<p><em>CONDITION_NAME &#x26; SEVERITY</em> variables must be updated appropriately for the alerts depending on your strategy. You can invoke the Lambda function mentioned above with the payload below, sending an alert to the respective alerting channel. Or you can add your own CloudFormation template target as per your need.</p>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">InputTransformer</span><span class="token punctuation">:</span>
+  <span class="token key atrule">InputPathsMap</span><span class="token punctuation">:</span>
+    <span class="token key atrule">cluster</span><span class="token punctuation">:</span> $.detail.clusterArn
+    <span class="token key atrule">service</span><span class="token punctuation">:</span> $.resources<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token key atrule">reason</span><span class="token punctuation">:</span> $.detail.reason
+    <span class="token key atrule">timestamp</span><span class="token punctuation">:</span> $.time
+  <span class="token key atrule">InputTemplate</span><span class="token punctuation">:</span> <span class="token tag">!Sub</span> <span class="token punctuation">|</span><span class="token scalar string">
+    {"type":"ecs_metric","condition":"CONDITION_NAME","cluster":"&lt;cluster>","timestamp":"&lt;timestamp>","service":"&lt;service>","reason":"&lt;reason>","severity":"SEVERITY"}</span></code></pre></div>
+<blockquote>
+<p><em>To receive the alerts, please create an</em> <strong><em>AWS::Events::Rule</em></strong> <em>with the appropriate trigger rule and add the</em> <strong><em>Alert Router lambda function</em></strong> <em>as a target with the above</em> InputTransformer <em>logic. So that whenever an event is triggered, the alert router Lambda function is invoked and sends a notification to the respective channel as per the severity of the alert configured.</em></p>
+</blockquote>
+<h2 id="ecs-deployment-failure-notification"><a href="#ecs-deployment-failure-notification" aria-hidden="true"><span class="icon icon-link"></span></a>ECS deployment failure notification</h2>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.ecs
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ECS Deployment State Change
+  <span class="token key atrule">detail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">eventName</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> SERVICE_DEPLOYMENT_FAILED</code></pre></div>
+<h2 id="ecs-service-task-placement-failure-notification"><a href="#ecs-service-task-placement-failure-notification" aria-hidden="true"><span class="icon icon-link"></span></a>ECS service task placement failure notification</h2>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">ECS</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.ecs
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ECS Service Action
+  <span class="token key atrule">detail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">eventName</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> SERVICE_TASK_START_IMPAIRED
+      <span class="token punctuation">-</span> ECS_OPERATION_THROTTLED
+      <span class="token punctuation">-</span> SERVICE_DAEMON_PLACEMENT_CONSTRAINT_VIOLATED
+      <span class="token punctuation">-</span> SERVICE_DISCOVERY_OPERATION_THROTTLED
+      <span class="token punctuation">-</span> SERVICE_TASK_PLACEMENT_FAILURE
+      <span class="token punctuation">-</span> SERVICE_TASK_CONFIGURATION_FAILURE</code></pre></div>
+<h2 id="ecs-service-tasks-health-check-failures"><a href="#ecs-service-tasks-health-check-failures" aria-hidden="true"><span class="icon icon-link"></span></a>ECS service tasks health check failures</h2>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token comment"># Target should be a cloudwatch log group which will be</span>
+<span class="token comment"># used by the aggregator lambda function that we create below</span>
+<span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.ecs
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ECS Task State Change
+  <span class="token key atrule">detail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">desiredStatus</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> STOPPED
+    <span class="token key atrule">lastStatus</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> STOPPED</code></pre></div>
+<p>If we notify during each health check failure event, the alerts will be very noisy, and we will surely ignore them. Instead, let’s group them on a periodic basis, say, every 5 minutes, and notify them if any ECS service breaches our threshold.</p>
+<p>To configure this alert, update the environment variables in the script (prerequisites <a href="#prerequisites">point #1</a>) as mentioned below and put it in S3. Using this script, create an aggregator Lambda function and invoke it periodically with matching frequency as <em>START_OFFSET_IN_SECONDS.</em> So that every time the Lambda function runs, it only checks for the offset time without considering old data.</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># update the fields as per your needs</span>
+TYPE <span class="token operator">=</span> <span class="token string">"ecs_service_metric"</span>
+QUERY_STRING <span class="token operator">=</span> <span class="token string">"fields detail.stoppedReason, detail.containers.0.reason, @message, detail.clusterArn
+| filter detail.stoppedReason like /Task failed ELB health checks/
+| stats count(*) as failureCount by detail.group, detail.clusterArn
+| filter failureCount > 1
+| sort failureCount desc"</span>
+CONDITION_NAME <span class="token operator">=</span> <span class="token string">"Health check failures of ECS containers"</span>
+ALERT_ROUTER_LAMBDA_ARN <span class="token operator">=</span> <span class="token string">"Can passed as a resource ref or ARN string"</span>
+CW_LOG_INSIGHTS_GROUP_NAME <span class="token operator">=</span> <span class="token string">"Pass the name of cw log group where you configured aws task stopped events"</span>
+START_OFFSET_IN_SECONDS <span class="token operator">=</span> <span class="token string">"600"</span> <span class="token comment"># 5 minutes</span>
+SEVERITY <span class="token operator">=</span> <span class="token string">"p1"</span>
+CW_QUERY_RESULT_LIMIT <span class="token operator">=</span> <span class="token string">"50"</span></code></pre></div>
+<h2 id="ecs-service-task-kills-due-to-out-of-memory-notification"><a href="#ecs-service-task-kills-due-to-out-of-memory-notification" aria-hidden="true"><span class="icon icon-link"></span></a>ECS service task kills due to out-of-memory notification</h2>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token comment"># Target should be a cloudwatch log group which will be</span>
+<span class="token comment"># used by the aggregator lambda function that we create below</span>
+<span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.ecs
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ECS Task State Change
+  <span class="token key atrule">detail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">desiredStatus</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> STOPPED
+    <span class="token key atrule">lastStatus</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> STOPPED</code></pre></div>
+<p>To configure this alert, update the environment variables in the script (prerequisites <a href="#prerequisites">point #1</a>) as mentioned below and put it in S3. Using this script, create an aggregator Lambda function and invoke it periodically with matching frequency as <em>START_OFFSET_IN_SECONDS.</em> So that every time the lambda function runs, it only checks for the offset time without considering old data.</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># update the fields as per your needs</span>
+TYPE <span class="token operator">=</span> <span class="token string">"ecs_service_metric"</span>
+QUERY_STRING <span class="token operator">=</span> <span class="token string">"fields detail.stoppedReason, detail.containers.0.reason, @message, detail.clusterArn
+| filter detail.containers.0.reason like /OutOfMemoryError/
+| stats count(*) as oomCount by detail.group, detail.clusterArn
+| filter oomCount > 1
+| sort oomCount desc"</span>
+CONDITION_NAME <span class="token operator">=</span> <span class="token string">"Health check failures of ECS containers"</span>
+ALERT_ROUTER_LAMBDA_ARN <span class="token operator">=</span> <span class="token string">"Can passed as a resource ref or ARN string"</span>
+CW_LOG_INSIGHTS_GROUP_NAME <span class="token operator">=</span> <span class="token string">"Pass the name of cw log group where you configured aws task stopped events"</span>
+START_OFFSET_IN_SECONDS <span class="token operator">=</span> <span class="token string">"3600"</span> <span class="token comment"># 1 hour</span>
+SEVERITY <span class="token operator">=</span> <span class="token string">"p1"</span>
+CW_QUERY_RESULT_LIMIT <span class="token operator">=</span> <span class="token string">"50"</span></code></pre></div>
+<h2 id="ecs-service-auto-scaling-notifications"><a href="#ecs-service-auto-scaling-notifications" aria-hidden="true"><span class="icon icon-link"></span></a>ECS service auto-scaling notifications</h2>
+<blockquote>
+<p>Currently, CloudWatch only reports when an ECS service reaches its max capacity.</p>
+</blockquote>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.application<span class="token punctuation">-</span>autoscaling
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> Application Auto Scaling Scaling Activity State Change
+  <span class="token key atrule">detail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">serviceNamespace</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ecs
+    <span class="token key atrule">scalableDimension</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ecs<span class="token punctuation">:</span>service<span class="token punctuation">:</span>DesiredCount
+<span class="token comment"># =============================================================</span>
+<span class="token key atrule">InputTransformer</span><span class="token punctuation">:</span>
+  <span class="token key atrule">InputPathsMap</span><span class="token punctuation">:</span>
+    <span class="token key atrule">service</span><span class="token punctuation">:</span> $.detail.resourceId
+    <span class="token key atrule">oldDesiredCapacity</span><span class="token punctuation">:</span> $.detail.oldDesiredCapacity
+    <span class="token key atrule">newDesiredCapacity</span><span class="token punctuation">:</span> $.detail.newDesiredCapacity
+    <span class="token key atrule">minCapacity</span><span class="token punctuation">:</span> $.detail.minCapacity
+    <span class="token key atrule">maxCapacity</span><span class="token punctuation">:</span> $.detail.maxCapacity
+    <span class="token key atrule">scaledToMax</span><span class="token punctuation">:</span> $.detail.scaledToMax
+    <span class="token key atrule">timestamp</span><span class="token punctuation">:</span> $.time
+  <span class="token key atrule">InputTemplate</span><span class="token punctuation">:</span> <span class="token tag">!Sub</span> <span class="token punctuation">|</span><span class="token scalar string">
+    {"type":"ecs_svc_auto_scaling_metric","service":"&lt;service>","minCapacity":"&lt;minCapacity>","maxCapacity":"&lt;maxCapacity>","scaledToMax":"&lt;scaledToMax>","timestamp":"&lt;timestamp>","oldDesiredCapacity":"&lt;oldDesiredCapacity>","newDesiredCapacity":"&lt;newDesiredCapacity>","severity":"p3"}</span></code></pre></div>
+<h2 id="aws-auto-scaling-group-notifications"><a href="#aws-auto-scaling-group-notifications" aria-hidden="true"><span class="icon icon-link"></span></a>AWS auto-scaling group notifications</h2>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.autoscaling
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> EC2 Instance Launch Unsuccessful
+    <span class="token punctuation">-</span> EC2 Instance Terminate Unsuccessful
+<span class="token comment"># =================================================</span>
+<span class="token comment"># In case you want to notify successful events also</span>
+<span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.autoscaling
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> EC2 Instance Launch Successful
+    <span class="token punctuation">-</span> EC2 Instance Terminate Successful</code></pre></div>
+<h2 id="ecs-agent-disconnected-notifications"><a href="#ecs-agent-disconnected-notifications" aria-hidden="true"><span class="icon icon-link"></span></a>ECS agent disconnected notifications</h2>
+<blockquote>
+<p>Your Amazon ECS container agent might connect and reconnect several times an hour. These <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_cwe_events.html#ecs_container_instance_events" target="_blank" rel="nofollow noopener noreferrer">change events</a> are normal and aren’t a cause for concern.</p>
+</blockquote>
+<p>As per the <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ecs-agent-disconnected/" target="_blank" rel="nofollow noopener noreferrer">AWS documentation</a>, we can’t set an alert using the trigger rule below. Instead, we should use an aggregator Lambda function as we have used for <a href="#ecs-service-task-placement-failure-notification">ECS task placement failure notification</a>. So that if it happens for a prolonged time, we will get a notification.</p>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.ecs
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ECS Container Instance State Change
+  <span class="token key atrule">detail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">agentConnected</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token boolean important">false</span><span class="token punctuation">]</span></code></pre></div>
+<h2 id="spot-instance-interruption-handling-for-ecs-instances"><a href="#spot-instance-interruption-handling-for-ecs-instances" aria-hidden="true"><span class="icon icon-link"></span></a>Spot instance interruption <strong>handling for ECS instances</strong></h2>
+<p>Even though this looks like a very big challenge, in reality, it is relatively simple.</p>
+<p>In the launch configuration of autoscaling group instance metadata, please add the line <em>ECS_ENABLE_SPOT_INSTANCE_DRAINING=true</em> to <em>/etc/ecs/ecs.config.</em> So that the ECS agent will take care of not scheduling new pods and starts draining the tasks out of the spot instance being terminated.</p>
+<p>Further, to scale fast, you can detach the instance from the autoscaling group once we receive the spot interruption signal. So that without any delay, a new instance will come up before the interrupted spot instance stops. To configure this, please create an <strong><em>AWS::Events::Rule</em></strong> with the trigger mentioned below and invoke a Lambda function with a small script to detach the instance from ASG.</p>
+<div class="gridsome-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">EventPattern</span><span class="token punctuation">:</span>
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> aws.ec2
+  <span class="token key atrule">detail-type</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> EC2 Spot Instance Interruption Warning</code></pre></div>
+<h2 id="bonus-centralized-alert-routing-system-design-using-aws-lambda"><a href="#bonus-centralized-alert-routing-system-design-using-aws-lambda" aria-hidden="true"><span class="icon icon-link"></span></a>BONUS: Centralized alert routing system design using AWS Lambda</h2>
+<p>I have created <a href="https://blog.tarkalabs.com/designing-a-centralized-alert-routing-system-using-aws-lambda-e49dafaa167c" target="_blank" rel="nofollow noopener noreferrer">another article</a> that talks about implementing a centralized alert routing system. The information in these two blog posts can be used to create a unified alerting engine for your infrastructure.</p>
+<h2 id="final-thoughts"><a href="#final-thoughts" aria-hidden="true"><span class="icon icon-link"></span></a>Final Thoughts</h2>
+<p>This is not a copy and paste to make it work article, but it will help you start independently. I have made this article as simple as possible by not giving any specific implementation details. Because a single solution will not fit all organizations, this framework can be extended with your existing infrastructure the way you want.</p>
+<p>I’m looking forward to reading your suggestions or feedback.</p>
+<blockquote>
+<p>Hi I’m Madhav! I am a DevOps consultant and a stock market enthusiast. I architect high-performing, insightful, scalable DevOps systems for clients @ <a href="https://tarkalabs.com/" target="_blank" rel="nofollow noopener noreferrer">Tarka Labs</a>.</p>
+</blockquote>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/madhava.695f658a.jpg" alt="Madhava Reddy SV" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Madhava Reddy SV</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            DevOps
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><!----></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/opentext-magellan-aks-unofficial-deployment-guide" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="OpenText Magellan and AKS: An unofficial deployment guide" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/devops</p><h3 data-v-996dafb6>OpenText Magellan and AKS: An unofficial deployment guide</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Shamil Siddique   11 min read
+            </p></div></a><a href="/blogs/centralized-alert-routing-system-aws-lambda" class="blog-card" data-v-996dafb6><img src="/assets/img/cover.48fab8a3.gif" alt="Designing a centralized alert routing system using AWS Lambda" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/devops</p><h3 data-v-996dafb6>Designing a centralized alert routing system using AWS Lambda</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Madhava Reddy SV   4 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

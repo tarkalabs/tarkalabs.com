@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>How to create shortcuts in your Android app · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="How to create shortcuts in your Android app · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="Here&#x27;s how you can implement static, dynamic and pinned shortcuts using our code snippets and guidelines."><meta data-vue-tag="ssr" property="og:image" content="/assets/img/create-shortcuts-android-app.615713c8.webp"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /mobile - 4 min read
+      </p><h1 class="title" data-v-996dafb6>How to create shortcuts in your Android app</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/raja.d886f2a1.jpg" alt="Raja Jawahar" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Raja Jawahar</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Mobile Developer
+          </p></div></div></div><img src="/assets/img/create-shortcuts-android-app.615713c8.webp" alt="How to create shortcuts in your Android app" class="header-img" data-v-996dafb6><!----><div id="content" class="content" data-v-996dafb6><style>
+  .center-content {
+    text-align: center;
+  }
+</style>
+<p>One of the fun parts of working on a <a href="https://eam360.com/" target="_blank" rel="nofollow noopener noreferrer">product</a> for more than half a decade is that I’ve always thought of ways to add cool features in the app, like <strong>shortcuts</strong> and <strong>WidgetKit</strong>.</p>
+<p>This blog will give you a walkthrough of how I have implemented Android shortcuts in our app.</p>
+<h2 id="a-brief-about-android-shortcuts"><a href="#a-brief-about-android-shortcuts" aria-hidden="true"><span class="icon icon-link"></span></a><strong>A brief about Android shortcuts</strong></h2>
+<p>Shortcuts are features (quick services) that help users quickly start some everyday or recommended tasks within the app. Long-pressing on the app’s launcher icon will show the shortcuts defined on the app.</p>
+<figure><img src="/blog/create-shortcuts-android-app/chrome-shortcut.png" alt="Eg: Shortcut on Google Chrome"><figcaption>Eg: Shortcut on Google Chrome</figcaption></figure>
+<p>There are three kinds of shortcuts: <strong>Static</strong>, <strong>Dynamic,</strong> and <strong>Pinned</strong> shortcuts.</p>
+<h2 id="static-shortcuts"><a href="#static-shortcuts" aria-hidden="true"><span class="icon icon-link"></span></a><strong>Static Shortcuts</strong></h2>
+<p>This type of shortcut is used for common user activities. In the screenshot above, Google has used static shortcuts — ‘New Tab’ and ‘Incognito Tab’. We can use this shortcut type if the app does not have any kind of configuration-based action or authentication needed to launch an action.</p>
+<p>This can be implemented by adding a single resource file.</p>
+<p><strong>How to create static shortcuts:</strong></p>
+<ol>
+<li>Select your resource folder</li>
+<li>
+<p>File -> New ->XML -> Name your file as <strong>shortcuts</strong></p>
+<figure>
+  <div class="center-content">
+    <img src="/blog/create-shortcuts-android-app/shortcut-xml.webp" alt="Shortcuts xml file" style="width:400px;">
+  </div>
+  <figcaption>Shortcuts xml file</figcaption>
+</figure>
+</li>
+<li>Define your shortcuts in xml.</li>
+<li>In the below example, I am creating a static shortcut for navigating to <strong>Create Work Order</strong> screen on an Asset Management app.</li>
+</ol>
+<div class="gridsome-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>shortcuts</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>shortcut</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>shortcutId</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>create_workorder<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@drawable/ic_shortcut_create_wo<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>shortcutShortLabel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@string/compose_shortcut_work_order_short_label<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>shortcutLongLabel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@string/compose_shortcut_work_order_long_label<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>shortcutDisabledMessage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@string/compose_work_order_disabled_message1<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent</span>
+      <span class="token attr-name"><span class="token namespace">android:</span>action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.intent.action.VIEW<span class="token punctuation">"</span></span>
+      <span class="token attr-name"><span class="token namespace">android:</span>targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.sedintechnologies.workbook.dev<span class="token punctuation">"</span></span>
+      <span class="token attr-name"><span class="token namespace">android:</span>targetClass</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.sedintechnologies.workbook.view.activity.CreateWoActivity<span class="token punctuation">"</span></span>
+      <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>shortcut</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>shortcuts</span><span class="token punctuation">></span></span></code></pre></div>
+<ol start="5">
+<li>Include this in your activity tag in <strong>AndroidManifest.xml</strong>, which has intent filter category as <strong>LAUNCHER.</strong></li>
+</ol>
+<div class="gridsome-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity</span>
+  <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>.view.activity.SplashWithLoginActivity<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@string/app_name<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@style/AppTheme.SplashScreen<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.intent.category.LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.app.shortcuts<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>resource</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@xml/shortcuts<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity</span><span class="token punctuation">></span></span></code></pre></div>
+<figure>
+  <div class="center-content">
+    <img src="/blog/create-shortcuts-android-app/static-shortcut.webp" alt="Static shortcut example" style="width:400px;">
+  </div>
+  <figcaption>Static shortcut example</figcaption>
+</figure>
+<h2 id="dynamic-shortcuts"><a href="#dynamic-shortcuts" aria-hidden="true"><span class="icon icon-link"></span></a><strong>Dynamic ShortCuts</strong></h2>
+<p>Dynamic shortcuts are context-sensitive; we can implement this based on user actions. This can be changed based on the uses of the app.</p>
+<blockquote>
+<p>A good example is calling a specific person in the <strong>Contacts</strong> app and navigating to a specific location in <strong>Google Maps</strong>. XML is not necessary for this one.</p>
+</blockquote>
+<p>In the below example, I have added the code snippet of the dynamic shortcut, which I have added for our product app. Our app has a page called <strong>Work Order List</strong>. Whenever users open the work order, we create a shortcut to open the specific work order, and this will vary based on the customer.</p>
+<div class="gridsome-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">setShortCutsForWorkOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Intent</span> intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token class-name">WorkOrderDetailActivity</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"workOrderId"</span><span class="token punctuation">,</span> workorder<span class="token punctuation">.</span><span class="token function">getWorkOrderId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"isReadOnly"</span><span class="token punctuation">,</span> isReadOnly<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  intent<span class="token punctuation">.</span><span class="token function">setAction</span><span class="token punctuation">(</span><span class="token class-name">Intent</span><span class="token punctuation">.</span><span class="token constant">ACTION_VIEW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">ShortcutInfoCompat</span> shortcutInfoCompat <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShortcutInfoCompat<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"open_workorder"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">setShortLabel</span><span class="token punctuation">(</span><span class="token string">"WorkOrder #"</span><span class="token operator">+</span> workorder<span class="token punctuation">.</span><span class="token function">getWorkOrderNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">setLongLabel</span><span class="token punctuation">(</span><span class="token string">"Open the WorkOrder #"</span><span class="token operator">+</span> workorder<span class="token punctuation">.</span><span class="token function">getWorkOrderNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">setIcon</span><span class="token punctuation">(</span><span class="token class-name">IconCompat</span><span class="token punctuation">.</span><span class="token function">createWithResource</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ic_shortcut_view_wo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">setIntent</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">ShortcutManagerCompat</span><span class="token punctuation">.</span><span class="token function">pushDynamicShortcut</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> shortcutInfoCompat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Since we are using the common id as <strong>open_workorder</strong> in our shortcut builder, when users open the item in the list, the shortcut will automatically be updated.</p>
+<figure>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
+    <img src="/blog/create-shortcuts-android-app/eam-todolist.webp" alt="Dynamic Shortcuts" style="width: 33%; object-fit: cover;">
+    <img src="/blog/create-shortcuts-android-app/eam-workorder.webp" alt="Dynamic Shortcuts" style="width: 33%; object-fit: cover;">
+    <img src="/blog/create-shortcuts-android-app/eam-shortcut.webp" alt="Dynamic Shortcuts" style="width: 33%; object-fit: cover;">
+  </div>
+  <figcaption>Dynamic Shortcuts</figcaption>
+</figure>
+<h2 id="pinned-shortcuts"><a href="#pinned-shortcuts" aria-hidden="true"><span class="icon icon-link"></span></a><strong>Pinned Shortcuts</strong></h2>
+<p>Pinned shortcuts are used for user-driven actions. These shortcuts appear as a different launcher icon on the screen. They require Android 9 (API level 28) and above. There is no limit to the number of pinned shortcuts we can create. For example, a user might want to pin a recent map to the Home screen. This is an advantage because it reduces multiple steps.</p>
+<p>This can be done in two ways.</p>
+<ul>
+<li>By long-pressing on the specific shortcut, we are able to create a pinned shortcut.
+<a href="https://youtube.com/shorts/xcGZf-1Y_18" target="_blank" rel="nofollow noopener noreferrer">Pinned shortcut for Android</a></li>
+<li>
+<p>Updating the existing dynamic shortcut with its ShortcutId.</p>
+<div class="gridsome-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">createPinnedShortCut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token class-name">ShortcutManager</span> shortcutManager <span class="token operator">=</span> <span class="token function">getSystemService</span><span class="token punctuation">(</span><span class="token class-name">ShortcutManager</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>shortcutManager<span class="token punctuation">.</span><span class="token function">isRequestPinShortcutSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">ShortcutInfo</span> pinShortcutInfo <span class="token operator">=</span>
+        <span class="token keyword">new</span> <span class="token class-name">ShortcutInfo<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"open_workorder"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Intent</span> pinnedShortcutCallbackIntent <span class="token operator">=</span>
+        shortcutManager<span class="token punctuation">.</span><span class="token function">createShortcutResultIntent</span><span class="token punctuation">(</span>pinShortcutInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">PendingIntent</span> successCallback <span class="token operator">=</span> <span class="token class-name">PendingIntent</span><span class="token punctuation">.</span><span class="token function">getBroadcast</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token comment">/* request code */</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        pinnedShortcutCallbackIntent<span class="token punctuation">,</span> <span class="token comment">/* flags */</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// If your target version is more than 31+, use PendingIntent.FLAG_IMMUTABLE flag</span>
+    <span class="token comment">//    PendingIntent successCallback = PendingIntent.getBroadcast(this, /* request code */ 0,</span>
+    <span class="token comment">//           pinnedShortcutCallbackIntent, PendingIntent.FLAG_IMMUTABLE);</span>
+    shortcutManager<span class="token punctuation">.</span><span class="token function">requestPinShortcut</span><span class="token punctuation">(</span>pinShortcutInfo<span class="token punctuation">,</span>
+        successCallback<span class="token punctuation">.</span><span class="token function">getIntentSender</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+</li>
+</ul>
+<figure>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
+    <img src="/blog/create-shortcuts-android-app/create-pinned-shortcut.webp" alt="Pinned Shortcut" style="width: 50%; object-fit: cover;">
+    <img src="/blog/create-shortcuts-android-app/pinned-shortcut.webp" alt="Pinned Shortcut" style="width: 50%; object-fit: cover;">
+  </div>
+  <figcaption>Pinned Shortcut</figcaption>
+</figure>
+<h2 id="but-there-are-some-limitations"><a href="#but-there-are-some-limitations" aria-hidden="true"><span class="icon icon-link"></span></a><strong>But there are some limitations:</strong></h2>
+<ul>
+<li>The minimum SDK is 25.</li>
+<li>A maximum four shortcuts are visible.</li>
+<li>API allows a combination of 15 shortcuts (both Static and Dynamic)</li>
+<li>Short Description Character Limit: 10.</li>
+<li>Long Description Character Limit: 25</li>
+<li><a href="https://developer.android.com/shareables/design/app-shortcuts-design-guidelines.pdf" target="_blank" rel="nofollow noopener noreferrer">App Shortcuts Design Guidelines</a> will apply.</li>
+</ul>
+<blockquote>
+<p>Hello Montreal! We’ll be at the <a href="https://startupfestival.com/" target="_blank" rel="nofollow noopener noreferrer">Startupfest ’22</a> all three days, so drop by and say hi. We’d love to see what you’re building, and early birds get a free (limited) design audit or tech consultation. DM us on Twitter (<a href="https://twitter.com/tarkalabs" target="_blank" rel="nofollow noopener noreferrer">@tarkalabs</a>) and let’s talk.</p>
+</blockquote>
+<p>Thanks for reading!</p>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/raja.d886f2a1.jpg" alt="Raja Jawahar" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Raja Jawahar</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Mobile Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><!----></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/essential-tools-and-tips-for-every-ios-developer" class="blog-card" data-v-996dafb6><img src="/assets/img/Recommended-tools-tips-for-iOS-developers.3c07d675.png" alt="5 essential tools and tips for every iOS developer" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/mobile</p><h3 data-v-996dafb6>5 essential tools and tips for every iOS developer</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Ibrahim Hassan   4 min read
+            </p></div></a><a href="/blogs/vpn-detection-guide-ios-android" class="blog-card" data-v-996dafb6><img src="/assets/img/the-ultimate-vpn.c7ce15c6.webp" alt="The ultimate VPN detection guide for iOS and Android" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/mobile</p><h3 data-v-996dafb6>The ultimate VPN detection guide for iOS and Android</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Ibrahim Hassan   3 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

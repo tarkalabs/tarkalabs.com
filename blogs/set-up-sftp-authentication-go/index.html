@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
   <head>
-    <title>How to setup SFTP in Golang Authentication Using Go · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1ce8472a455abf88af7afb52880617df980382b4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="How to setup SFTP in Golang Authentication Using Go · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="How to setup SFTP in Golang Authentication Using Go"><meta data-vue-tag="ssr" property="og:image" content="/assets/img/default-cover.55254b66.png"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.b80ae768.css" as="style"><link rel="preload" href="/assets/js/app.31f69850.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.34b6027a.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.b80ae768.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <title>How to setup SFTP in Golang Authentication Using Go · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="1649211d25fe75c28e001e17d54192a916c09cd4"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="How to setup SFTP in Golang Authentication Using Go · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="How to setup SFTP in Golang Authentication Using Go"><meta data-vue-tag="ssr" property="og:image" content="/assets/img/default-cover.55254b66.png"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d3380898.css" as="style"><link rel="preload" href="/assets/js/app.0e5d4a8b.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.2099f288.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d3380898.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
     <meta
       name="google-site-verification"
       content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
@@ -23,9 +23,11 @@
   </head>
 
   <body >
-    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-4767b8ae data-v-50705736>
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
   
-</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-6a43ac6d data-v-50705736><div class="primary fadeOut sidebar" data-v-6a43ac6d><li data-v-6a43ac6d><a href="/genai" data-v-6a43ac6d>/GenAI</a></li><li data-v-6a43ac6d><a href="https://design.tarkalabs.com/" target="_self" data-v-6a43ac6d>/Design</a></li><li data-v-6a43ac6d><a href="/develop" data-v-6a43ac6d>/Develop</a></li><li data-v-6a43ac6d><a href="/projects" data-v-6a43ac6d>/Case_Studies</a></li><li data-v-6a43ac6d><a href="/careers" data-v-6a43ac6d>/Careers</a></li><li data-v-6a43ac6d><a href="/about" data-v-6a43ac6d>/About</a></li><li data-v-6a43ac6d><a href="/contact" data-v-6a43ac6d>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-748716d7 data-v-50705736><div class="primary fadeOut sidebar" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
   Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
         /web - 2 min read
       </p><h1 class="title" data-v-996dafb6>How to setup SFTP in Golang Authentication Using Go</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/harman.9bd8c31a.jpg" alt="Harman Sohanpal" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Harman Sohanpal</p><p class="body-jetbrains-size-10" data-v-996dafb6>
@@ -49,128 +51,128 @@
 <p><code class="language-inline-text">go get golang.org/x/crypto/ssh</code></p>
 <h1 id="toc-section-3"><a href="#password-authentication" aria-hidden="true"><span class="icon icon-link"></span></a>Password Authentication</h1>
 <p>Once the library is installed we are ready to authenticate using first possible method i.e. Password Authentication. Here’s the snippet for Password authentication for SFTP. Save this file as <code class="language-inline-text">main.go</code></p>
-<div class="gridsome-highlight" data-language="golang"><pre class="language-golang"><code class="language-golang">package main
-import (
-  &quot;fmt&quot;
-  &quot;golang.org/x/crypto/ssh&quot;
-)
-func main() {
-  port := 22
-  hostname := &quot;hostname&quot;
-  password := &quot;password&quot;
-  user := &quot;user&quot;
-  addr := fmt.Sprintf(&quot;%s:%d&quot;, hostname, port)
-  config := ssh.ClientConfig{
-    User: user,
-    HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-    Auth: []ssh.AuthMethod{
-      ssh.Password(password),
-    },
-  }
-  conn, err := ssh.Dial(&quot;tcp&quot;, addr, &amp;config)
-  if err != nil {
-    fmt.Println(&quot;Failed to connect to [%s]: %v&quot;, addr, err)
-    return
-  }
-  defer conn.Close()</code></pre></div>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+  <span class="token string">"fmt"</span>
+  <span class="token string">"golang.org/x/crypto/ssh"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  port <span class="token operator">:=</span> <span class="token number">22</span>
+  hostname <span class="token operator">:=</span> <span class="token string">"hostname"</span>
+  password <span class="token operator">:=</span> <span class="token string">"password"</span>
+  user <span class="token operator">:=</span> <span class="token string">"user"</span>
+  addr <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s:%d"</span><span class="token punctuation">,</span> hostname<span class="token punctuation">,</span> port<span class="token punctuation">)</span>
+  config <span class="token operator">:=</span> ssh<span class="token punctuation">.</span>ClientConfig<span class="token punctuation">{</span>
+    User<span class="token punctuation">:</span> user<span class="token punctuation">,</span>
+    HostKeyCallback<span class="token punctuation">:</span> ssh<span class="token punctuation">.</span><span class="token function">InsecureIgnoreHostKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Auth<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>ssh<span class="token punctuation">.</span>AuthMethod<span class="token punctuation">{</span>
+      ssh<span class="token punctuation">.</span><span class="token function">Password</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> ssh<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">"tcp"</span><span class="token punctuation">,</span> addr<span class="token punctuation">,</span> <span class="token operator">&amp;</span>config<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Failed to connect to [%s]: %v"</span><span class="token punctuation">,</span> addr<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">defer</span> conn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
 <h1 id="toc-section-4"><a href="#keyfile-authentication" aria-hidden="true"><span class="icon icon-link"></span></a>Keyfile Authentication</h1>
 <p>Another widely used authentication method is Keyfile based authentication. Below is the code snippet for the same.</p>
-<div class="gridsome-highlight" data-language="golang"><pre class="language-golang"><code class="language-golang">package main
-import (
-  &quot;fmt&quot;
-  &quot;io/ioutil&quot;
-  &quot;golang.org/x/crypto/ssh&quot;
-)
-func main() {
-  port := 22
-  hostname := &quot;hostname&quot;
-  keypath := &quot;keypath&quot;
-  user := &quot;user&quot;
-  addr := fmt.Sprintf(&quot;%s:%d&quot;, hostname, port)
-  authMethod, _ := readPublicKey(keypath)
-  config := ssh.ClientConfig{
-    User: user,
-    HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-    Auth: authMethod,
-  }
-  conn, err := ssh.Dial(&quot;tcp&quot;, addr, &amp;config)
-  if err != nil {
-    fmt.Println(&quot;Failed to connect to [%s]: %v&quot;, addr, err)
-    return
-  }
-  defer conn.Close()
-}
-func readPublicKey(keypath string) ([]ssh.AuthMethod, error){
-  pKeyBytes, err := ioutil.ReadFile(keypath)
-  if err != nil {
-    return nil, err
-  }
-  signer, err := ssh.ParsePrivateKey(pKeyBytes)
-  if err != nil {
-    return nil, err
-  }
-  return []ssh.AuthMethod{
-    ssh.PublicKeys(signer),
-  }, nil
-}</code></pre></div>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+  <span class="token string">"fmt"</span>
+  <span class="token string">"io/ioutil"</span>
+  <span class="token string">"golang.org/x/crypto/ssh"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  port <span class="token operator">:=</span> <span class="token number">22</span>
+  hostname <span class="token operator">:=</span> <span class="token string">"hostname"</span>
+  keypath <span class="token operator">:=</span> <span class="token string">"keypath"</span>
+  user <span class="token operator">:=</span> <span class="token string">"user"</span>
+  addr <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s:%d"</span><span class="token punctuation">,</span> hostname<span class="token punctuation">,</span> port<span class="token punctuation">)</span>
+  authMethod<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> <span class="token function">readPublicKey</span><span class="token punctuation">(</span>keypath<span class="token punctuation">)</span>
+  config <span class="token operator">:=</span> ssh<span class="token punctuation">.</span>ClientConfig<span class="token punctuation">{</span>
+    User<span class="token punctuation">:</span> user<span class="token punctuation">,</span>
+    HostKeyCallback<span class="token punctuation">:</span> ssh<span class="token punctuation">.</span><span class="token function">InsecureIgnoreHostKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Auth<span class="token punctuation">:</span> authMethod<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> ssh<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">"tcp"</span><span class="token punctuation">,</span> addr<span class="token punctuation">,</span> <span class="token operator">&amp;</span>config<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Failed to connect to [%s]: %v"</span><span class="token punctuation">,</span> addr<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">defer</span> conn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">readPublicKey</span><span class="token punctuation">(</span>keypath <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span>ssh<span class="token punctuation">.</span>AuthMethod<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  pKeyBytes<span class="token punctuation">,</span> err <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadFile</span><span class="token punctuation">(</span>keypath<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+  <span class="token punctuation">}</span>
+  signer<span class="token punctuation">,</span> err <span class="token operator">:=</span> ssh<span class="token punctuation">.</span><span class="token function">ParsePrivateKey</span><span class="token punctuation">(</span>pKeyBytes<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>ssh<span class="token punctuation">.</span>AuthMethod<span class="token punctuation">{</span>
+    ssh<span class="token punctuation">.</span><span class="token function">PublicKeys</span><span class="token punctuation">(</span>signer<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span></code></pre></div>
 <h1 id="toc-section-5"><a href="#keyboard-interactive-authentication" aria-hidden="true"><span class="icon icon-link"></span></a>Keyboard Interactive Authentication</h1>
 <p>Almost all the SFTP servers we encountered used the above two auth mechanisms however we were not able to connect to two of our servers. They supported new authentication method Keyboard-Interactive (KBI). <strong>KBI authentication is the most recent form of authentication for SSH</strong>. It involves the server sending prompts to the client, to which the client must respond to correctly to be authenticated.</p>
 <p>The code snippet for <code class="language-inline-text">authMethod</code> for KBI authentication is as below.</p>
-<div class="gridsome-highlight" data-language="golang"><pre class="language-golang"><code class="language-golang">ssh.KeyboardInteractive(func(user, instruction string, questions []string, echos []bool) ([]string, error) {
-  answers := make([]string, len(questions))
-  for i, _ := range answers {
-    answers[i] = cs.Password
-  }
-  return answers, nil
-}),</code></pre></div>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go">ssh<span class="token punctuation">.</span><span class="token function">KeyboardInteractive</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> instruction <span class="token builtin">string</span><span class="token punctuation">,</span> questions <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> echos <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  answers <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>questions<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">for</span> i<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> <span class="token keyword">range</span> answers <span class="token punctuation">{</span>
+    answers<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> cs<span class="token punctuation">.</span>Password
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> answers<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span></code></pre></div>
 <h1 id="toc-section-6"><a href="#combining-all-methods" aria-hidden="true"><span class="icon icon-link"></span></a>Combining all methods</h1>
 <p>We could not find a way to figure out if a server supported KBI authentication or Password authentication, hence we used the <code class="language-inline-text">array</code>functionality provided by Go SFTP library. It can take in an array of auth methods and try each one until one of them succeeds. The code snippet for the combination of all auth methods is as below.</p>
-<div class="gridsome-highlight" data-language="golang"><pre class="language-golang"><code class="language-golang">package main
-import (
-  &quot;fmt&quot;
-  &quot;io/ioutil&quot;
-  &quot;golang.org/x/crypto/ssh&quot;
-)
-func main() {
-  port := 22
-  hostname := &quot;hostname&quot;
-  keypath := &quot;keypath&quot;
-  password := &quot;password&quot;
-  user := &quot;user&quot;
-  addr := fmt.Sprintf(&quot;%s:%d&quot;, hostname, port)
-  publicKeyAuth, _ := readPublicKey(keypath)
-  config := ssh.ClientConfig{
-    User: user,
-    HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-    Auth: []ssh.AuthMethod{
-      publicKeyAuth,
-      ssh.Password(password),
-      ssh.KeyboardInteractive(func(user, instruction string, questions []string, echos []bool) ([]string, error) {
-        answers := make([]string, len(questions))
-        for i, _ := range answers {
-          answers[i] = password
-        }
-        return answers, nil
-      }),
-    },
-  }
-  conn, err := ssh.Dial(&quot;tcp&quot;, addr, &amp;config)
-  if err != nil {
-    fmt.Println(&quot;Failed to connect to [%s]: %v&quot;, addr, err)
-    return
-  }
-  defer conn.Close()
-}
-func readPublicKey(keypath string) (ssh.AuthMethod, error){
-  pKeyBytes, err := ioutil.ReadFile(keypath)
-  if err != nil {
-    return nil, err
-  }
-  signer, err := ssh.ParsePrivateKey(pKeyBytes)
-  if err != nil {
-    return nil, err
-  }
-  return ssh.PublicKeys(signer), nil</code></pre></div>
+<div class="gridsome-highlight" data-language="go"><pre class="language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+  <span class="token string">"fmt"</span>
+  <span class="token string">"io/ioutil"</span>
+  <span class="token string">"golang.org/x/crypto/ssh"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  port <span class="token operator">:=</span> <span class="token number">22</span>
+  hostname <span class="token operator">:=</span> <span class="token string">"hostname"</span>
+  keypath <span class="token operator">:=</span> <span class="token string">"keypath"</span>
+  password <span class="token operator">:=</span> <span class="token string">"password"</span>
+  user <span class="token operator">:=</span> <span class="token string">"user"</span>
+  addr <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%s:%d"</span><span class="token punctuation">,</span> hostname<span class="token punctuation">,</span> port<span class="token punctuation">)</span>
+  publicKeyAuth<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> <span class="token function">readPublicKey</span><span class="token punctuation">(</span>keypath<span class="token punctuation">)</span>
+  config <span class="token operator">:=</span> ssh<span class="token punctuation">.</span>ClientConfig<span class="token punctuation">{</span>
+    User<span class="token punctuation">:</span> user<span class="token punctuation">,</span>
+    HostKeyCallback<span class="token punctuation">:</span> ssh<span class="token punctuation">.</span><span class="token function">InsecureIgnoreHostKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Auth<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>ssh<span class="token punctuation">.</span>AuthMethod<span class="token punctuation">{</span>
+      publicKeyAuth<span class="token punctuation">,</span>
+      ssh<span class="token punctuation">.</span><span class="token function">Password</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      ssh<span class="token punctuation">.</span><span class="token function">KeyboardInteractive</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> instruction <span class="token builtin">string</span><span class="token punctuation">,</span> questions <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> echos <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        answers <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>questions<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> <span class="token keyword">range</span> answers <span class="token punctuation">{</span>
+          answers<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> password
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> answers<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> ssh<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">"tcp"</span><span class="token punctuation">,</span> addr<span class="token punctuation">,</span> <span class="token operator">&amp;</span>config<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Failed to connect to [%s]: %v"</span><span class="token punctuation">,</span> addr<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">defer</span> conn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">readPublicKey</span><span class="token punctuation">(</span>keypath <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>ssh<span class="token punctuation">.</span>AuthMethod<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  pKeyBytes<span class="token punctuation">,</span> err <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadFile</span><span class="token punctuation">(</span>keypath<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+  <span class="token punctuation">}</span>
+  signer<span class="token punctuation">,</span> err <span class="token operator">:=</span> ssh<span class="token punctuation">.</span><span class="token function">ParsePrivateKey</span><span class="token punctuation">(</span>pKeyBytes<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> ssh<span class="token punctuation">.</span><span class="token function">PublicKeys</span><span class="token punctuation">(</span>signer<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">nil</span></code></pre></div>
 <p>Finally, we can run this program using <code class="language-inline-text">go run main</code>.</p>
 <p>That’s all, folks!</p>
 <blockquote>
@@ -184,7 +186,9 @@ func readPublicKey(keypath string) (ssh.AuthMethod, error){
               Shamil Siddique   5 min read
             </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
     Let’s build digital solutions together.
-  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-6a43ac6d data-v-0a037a4b><div class="primary fadeIn" data-v-6a43ac6d><li data-v-6a43ac6d><a href="/genai" data-v-6a43ac6d>/GenAI</a></li><li data-v-6a43ac6d><a href="https://design.tarkalabs.com/" target="_self" data-v-6a43ac6d>/Design</a></li><li data-v-6a43ac6d><a href="/develop" data-v-6a43ac6d>/Develop</a></li><li data-v-6a43ac6d><a href="/projects" data-v-6a43ac6d>/Case_Studies</a></li><li data-v-6a43ac6d><a href="/careers" data-v-6a43ac6d>/Careers</a></li><li data-v-6a43ac6d><a href="/about" data-v-6a43ac6d>/About</a></li><li data-v-6a43ac6d><a href="/contact" data-v-6a43ac6d>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
-    <script src="/assets/js/app.31f69850.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.34b6027a.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-748716d7 data-v-0a037a4b><div class="primary fadeIn" data-v-748716d7><li data-v-748716d7><a href="/genai" data-v-748716d7>/GenAI</a></li><li data-v-748716d7><a href="https://design.tarkalabs.com/" target="_self" data-v-748716d7>/Design</a></li><li data-v-748716d7><a href="/develop" data-v-748716d7>/Develop</a></li><li data-v-748716d7><a href="/case-studies" data-v-748716d7>
+        /Case_Studies
+      </a></li><li data-v-748716d7><a href="/careers" data-v-748716d7>/Careers</a></li><li data-v-748716d7><a href="/about" data-v-748716d7>/About</a></li><li data-v-748716d7><a href="/contact" data-v-748716d7>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.0e5d4a8b.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.2099f288.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
   </body>
 </html>
