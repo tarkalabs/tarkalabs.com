@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Inserting Millions of Records in Java: Strategies and Benchmarks · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="ecdd0900c04ddda3dc9f04c04a35a79d771a4cb8"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="Inserting Millions of Records in Java: Strategies and Benchmarks · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="Inserting Millions of Records in Java: Strategies and Benchmarks"><meta data-vue-tag="ssr" property="og:image" content="/assets/img/image-2.646b7a73.png"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.d5f88112.css" as="style"><link rel="preload" href="/assets/js/app.33df9ee9.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.80bca3bd.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.d5f88112.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-b5a9baaa><div data-v-b5a9baaa><div id="banner-section" data-v-b5a9baaa><div class="banner" style="background:;display:none;" data-v-b5a9baaa><div class="layout" data-v-b5a9baaa><div data-v-b5a9baaa></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-b5a9baaa></div><div data-v-b5a9baaa></div></div></div><div data-v-b5a9baaa></div></div><div class="sidebar" data-v-d6d2017e data-v-b5a9baaa><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-04879724 data-v-50705736><div class="primary fadeOut sidebar" data-v-04879724><li data-v-04879724><a href="/genai" data-v-04879724>/GenAI</a></li><li data-v-04879724><a href="https://solutions.tarkalabs.com/design/" target="_self" data-v-04879724>/Design</a></li><li data-v-04879724><a href="/develop" data-v-04879724>/Develop</a></li><li data-v-04879724><a href="/case-studies" data-v-04879724>
+        /Case_Studies
+      </a></li><li data-v-04879724><a href="/careers" data-v-04879724>/Careers</a></li><li data-v-04879724><a href="/about" data-v-04879724>/About</a></li><li data-v-04879724><a href="/contact" data-v-04879724>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /web - 11 min read
+      </p><h1 class="title" data-v-996dafb6>Inserting Millions of Records in Java: Strategies and Benchmarks</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/k7.d295c558.png" alt="Kesavan" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Kesavan</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div></div><img src="/assets/img/image-2.646b7a73.png" alt="Inserting Millions of Records in Java: Strategies and Benchmarks" class="header-img" data-v-996dafb6><div class="toc-wrapper" data-v-996dafb6><h2 class="heading-size-7" data-v-996dafb6>Table of contents</h2><div class="toc" data-v-996dafb6><a href="#content" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/01</p><p data-v-996dafb6>Intro</p></a><a href="#toc-section-1" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/02</p><p data-v-996dafb6>Problem Statement</p></a><a href="#toc-section-2" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/03</p><p data-v-996dafb6>Project Setup</p></a><a href="#toc-section-3" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/04</p><p data-v-996dafb6>Execution</p></a><a href="#toc-section-4" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/05</p><p data-v-996dafb6>Benchmark Results</p></a><a href="#toc-section-5" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/06</p><p data-v-996dafb6>Conclusion</p></a></div></div><div id="content" class="content" data-v-996dafb6><p><strong>Struggling with slow bulk inserts in Java?</strong> This guide benchmarks six strategies, from Hibernate to high-performance database-native methods, using datasets of up to 10 million records. Learn which approach is fastest, how to optimize inserts, and when it makes sense to ditch ORM for raw SQL speed.</p>
+<figure><img src="/blog/inserting-millions-of-records-in-java/image-2.png" alt="chill guy"><figcaption>chill guy</figcaption></figure>
+<h1 id="toc-section-1"><a href="#problem-statement" aria-hidden="true"><span class="icon icon-link"></span></a>Problem Statement</h1>
+<p>Imagine you’re tasked with inserting millions of records into a PostgreSQL database. You’re limited to Java and multithreading, no Kafka, no RabbitMQ. How do you get the best performance?</p>
+<p>I recently faced this exact challenge and experimented with <strong>six different strategies</strong>:</p>
+<ol>
+<li><strong>Spring Data JPA <code class="language-inline-text">saveAll()</code></strong></li>
+<li><strong>Hibernate batch insertion with <code class="language-inline-text">EntityManager</code></strong></li>
+<li><strong>Multithreaded Hibernate with connection pooling</strong></li>
+<li><strong>Native SQL batch execution</strong></li>
+<li><strong>PL/SQL stored procedure calls</strong></li>
+<li><strong><code class="language-inline-text">COPY</code> command using CSV input</strong></li>
+</ol>
+<p>This blog walks you through each approach, shares real benchmarks, and helps you pick the right one based on your workload and system limitations.</p>
+<h2 id="sample-data-format"><a href="#sample-data-format" aria-hidden="true"><span class="icon icon-link"></span></a>Sample Data Format</h2>
+<p>We’ll insert user permission records into the database, assuming they come from upstream systems in the following format:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">[
+    {
+        "user_id": "user_1",
+        "entity_id": "entity_1cf156da-280d-4f07-aa16-3bdbfb1fff13"
+    },
+    {
+        "user_id": "user_2",
+        "entity_id": "entity_4d56783c-2add-49b2-ad53-080c6737e37d"
+    }
+]</code></pre></div>
+<p>Each entry represents that a <code class="language-inline-text">user_id</code> has permission to access a particular <code class="language-inline-text">entity_id</code>.</p>
+<h1 id="toc-section-2"><a href="#project-setup" aria-hidden="true"><span class="icon icon-link"></span></a>Project Setup</h1>
+<p><strong>GitHub Repository:</strong> <a href="https://github.com/itzk7/batch_insertion_benchmark" target="_blank" rel="nofollow noopener noreferrer">batch_insertion_benchmark</a><br>
+We’ll use PostgreSQL via a Docker container:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker run --name my-postgres \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=testdb \
+  -p 5432:5432 \
+  -v pgdata:/var/lib/postgresql/data \
+  -d postgres:15</code></pre></div>
+<p>We’ll use Spring Boot with JPA (backed by Hibernate). Key dependencies:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text"> &lt;parent>
+        &lt;groupId>org.springframework.boot&lt;/groupId>
+        &lt;artifactId>spring-boot-starter-parent&lt;/artifactId>
+        &lt;version>2.7.15&lt;/version> &lt;!-- Latest in 2.x -->
+    &lt;/parent>
+    ...
+    &lt;dependencies>
+        &lt;dependency>
+            &lt;groupId>org.springframework.boot&lt;/groupId>
+            &lt;artifactId>spring-boot-starter-data-jpa&lt;/artifactId>
+        &lt;/dependency>
+
+        &lt;dependency>
+            &lt;groupId>org.postgresql&lt;/groupId>
+            &lt;artifactId>postgresql&lt;/artifactId>
+            &lt;version>42.5.4&lt;/version>
+        &lt;/dependency>
+
+    &lt;/dependencies></code></pre></div>
+<p>Make sure to set your PostgreSQL connection details in <code class="language-inline-text">src/main/resources/application.properties</code>:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text"># === DATABASE CONFIGURATION ===
+spring.datasource.url=jdbc:postgresql://localhost:5432/testdb
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# === JPA / HIBERNATE SETTINGS ===
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update</code></pre></div>
+<p>Adjust the <code class="language-inline-text">username</code> and <code class="language-inline-text">password</code> as per your local setup. This project uses Java 8 and is built with Maven</p>
+<h2 id="entity-definition"><a href="#entity-definition" aria-hidden="true"><span class="icon icon-link"></span></a>Entity Definition</h2>
+<p>We’ll define a composite unique constraint on <code class="language-inline-text">user_id</code> and <code class="language-inline-text">entity_id</code> to avoid duplicates, and include an auto-generated primary key for the table:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Entity
+@Table(
+  name = "user_entity_permission",
+  uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "entity_id"})
+)
+public class UserEntityPermission {
+
+ @Id
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+ private Long id;
+
+ @Column(name = "user_id", nullable = false)
+ private String userId;
+
+ @Column(name = "entity_id", nullable = false)
+ private String entityId;
+...
+}</code></pre></div>
+<h2 id="strategy-interface"><a href="#strategy-interface" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy Interface</h2>
+<p>We define an interface to plug in multiple strategies:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">public interface UserEntityPermissionBulkInsertStrategy {
+ void bulkInsert(List&lt;UserEntityPermission> permissions);
+ String getStrategyName();
+}</code></pre></div>
+<p>We’ll use two methods: <code class="language-inline-text">bulkInsert</code> will accept the list of permissions, and its job is to insert those permissions into the DB. The other method, <code class="language-inline-text">getStrategyName</code>, will simply be used to get the name of the strategy.</p>
+<p>We’ll now walk through each of the six strategies,</p>
+<h2 id="strategy-1-spring-data-jpa-saveall"><a href="#strategy-1-spring-data-jpa-saveall" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy 1: <strong>Spring Data JPA <code class="language-inline-text">saveAll()</code></strong></h2>
+<p>For many developers, <code class="language-inline-text">repository.saveAll()</code> is the default approach for inserting multiple records. The implementation looks like this:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component("repositorySaveAllStrategy")
+@Order(1)
+public class RepositorySaveAllInsertStrategy implements UserEntityPermissionBulkInsertStrategy {
+
+ private final UserEntityPermissionRepository repository;
+
+ public RepositorySaveAllInsertStrategy(UserEntityPermissionRepository repository) {
+  this.repository = repository;
+ }
+
+ @Override
+ public void bulkInsert(List&lt;UserEntityPermission> permissions) {
+  repository.saveAll(permissions);
+ }
+
+...
+}</code></pre></div>
+<p>While you can configure the batch size in your application properties using ,</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">spring.jpa.properties.hibernate.jdbc.batch_size = 1000</code></pre></div>
+<p>this setting will be ineffective in this specific case. Due to the use of an auto-increment ID (<code class="language-inline-text">GenerationType.IDENTITY</code>), Hibernate is forced to insert each row separately and wait for the generated key before proceeding. When dealing with 1 million records, this translates to executing one insert statement a million times, which significantly increases the overall processing duration.</p>
+<h2 id="strategy-2-multithreaded-hibernate-with-connection-pooling"><a href="#strategy-2-multithreaded-hibernate-with-connection-pooling" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy 2: <strong>Multithreaded Hibernate with connection pooling</strong></h2>
+<p>By using the <code class="language-inline-text">EntityManager</code> explicitly, we can control when to insert records and when to clear memory. Hibernate works by keeping entities in the persistence context (first-level cache) after calling <code class="language-inline-text">persist()</code>, but they remain in memory until a <code class="language-inline-text">flush()</code> is triggered. The database insert operations are flushed either explicitly or automatically during transaction commit. Until then, entities are held in memory in the persistence context.</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component("entityManagerStrategy")
+@Order(2)
+public class HibernateEntityManagerStrategy implements UserEntityPermissionBulkInsertStrategy {
+
+ @PersistenceContext
+ private EntityManager entityManager;
+
+ @Override
+ @Transactional
+ public void bulkInsert(List&lt;UserEntityPermission> permissions) {
+  int batchSize = 1000;
+
+  for (int i = 0; i &lt; permissions.size(); i++) {
+   entityManager.persist(permissions.get(i));
+   if (i % batchSize == 0 &amp;&amp; i > 0) {
+    entityManager.flush();
+    entityManager.clear();
+   }
+  }
+
+  entityManager.flush();
+  entityManager.clear();
+ }
+
+...
+}</code></pre></div>
+<p>You can fine-tune the batch size, but it still works best for a few thousand records.</p>
+<h2 id="strategy-3-hibernate-batch-insertion-with-concurrency"><a href="#strategy-3-hibernate-batch-insertion-with-concurrency" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy 3: <strong>Hibernate Batch Insertion With Concurrency</strong></h2>
+<p>To scale better, we can split the dataset across multiple threads. Each thread gets its own <code class="language-inline-text">EntityManager</code> and handles batching independently in a separate transaction.</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component("entityManagerWithConcurrencyStrategy")
+@Order(3)
+public class HibernateEntityManagerWithConcurrency implements UserEntityPermissionBulkInsertStrategy {
+
+ private static final int THREADS = 5;
+ private static final int BATCH_SIZE = 1000;
+
+ @PersistenceUnit
+ private EntityManagerFactory entityManagerFactory;
+
+ private final PlatformTransactionManager transactionManager;
+
+ public HibernateEntityManagerWithConcurrency(PlatformTransactionManager transactionManager) {
+  this.transactionManager = transactionManager;
+ }
+
+ @Override
+ public void bulkInsert(List&lt;UserEntityPermission> permissions) {
+  int chunkSize = (int) Math.ceil((double) permissions.size() / THREADS);
+  ExecutorService executor = Executors.newFixedThreadPool(THREADS);
+
+  for (int i = 0; i &lt; THREADS; i++) {
+   int start = i \* chunkSize;
+   int end = Math.min(start + chunkSize, permissions.size());
+   List&lt;UserEntityPermission> subList = permissions.subList(start, end);
+
+   executor.submit(() -> {
+    TransactionTemplate template = new TransactionTemplate(transactionManager);
+    template.execute(status -> {
+     EntityManager em = entityManagerFactory.createEntityManager();
+     try {
+      em.getTransaction().begin();
+      for (int j = 0; j &lt; subList.size(); j++) {
+       em.persist(subList.get(j));
+       if (j > 0 &amp;&amp; j % BATCH_SIZE == 0) {
+        em.flush();
+        em.clear();
+       }
+      }
+      em.flush();
+      em.clear();
+      em.getTransaction().commit();
+     } catch (Exception e) {
+      System.err.println("something went wrong " + e);
+      e.printStackTrace();
+      if (em.getTransaction().isActive()) {
+       em.getTransaction().rollback();
+      }
+     } finally {
+      em.close();
+     }
+     return null;
+    });
+   });
+  }
+
+  executor.shutdown();
+
+...
+}</code></pre></div>
+<p>This method performed better than the first two strategies, but you need to set the connection pool settings properly; otherwise, you will face connection errors because many threads are trying to access the same DB connection. Make sure your connection pool supports parallel inserts by configuring these Hikari settings:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">spring.datasource.hikari.maximum-pool-size=30
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.idle-timeout=10000
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.max-lifetime=1800000</code></pre></div>
+<h2 id="strategy-4-native-sql-batch-execution"><a href="#strategy-4-native-sql-batch-execution" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy 4: <strong>Native SQL batch execution</strong></h2>
+<p>An efficient alternative is to use native SQL with batch inserts, where all records are inserted in a single operation using <code class="language-inline-text">JdbcTemplate</code>. It’s very easy to achieve this using the <code class="language-inline-text">JdbcTemplate</code>'s <code class="language-inline-text">batchUpdate</code> method.</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component("nativeSqlStrategy")
+@Order(4)
+public class NativeSqlInsertStrategy implements UserEntityPermissionBulkInsertStrategy {
+
+ private final JdbcTemplate jdbcTemplate;
+
+ public NativeSqlInsertStrategy(JdbcTemplate jdbcTemplate) {
+  this.jdbcTemplate = jdbcTemplate;
+ }
+
+ @Override
+ public void bulkInsert(List&lt;UserEntityPermission> permissions) {
+  String sql = "INSERT INTO user_entity_permission (user_id, entity_id) VALUES (?, ?)";
+
+  jdbcTemplate.batchUpdate(sql, permissions, permissions.size(), (ps, permission) -> {
+   ps.setString(1, permission.getUserId());
+   ps.setString(2, permission.getEntityId());
+  });
+ }
+ ...
+}</code></pre></div>
+<p>The <code class="language-inline-text">batchUpdate()</code> method allows you to specify a batch size for the operations. In this implementation, for simplicity, we are setting the batch size equal to the total number of permissions (<code class="language-inline-text">permissions.size()</code>). However, when testing with different large batch sizes (e.g., 1000, 10000, or 1000000), I did not observe a significant improvement in overall performance. The optimal batch size can often depend on your input data size, specific database and runtime environment, and it's recommended to tune it accordingly.</p>
+<h2 id="strategy-5-plsql-stored-procedure-calls"><a href="#strategy-5-plsql-stored-procedure-calls" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy 5: <strong>PL/SQL stored procedure calls</strong></h2>
+<p>Similar to native SQL, we can also utilize SQL procedures. To achieve this, we need to create a procedure in the DB:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">CREATE OR REPLACE PROCEDURE insert_user_entity_permission(user_id TEXT, entity_id TEXT)</code></pre></div>
+<p>In the implementation, we can use the same <code class="language-inline-text">JdbcTemplate</code>'s <code class="language-inline-text">batchUpdate</code> method:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component("plSqlStrategy")
+@Order(5)
+public class PlSqlInsertStrategy implements UserEntityPermissionBulkInsertStrategy {
+
+ private final JdbcTemplate jdbcTemplate;
+
+ public PlSqlInsertStrategy(JdbcTemplate jdbcTemplate) {
+  this.jdbcTemplate = jdbcTemplate;
+ }
+
+ @Override
+ public void bulkInsert(List&lt;UserEntityPermission> permissions) {
+  String sql = "CALL insert_user_entity_permission(?, ?)";
+
+  jdbcTemplate.batchUpdate(sql, permissions, permissions.size(), (ps, permission) -> {
+   ps.setString(1, permission.getUserId());
+   ps.setString(2, permission.getEntityId());
+  });
+ }
+...
+}</code></pre></div>
+<h2 id="strategy-6-copy-command-using-csv-input"><a href="#strategy-6-copy-command-using-csv-input" aria-hidden="true"><span class="icon icon-link"></span></a>Strategy 6: <strong><code class="language-inline-text">COPY</code> command using CSV input</strong></h2>
+<p>In this method, We’ll create a CSV file for the permissions and use the <code class="language-inline-text">COPY</code> command to upload all the data. Once the data is uploaded, We’ll clean up the CSV</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component("csv-upload")
+@Order(6)
+public class CsvUploadInsertStrategy implements UserEntityPermissionBulkInsertStrategy {
+
+ private final DataSource dataSource;
+
+ public CsvUploadInsertStrategy(DataSource dataSource) {
+  this.dataSource = dataSource;
+ }
+
+ @Override
+ public void bulkInsert(List&lt;UserEntityPermission> permissions) {
+  File tempFile = null;
+  try {
+   // Step 1: Create temp CSV file
+   tempFile = File.createTempFile("permissions-", ".csv");
+   try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+    for (UserEntityPermission permission : permissions) {
+     writer.write(permission.getUserId() + "," + permission.getEntityId());
+     writer.newLine();
+    }
+   }
+
+   // Step 2: Perform COPY operation
+   try (Connection conn = dataSource.getConnection();
+     FileReader reader = new FileReader(tempFile)) {
+
+    CopyManager copyManager = new CopyManager((BaseConnection) conn.unwrap(BaseConnection.class));
+    copyManager.copyIn("COPY user_entity_permission (user_id, entity_id) FROM STDIN WITH (FORMAT csv)", reader);
+   }
+
+  } catch (Exception e) {
+   throw new RuntimeException("Failed to perform CSV upload", e);
+  } finally {
+   // Step 3: Cleanup the CSV file
+  }
+ }
+
+ ...
+}</code></pre></div>
+<p>Bulk insertions using CSV are supported by most databases in some form, and with <strong>PostgreSQL</strong>, the <code class="language-inline-text">CopyManager</code> makes this process exceptionally efficient.</p>
+<h1 id="toc-section-3"><a href="#execution" aria-hidden="true"><span class="icon icon-link"></span></a>Execution</h1>
+<p>To generate 1 million permissions, Here’s a utility method to quickly generate test data:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">public static List&lt;UserEntityPermission> generatePermissions(int count) {
+ List&lt;UserEntityPermission> permissions = Collections.synchronizedList(new ArrayList&lt;>(count));
+
+ IntStream.range(0, count).parallel().forEach(i -> {
+  String userId = "user-" + (i % count);
+  String entityId = "entity-" + UUID.randomUUID();
+  permissions.add(new UserEntityPermission(userId, entityId));
+ });
+
+ ...
+ return permissions;
+}</code></pre></div>
+<p>For a given count, it will simply generate the list of permissions.</p>
+<p>To run all the strategies, we can simply get all the beans implementing the interface because we have already defined all the strategy implementations as <code class="language-inline-text">@Component</code> classes and also defined the <code class="language-inline-text">@Order</code> for each strategy.</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@Component
+public class BulkInsertBenchmarkRunner {
+
+    private final List&lt;UserEntityPermissionBulkInsertStrategy> strategies;
+    private final JdbcTemplate jdbcTemplate;
+
+    public BulkInsertBenchmarkRunner(
+            List&lt;UserEntityPermissionBulkInsertStrategy> strategies,
+            JdbcTemplate jdbcTemplate) {
+        this.strategies = strategies;
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public void runBenchmark(int numberOfRecords) {
+        for (UserEntityPermissionBulkInsertStrategy strategy : strategies) {
+            List&lt;UserEntityPermission> permissions = PermissionDataGenerator.generatePermissions(numberOfRecords);
+
+            System.out.println("Running strategy: " + strategy.getStrategyName());
+
+            clearTable();
+
+            long startTime = System.currentTimeMillis();
+            strategy.bulkInsert(permissions);
+            long endTime = System.currentTimeMillis();
+
+            long duration = endTime - startTime;
+
+            long count = countRecords();
+
+            System.out.println("Inserted: " + count + " records using " +
+                    strategy.getStrategyName() + " in " + duration + " ms");
+            System.out.println("--------------------------------------------------");
+        }
+    }
+
+    private void clearTable() {
+        jdbcTemplate.execute("TRUNCATE TABLE user_entity_permission");
+    }
+
+    private long countRecords() {
+        return jdbcTemplate.queryForObject("SELECT COUNT(\*) FROM user_entity_permission", Long.class);
+    }
+}</code></pre></div>
+<p>In the <code class="language-inline-text">runBenchmark</code> method, we first clear all records from the permission table before executing each strategy. After each run, we print the number of inserted rows and the time taken, which help evaluate each strategy's performance.</p>
+<p>So, in the main method of the application, we can simply call the runner like this to execute all the strategies:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">@SpringBootApplication
+public class Main {
+
+ public static void main(String\[\] args) {
+  ApplicationContext context = SpringApplication.run(Main.class, args);
+  BulkInsertBenchmarkRunner runner = context.getBean(BulkInsertBenchmarkRunner.class);
+  runner.runBenchmark(1_000_000);
+ }
+}</code></pre></div>
+<p>This will trigger the benchmark for 1 million records.</p>
+<h1 id="toc-section-4"><a href="#benchmark-results" aria-hidden="true"><span class="icon icon-link"></span></a>Benchmark Results</h1>
+<p>To understand the performance characteristics of each bulk insertion strategy across different scales, we conducted benchmarks using varying numbers of records. The tests were performed in a controlled environment. (<em>I ran the benchmarks on a Postgres Docker container using a 12-core MacBook with an M2 chip. I didn’t apply any special JVM tuning; the Spring Boot application was run with its default settings, using</em> <strong><em>Java version 8</em></strong>)</p>
+<p>The primary metric measured was the total time taken to insert all records using each strategy.</p>
+<p>Let’s examine the performance trends starting with smaller data volumes.</p>
+<h2 id="performance-across-varying-data-sizes-1000-to-100000-records"><a href="#performance-across-varying-data-sizes-1000-to-100000-records" aria-hidden="true"><span class="icon icon-link"></span></a>Performance Across Varying Data Sizes (1000 to 100000 Records)</h2>
+<p>This graph illustrates how the different strategies perform as the data size increases from a few hundred up to one hundred thousand records.</p>
+<p>Graph is based on log scale</p>
+<p>As you can see, for smaller data sizes (e.g., 1000 or 10000 records), the performance difference between the methods is less pronounced. Standard Hibernate approaches (<code class="language-inline-text">repository-saveAll</code>, <code class="language-inline-text">entity-manager</code>, and even <code class="language-inline-text">entity-manager-concurrent</code>) show relatively acceptable performance within the "few thousand" range. This suggests that if you typically insert only a few thousand records at a time, the convenience of using standard JPA or Hibernate batching might be sufficient.</p>
+<p>However, the graph clearly shows that as the data size grows towards 10,000 and especially 100,000 records, the performance curves diverge significantly. The time taken by the standard Hibernate methods begins to increase much more steeply compared to the native database approaches.</p>
+<h2 id="performance-for-1-million-1m-records"><a href="#performance-for-1-million-1m-records" aria-hidden="true"><span class="icon icon-link"></span></a>Performance for 1 Million (1M) Records</h2>
+<p>Scaling up significantly, let’s look at the performance when inserting a substantial volume: 1 million records.</p>
+<figure><img src="/blog/inserting-millions-of-records-in-java/image-1.png" alt="Benchmark for 1M records"><figcaption>Benchmark for 1M records</figcaption></figure>
+<p>At the 1 million record mark, the limitations of standard Hibernate batching become much more apparent. The <code class="language-inline-text">repository-saveAll</code> and single-threaded <code class="language-inline-text">entity-manager</code> strategies take a considerably longer time. While the <strong>concurrent Hibernate approach</strong> (<code class="language-inline-text">entity-manager-concurrent</code>) offers a notable improvement over its single-threaded counterparts, it is still orders of magnitude slower than methods leveraging native database capabilities.</p>
+<p>The <strong>Native SQL</strong> and <strong>PL/SQL</strong> strategies demonstrate their efficiency for large datasets here, completing the insertions in a fraction of the time taken by the Hibernate entity-based methods.</p>
+<h2 id="performance-for-10-million-10m-records"><a href="#performance-for-10-million-10m-records" aria-hidden="true"><span class="icon icon-link"></span></a>Performance for 10 Million (10M) Records</h2>
+<p>Pushing the boundaries further, we benchmarked the strategies with a massive 10 million records.</p>
+<figure><img src="/blog/inserting-millions-of-records-in-java/image.png" alt="Benchmark for 10 Million records"><figcaption>Benchmark for 10 Million records</figcaption></figure>
+<p>This scale truly highlights the importance of choosing an optimized strategy for very large bulk operations. The performance gap between the methods becomes even wider. While the exact numbers will vary based on hardware and database configuration, the relative performance ranking remains consistent.</p>
+<p>The <strong>CSV COPY method</strong> stands out as the clear winner for inserting 10 million records, completing the operation far faster than any other strategy. This performance is due to it bypassing much of the overhead associated with JDBC or ORM frameworks and using the database’s highly optimized bulk loading API.</p>
+<p><strong>Native SQL</strong> and <strong>PL/SQL</strong> remain strong contenders at this scale and are highly recommended alternatives when the CSV method is not applicable or preferred. Standard Hibernate entity based insertions become impractical for this volume of data, taking an excessively long time.</p>
+<h2 id="should-we-ditch-hibernate-for-bulk-insertions"><a href="#should-we-ditch-hibernate-for-bulk-insertions" aria-hidden="true"><span class="icon icon-link"></span></a>Should We Ditch Hibernate for Bulk Insertions?</h2>
+<p>Hibernate is a great default, but when you’re dealing with serious data volumes, it’s time to look elsewhere. For performance critical batch inserts, native SQL and bulk loaders are your best bet. For truly large-scale bulk insertions (hundreds of thousands to millions of records or more), relying solely on standard Hibernate entity persistence (<code class="language-inline-text">saveAll</code>, <code class="language-inline-text">persist</code> with flushing) is not advisable due to significant performance bottlenecks.</p>
+<p>However, this doesn’t mean you should abandon Hibernate entirely. For typical application operations involving inserting a few dozen or even a few thousand records within a standard transaction, the convenience and features of Hibernate are invaluable and the performance is usually sufficient.</p>
+<p>The key takeaway is to select the strategy appropriate for the data volume:</p>
+<ul>
+<li>Use standard <strong>Hibernate/JPA</strong> for routine transactions and smaller batch inserts.</li>
+<li>Employ <strong>Native SQL</strong> or <strong>PL/SQL</strong> for significant bulk insertion tasks when you need good performance and database specific features are acceptable.</li>
+<li>Choose <strong>Database Native Bulk Loaders (like CSV COPY)</strong> when dealing with massive datasets and the target database supports an efficient direct loading mechanism, this is often the fastest possible method.</li>
+</ul>
+<p>Understanding these performance differences allows you to make informed decisions and optimize your data insertion processes for various use cases.</p>
+<h1 id="toc-section-5"><a href="#conclusion" aria-hidden="true"><span class="icon icon-link"></span></a>Conclusion</h1>
+<p>This exploration compared various Java based strategies for high-volume bulk insertions. Our benchmarks clearly showed the <strong>CSV COPY method</strong> is the fastest for millions of records, leveraging native database bulk loading, though its availability varies by database.</p>
+<p>When CSV isn’t feasible, <strong>Native SQL</strong> or <strong>PL/SQL</strong> via <code class="language-inline-text">JdbcTemplate</code> are the next most performant alternatives, proving significantly faster than standard JPA persistence for large volumes. Standard JPA methods like <code class="language-inline-text">Repository.saveAll()</code> are convenient for smaller batches but struggle significantly with millions of entries due to ORM overhead.</p>
+<p>In summary, for large scale data insertion in Java:</p>
+<ul>
+<li><strong>Prioritize Database Native Bulk Loaders (like COPY)</strong> if supported.</li>
+<li>Consider <strong>Native SQL or PL/SQL</strong> as highly effective alternatives.</li>
+<li>Use <strong>Standard JPA</strong> only for smaller batch inserts.</li>
+</ul>
+<p>Choosing the right strategy depends on your data volume, performance needs, and database capabilities.</p>
+<p>The full implementation details can be found in this <a href="https://github.com/itzk7/batch_insertion_benchmark" target="_blank" rel="nofollow noopener noreferrer">repository</a>.</p>
+<p>Thanks for reading!</p>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/k7.d295c558.png" alt="Kesavan" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Kesavan</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><a href="https://medium.com/@itzk7" target="_blank" class="heading-size-9" data-v-996dafb6>
+          Medium
+        </a></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/scaling-royalty-payout-p2" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Scaling Royalty Payouts in Music Distribution: Challenges and Solutions from the Frontlines (Part 2)</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Harman Sohanpal   5 min read
+            </p></div></a><a href="/blogs/scaling-royalty-payout-p1" class="blog-card" data-v-996dafb6><img src="/assets/img/default-cover.55254b66.png" alt="" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Scaling Royalty Payouts in Music Distribution: Challenges and Solutions from the Frontlines (Part 1)</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Harman Sohanpal   6 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-188e6a71><div class="message heading-size-7" data-v-188e6a71>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-188e6a71><div class="action-button heading-size-5" data-v-188e6a71><div data-v-188e6a71>Get in touch</div><div class="arrow" data-v-188e6a71>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-188e6a71></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-b5a9baaa><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-b5a9baaa><ul class="main-nav footer" data-v-04879724 data-v-0a037a4b><div class="primary fadeIn" data-v-04879724><li data-v-04879724><a href="/genai" data-v-04879724>/GenAI</a></li><li data-v-04879724><a href="https://solutions.tarkalabs.com/design/" target="_self" data-v-04879724>/Design</a></li><li data-v-04879724><a href="/develop" data-v-04879724>/Develop</a></li><li data-v-04879724><a href="/case-studies" data-v-04879724>
+        /Case_Studies
+      </a></li><li data-v-04879724><a href="/careers" data-v-04879724>/Careers</a></li><li data-v-04879724><a href="/about" data-v-04879724>/About</a></li><li data-v-04879724><a href="/contact" data-v-04879724>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.33df9ee9.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.80bca3bd.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>
