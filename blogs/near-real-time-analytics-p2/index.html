@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 2) · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="8cb24baa9f5088ba116d4262330cf94457b856de"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 2) · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="Part 2 covers Bronze, Silver, and Gold Lambda implementations, Iceberg snapshot management, Grafana setup, limitations, and cost estimates."><meta data-vue-tag="ssr" property="og:image" content="/assets/img/part-2-cover.a66ac8b6.png"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.9e346088.css" as="style"><link rel="preload" href="/assets/js/app.b8f16dd0.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.0013229e.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.9e346088.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-71a2ecff><div data-v-71a2ecff><div id="banner-section" data-v-71a2ecff><div class="banner" style="background:;display:none;" data-v-71a2ecff><div class="layout" data-v-71a2ecff><div data-v-71a2ecff></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-71a2ecff></div><div data-v-71a2ecff></div></div></div><div data-v-71a2ecff></div></div><div class="sidebar" data-v-d6d2017e data-v-71a2ecff><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-6f2fee08 data-v-50705736><div class="primary fadeOut sidebar" data-v-6f2fee08><li data-v-6f2fee08><a href="/music-tech" data-v-6f2fee08>/MusicTech</a></li><li data-v-6f2fee08><a href="/health-care-tech" data-v-6f2fee08>/HealthCareTech</a></li><li data-v-6f2fee08><a href="/genai" data-v-6f2fee08>/GenAI</a></li><li data-v-6f2fee08><a href="/design" data-v-6f2fee08>/Design</a></li><li data-v-6f2fee08><a href="/develop" data-v-6f2fee08>/Develop</a></li><li data-v-6f2fee08><a href="/case-studies" data-v-6f2fee08>
+        /Case_Studies
+      </a></li><li data-v-6f2fee08><a href="/careers" data-v-6f2fee08>/Careers</a></li><li data-v-6f2fee08><a href="/about" data-v-6f2fee08>/About</a></li><li data-v-6f2fee08><a href="/contact" data-v-6f2fee08>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-71a2ecff><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /web - 10 min read
+      </p><h1 class="title" data-v-996dafb6>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 2)</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/k7.d295c558.png" alt="Kesavan" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Kesavan</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div></div><img src="/assets/img/part-2-cover.a66ac8b6.png" alt="Grafana dashboard showing key metrics, product stock status, daily revenue trend, and region-wise revenue" class="header-img" data-v-996dafb6><div class="toc-wrapper" data-v-996dafb6><h2 class="heading-size-7" data-v-996dafb6>Table of contents</h2><div class="toc" data-v-996dafb6><a href="#content" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/01</p><p data-v-996dafb6>Intro</p></a><a href="#toc-section-1" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/02</p><p data-v-996dafb6>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard</p></a></div></div><div id="content" class="content" data-v-996dafb6><h1 id="toc-section-1"><a href="#building-a-near-real-time-analytics-pipeline-from-dynamodb-to-grafana-dashboard" aria-hidden="true"><span class="icon icon-link"></span></a>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard</h1>
+<h2 id="part-2-implementation-dashboard-and-operations"><a href="#part-2-implementation-dashboard-and-operations" aria-hidden="true"><span class="icon icon-link"></span></a>Part 2: Implementation, Dashboard, and Operations</h2>
+<blockquote>
+<p>This is Part 2 of a two part series. <a href="/blogs/near-real-time-analytics-p1">Part 1</a> covered the problem, medallion architecture, CDC, the data lake storage and query layer, and Terraform setup. Part 2 covers Lambda implementations, data validation, Grafana setup, limitations, cost estimates, and conclusion.</p>
+</blockquote>
+<hr>
+<h2 id="the-bronze-lambda"><a href="#the-bronze-lambda" aria-hidden="true"><span class="icon icon-link"></span></a>The Bronze Lambda</h2>
+<p>When the Bronze Lambda receives a batch of stream records, it processes them into a simple format. Here is the core logic:</p>
+<div class="gridsome-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">lambda_handler</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    records <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> record <span class="token keyword">in</span> event<span class="token punctuation">[</span><span class="token string">'Records'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        table_name <span class="token operator">=</span> extract_table_name<span class="token punctuation">(</span>record<span class="token punctuation">[</span><span class="token string">'eventSourceARN'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        event_name <span class="token operator">=</span> record<span class="token punctuation">[</span><span class="token string">'eventName'</span><span class="token punctuation">]</span>  <span class="token comment"># INSERT, MODIFY, REMOVE</span>
+
+        <span class="token keyword">if</span> event_name <span class="token operator">==</span> <span class="token string">'REMOVE'</span> <span class="token keyword">or</span> <span class="token string">'NewImage'</span> <span class="token keyword">not</span> <span class="token keyword">in</span> record<span class="token punctuation">[</span><span class="token string">'dynamodb'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+
+        new_image <span class="token operator">=</span> flatten_dynamodb_item<span class="token punctuation">(</span>record<span class="token punctuation">[</span><span class="token string">'dynamodb'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'NewImage'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        records<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token string">'_event_name'</span><span class="token punctuation">:</span> event_name<span class="token punctuation">,</span>
+            <span class="token string">'_event_timestamp'</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>utcnow<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>isoformat<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'_table_name'</span><span class="token punctuation">:</span> table_name<span class="token punctuation">,</span>
+            <span class="token operator">**</span>new_image
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Write to S3 as Parquet with date partitioning + UUID for uniqueness</span>
+    now <span class="token operator">=</span> datetime<span class="token punctuation">.</span>utcnow<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    batch_id <span class="token operator">=</span> uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">hex</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">]</span>
+    s3_key <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"bronze/</span><span class="token interpolation"><span class="token punctuation">{</span>table_name<span class="token punctuation">}</span></span><span class="token string">/year=</span><span class="token interpolation"><span class="token punctuation">{</span>now<span class="token punctuation">.</span>year<span class="token punctuation">}</span></span><span class="token string">/month=</span><span class="token interpolation"><span class="token punctuation">{</span>now<span class="token punctuation">.</span>month<span class="token punctuation">:</span><span class="token format-spec">02d</span><span class="token punctuation">}</span></span><span class="token string">"</span></span>
+              <span class="token string-interpolation"><span class="token string">f"/day=</span><span class="token interpolation"><span class="token punctuation">{</span>now<span class="token punctuation">.</span>day<span class="token punctuation">:</span><span class="token format-spec">02d</span><span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{</span>now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y%m%d%H%M%S'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token punctuation">{</span>batch_id<span class="token punctuation">}</span></span><span class="token string">.parquet"</span></span><span class="token punctuation">)</span>
+
+    table <span class="token operator">=</span> pa<span class="token punctuation">.</span>Table<span class="token punctuation">.</span>from_pylist<span class="token punctuation">(</span>records<span class="token punctuation">)</span>
+    <span class="token builtin">buffer</span> <span class="token operator">=</span> io<span class="token punctuation">.</span>BytesIO<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    pq<span class="token punctuation">.</span>write_table<span class="token punctuation">(</span>table<span class="token punctuation">,</span> <span class="token builtin">buffer</span><span class="token punctuation">,</span> compression<span class="token operator">=</span><span class="token string">'snappy'</span><span class="token punctuation">)</span>
+
+    s3_client<span class="token punctuation">.</span>put_object<span class="token punctuation">(</span>Bucket<span class="token operator">=</span>S3_BUCKET<span class="token punctuation">,</span> Key<span class="token operator">=</span>s3_key<span class="token punctuation">,</span> Body<span class="token operator">=</span><span class="token builtin">buffer</span><span class="token punctuation">.</span>getvalue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+<p>The Lambda extracts the table name from the stream ARN, flattens the DynamoDB item format (converting <code class="language-inline-text">{"S": "hello"}</code> to plain <code class="language-inline-text">"hello"</code>), adds metadata fields prefixed with underscore, and writes everything to S3 as a Parquet file.</p>
+<p>Notice the <code class="language-inline-text">batch_id</code> UUID suffix in the filename. With <code class="language-inline-text">batch_size=100</code>, a burst of 1000 inserts produces roughly 10 concurrent Lambda invocations. Without the UUID, two invocations finishing in the same second would write to the same S3 key (e.g., <code class="language-inline-text">20260216153042.parquet</code>), and S3's last-writer-wins behavior would silently overwrite one batch. The UUID ensures every file is unique regardless of timing.</p>
+<hr>
+<h2 id="how-the-silver-lambda-works"><a href="#how-the-silver-lambda-works" aria-hidden="true"><span class="icon icon-link"></span></a>How the Silver Lambda Works</h2>
+<p>The Silver Lambda runs on a <strong>30-minute schedule</strong> via EventBridge. Instead of reacting to individual file arrivals, it uses a <strong>watermark</strong>: a small JSON file stored in S3 (<code class="language-inline-text">silver/watermark.json</code>) that records the timestamp of the last successful run. On each invocation, the Lambda:</p>
+<ol>
+<li><strong>Reads the watermark</strong> to determine when it last ran</li>
+<li><strong>Scans all Bronze prefixes</strong> for Parquet files with <code class="language-inline-text">LastModified</code> newer than the watermark</li>
+<li><strong>Reads all new files</strong> into memory as a single batch</li>
+<li><strong>Transforms and enriches</strong> the records (e.g., adding customer region to orders)</li>
+<li><strong>Writes a staging Parquet file</strong> to a temporary S3 location with a UUID-based path</li>
+<li><strong>Creates a temporary external table</strong> in Athena pointing at the staging file</li>
+<li><strong>Runs a MERGE INTO</strong> against the Iceberg table to upsert records</li>
+<li><strong>Cleans up</strong> the temp table and staging file</li>
+<li><strong>Saves the new watermark</strong> so the next run picks up from where this one left off</li>
+</ol>
+<p>A scheduled approach is necessary here. When a burst of Bronze files lands simultaneously (say, 10 files from a batch insert), S3 notifications would trigger 10 concurrent Silver invocations all trying to MERGE into the same Iceberg table. Iceberg requires exclusive writes, so concurrent MERGEs cause <code class="language-inline-text">ICEBERG_COMMIT_ERROR</code> failures. A scheduled Lambda serializes all processing into a single invocation, eliminating concurrency conflicts entirely.</p>
+<p><strong>What if the watermark gets corrupted or deleted?</strong> If <code class="language-inline-text">watermark.json</code> is missing or unreadable, the Lambda defaults to a timestamp 24 hours in the past, causing it to scan and reprocess all recent Bronze files. Since MERGE is idempotent (matching records get updated, not duplicated), reprocessing produces the correct result without data corruption. The watermark is only saved after all tables are processed successfully, so a mid-run crash causes the next invocation to replay from the last good watermark with no silent data loss.</p>
+<p>Here is the core enrichment logic:</p>
+<div class="gridsome-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">enrich_order_data</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Enrich orders with customer data from DynamoDB"""</span>
+    customer_id <span class="token operator">=</span> order<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'CustomerID'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> customer_id<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> order
+
+    table <span class="token operator">=</span> dynamodb<span class="token punctuation">.</span>Table<span class="token punctuation">(</span>CUSTOMERS_TABLE<span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> table<span class="token punctuation">.</span>get_item<span class="token punctuation">(</span>Key<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'CustomerID'</span><span class="token punctuation">:</span> customer_id<span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">'Item'</span> <span class="token keyword">in</span> response<span class="token punctuation">:</span>
+            customer <span class="token operator">=</span> response<span class="token punctuation">[</span><span class="token string">'Item'</span><span class="token punctuation">]</span>
+            order<span class="token punctuation">[</span><span class="token string">'customer_name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> customer<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'Name'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+            order<span class="token punctuation">[</span><span class="token string">'customer_region'</span><span class="token punctuation">]</span> <span class="token operator">=</span> customer<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'Region'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"  Warning: Could not enrich customer </span><span class="token interpolation"><span class="token punctuation">{</span>customer_id<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> order</code></pre></div>
+<p>The MERGE query handles deduplication: if an order with the same <code class="language-inline-text">OrderID</code> already exists it gets updated, otherwise it gets inserted:</p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">MERGE</span> <span class="token keyword">INTO</span> orders_enriched t
+<span class="token keyword">USING</span> temp_staging_table s
+<span class="token keyword">ON</span> t<span class="token punctuation">.</span>orderid <span class="token operator">=</span> s<span class="token punctuation">.</span>orderid
+<span class="token keyword">WHEN</span> <span class="token keyword">MATCHED</span> <span class="token keyword">THEN</span> <span class="token keyword">UPDATE</span> <span class="token keyword">SET</span>
+    customerid <span class="token operator">=</span> s<span class="token punctuation">.</span>customerid<span class="token punctuation">,</span>
+    orderdate <span class="token operator">=</span> s<span class="token punctuation">.</span>orderdate<span class="token punctuation">,</span>
+    totalamount <span class="token operator">=</span> s<span class="token punctuation">.</span>totalamount<span class="token punctuation">,</span>
+    customer_name <span class="token operator">=</span> s<span class="token punctuation">.</span>customer_name<span class="token punctuation">,</span>
+    customer_region <span class="token operator">=</span> s<span class="token punctuation">.</span>customer_region<span class="token punctuation">,</span>
+    event_timestamp <span class="token operator">=</span> s<span class="token punctuation">.</span>event_timestamp<span class="token punctuation">,</span>
+    processing_timestamp <span class="token operator">=</span> s<span class="token punctuation">.</span>processing_timestamp
+<span class="token keyword">WHEN</span> <span class="token operator">NOT</span> <span class="token keyword">MATCHED</span> <span class="token keyword">THEN</span> <span class="token keyword">INSERT</span> <span class="token punctuation">(</span>
+    orderid<span class="token punctuation">,</span> customerid<span class="token punctuation">,</span> orderdate<span class="token punctuation">,</span> totalamount<span class="token punctuation">,</span>
+    customer_name<span class="token punctuation">,</span> customer_region<span class="token punctuation">,</span> event_timestamp<span class="token punctuation">,</span>
+    processing_timestamp
+<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>
+    s<span class="token punctuation">.</span>orderid<span class="token punctuation">,</span> s<span class="token punctuation">.</span>customerid<span class="token punctuation">,</span> s<span class="token punctuation">.</span>orderdate<span class="token punctuation">,</span> s<span class="token punctuation">.</span>totalamount<span class="token punctuation">,</span>
+    s<span class="token punctuation">.</span>customer_name<span class="token punctuation">,</span> s<span class="token punctuation">.</span>customer_region<span class="token punctuation">,</span> s<span class="token punctuation">.</span>event_timestamp<span class="token punctuation">,</span>
+    s<span class="token punctuation">.</span>processing_timestamp
+<span class="token punctuation">)</span></code></pre></div>
+<p>Before running the MERGE, the Lambda also deduplicates within the batch. If the same primary key appears multiple times across Bronze files (due to rapid updates), only the latest version is kept. This prevents <code class="language-inline-text">MERGE_TARGET_ROW_MULTIPLE_MATCHES</code> errors.</p>
+<h3 id="why-silver-needs-a-staging-directory"><a href="#why-silver-needs-a-staging-directory" aria-hidden="true"><span class="icon icon-link"></span></a>Why Silver Needs a Staging Directory</h3>
+<p>You might wonder why we write to a staging file at all, rather than having Athena read Bronze directly.</p>
+<p>The reason is that <strong>enrichment happens in Python, not SQL</strong>. When the Silver Lambda processes orders, it calls DynamoDB for each record to fetch the customer's name and region. Athena cannot call DynamoDB mid-query. So once Python has enriched the data in memory, it needs to materialize those enriched records back to S3 as a Parquet file (the staging file), create a temporary Athena table pointing at it, and then run the MERGE.</p>
+<p>An alternative design would skip the DynamoDB lookup entirely and JOIN Bronze orders with Silver customers inside a single Athena SQL query. But that introduces an ordering dependency (customers must be processed before orders on every run) and sacrifices per-record enrichment logic in Python.</p>
+<p>The Gold Lambda, by contrast, does not use staging at all. It reads directly from Silver Iceberg tables and writes to Gold Iceberg tables using pure SQL within Athena.</p>
+<p>After a successful MERGE, the Silver Lambda deletes the staging file in a <code class="language-inline-text">finally</code> block. If the Lambda times out before cleanup, orphaned staging files may remain in S3. They do not affect correctness (each run writes to a unique UUID-based path), but adding an S3 lifecycle rule to auto-expire files under <code class="language-inline-text">silver/staging/</code> after a few days is a good safety net.</p>
+<hr>
+<h2 id="iceberg-snapshot-management"><a href="#iceberg-snapshot-management" aria-hidden="true"><span class="icon icon-link"></span></a>Iceberg Snapshot Management</h2>
+<p>The Silver Lambda runs a MERGE every 30 minutes and the Gold Lambda runs DELETE and INSERT every hour. Both operations create Iceberg snapshots. Before looking at the Gold Lambda, it is worth understanding what accumulates and how to clean it up.</p>
+<p>Every MERGE, INSERT, or DELETE against an Iceberg table creates a new <strong>snapshot</strong>. A snapshot is a pointer to the set of data files that represent the table at that point in time. Iceberg uses a <strong>copy-on-write</strong> strategy: when a MERGE updates 5 records in a Parquet file containing 1000 records, Iceberg writes a new file with all 1000 records (5 updated, 995 unchanged), and the new snapshot points to the new file. The old file is not deleted; it becomes an "orphan" no longer referenced by any current snapshot.</p>
+<p>Over time, this creates two problems: <strong>snapshot accumulation</strong> (metadata grows with every write) and <strong>orphaned files</strong> (old data files that waste storage). In production, address these with:</p>
+<ul>
+<li><strong>Snapshot expiration</strong>: <code class="language-inline-text">ALTER TABLE ... EXECUTE expire_snapshots(retention_threshold => '7d')</code> removes snapshots older than the threshold, keeping metadata lean.</li>
+<li><strong>Orphan file removal</strong>: After expiring snapshots, clean up their unreferenced data files with <code class="language-inline-text">ALTER TABLE ... EXECUTE remove_orphan_files(retention_threshold => '7d')</code>.</li>
+<li><strong>Compaction</strong>: Frequent small writes (like the 30-minute MERGE) create many small files. <code class="language-inline-text">ALTER TABLE ... EXECUTE optimize</code> rewrites them into fewer, larger files, improving query performance.</li>
+</ul>
+<p>At this pipeline's scale, snapshot growth is modest. A weekly or monthly cleanup job is sufficient. At larger scales, these operations become critical for keeping costs and query times under control.</p>
+<hr>
+<h2 id="how-the-gold-lambda-works"><a href="#how-the-gold-lambda-works" aria-hidden="true"><span class="icon icon-link"></span></a>How the Gold Lambda Works</h2>
+<p>The Gold Lambda runs hourly and uses <strong>Iceberg tables with delta refresh</strong>. Instead of dropping and recreating tables on every run, it deletes only the last N days of data and re-inserts fresh aggregates for that window. Historical data beyond the refresh window is preserved untouched.</p>
+<p>This is the key advantage of Iceberg in the Gold layer: row-level <code class="language-inline-text">DELETE</code> on S3 data, which plain Parquet tables cannot do.</p>
+<p>The Gold tables are created as Iceberg tables on the first run:</p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> daily_sales_by_region <span class="token punctuation">(</span>
+    order_date <span class="token keyword">DATE</span><span class="token punctuation">,</span>
+    region STRING<span class="token punctuation">,</span>
+    order_count <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+    total_revenue <span class="token keyword">DOUBLE</span><span class="token punctuation">,</span>
+    avg_order_value <span class="token keyword">DOUBLE</span><span class="token punctuation">,</span>
+    unique_customers <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+    computed_at <span class="token keyword">TIMESTAMP</span>
+<span class="token punctuation">)</span>
+LOCATION <span class="token string">'s3://bucket/gold/daily_sales_by_region/'</span>
+TBLPROPERTIES <span class="token punctuation">(</span><span class="token string">'table_type'</span><span class="token operator">=</span><span class="token string">'ICEBERG'</span><span class="token punctuation">)</span></code></pre></div>
+<p>On each subsequent run, the delta refresh is a two-step process: delete stale data, then insert fresh:</p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token comment">-- Step 1: Remove stale aggregates for the refresh window</span>
+<span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> daily_sales_by_region
+<span class="token keyword">WHERE</span> order_date <span class="token operator">>=</span> <span class="token keyword">CURRENT_DATE</span> <span class="token operator">-</span> <span class="token keyword">INTERVAL</span> <span class="token string">'3'</span> <span class="token keyword">DAY</span>
+
+<span class="token comment">-- Step 2: Insert fresh aggregates from Silver</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> daily_sales_by_region
+<span class="token keyword">SELECT</span>
+    CAST<span class="token punctuation">(</span>date_parse<span class="token punctuation">(</span>orderdate<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:%i:%s'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token keyword">DATE</span><span class="token punctuation">)</span> <span class="token keyword">as</span> order_date<span class="token punctuation">,</span>
+    customer_region <span class="token keyword">as</span> region<span class="token punctuation">,</span>
+    <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> order_count<span class="token punctuation">,</span>
+    <span class="token function">SUM</span><span class="token punctuation">(</span>totalamount<span class="token punctuation">)</span> <span class="token keyword">as</span> total_revenue<span class="token punctuation">,</span>
+    <span class="token function">AVG</span><span class="token punctuation">(</span>totalamount<span class="token punctuation">)</span> <span class="token keyword">as</span> avg_order_value<span class="token punctuation">,</span>
+    <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> customerid<span class="token punctuation">)</span> <span class="token keyword">as</span> unique_customers<span class="token punctuation">,</span>
+    CAST<span class="token punctuation">(</span><span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">AS</span> <span class="token keyword">TIMESTAMP</span><span class="token punctuation">)</span> <span class="token keyword">as</span> computed_at
+<span class="token keyword">FROM</span> <span class="token string">"{SILVER_DB}"</span><span class="token punctuation">.</span>orders_enriched
+<span class="token keyword">WHERE</span> CAST<span class="token punctuation">(</span>date_parse<span class="token punctuation">(</span>orderdate<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:%i:%s'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token keyword">DATE</span><span class="token punctuation">)</span>
+      <span class="token operator">>=</span> <span class="token keyword">CURRENT_DATE</span> <span class="token operator">-</span> <span class="token keyword">INTERVAL</span> <span class="token string">'3'</span> <span class="token keyword">DAY</span>
+    <span class="token operator">AND</span> customer_region <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> CAST<span class="token punctuation">(</span>date_parse<span class="token punctuation">(</span>orderdate<span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d %H:%i:%s'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token keyword">DATE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+         customer_region</code></pre></div>
+<p>Note: <code class="language-inline-text">{SILVER_DB}</code> is a Python f-string variable that resolves to the Silver Glue database name (e.g., <code class="language-inline-text">ecommerce-analytics-silver-dev</code>). Since it contains hyphens, double-quoting is required in Athena SQL.</p>
+<p>The refresh window (default: 3 days) is configurable via the <code class="language-inline-text">REFRESH_DAYS</code> environment variable. For <code class="language-inline-text">product_performance</code> and <code class="language-inline-text">key_metrics</code>, we do a full replace (delete all rows and insert fresh), since these are small snapshot tables where preserving history does not apply.</p>
+<h3 id="why-delta-refresh-matters"><a href="#why-delta-refresh-matters" aria-hidden="true"><span class="icon icon-link"></span></a>Why Delta Refresh Matters</h3>
+<p>Consider a dashboard showing 90 days of daily revenue trends. With a full refresh, the Gold Lambda would re-aggregate all 90 days of Silver data on every hourly run, even though only today's numbers changed. With delta refresh, it recomputes only the last 3 days and leaves the other 87 untouched. As data grows, this difference compounds: the Athena query scans less data (cheaper), runs faster, and the Lambda stays well within its 15-minute timeout.</p>
+<p>The 3-day window accounts for late-arriving data and corrections. If an order from yesterday gets modified today, Silver updates it via MERGE, and the next Gold refresh picks up the corrected aggregate.</p>
+<hr>
+<h2 id="deployment"><a href="#deployment" aria-hidden="true"><span class="icon icon-link"></span></a>Deployment</h2>
+<p>Before the pipeline runs you need two things: deployment packages for the Lambda functions and the Terraform apply. Prerequisites are <code class="language-inline-text">Python 3.11</code>, <code class="language-inline-text">Terraform 1.5+</code>, and an AWS CLI profile with permission to create IAM roles, Lambda functions, DynamoDB tables, S3 buckets, and Athena workgroups.</p>
+<p><strong>Build the Lambda packages.</strong> Each function packages only its <code class="language-inline-text">handler.py</code>. <code class="language-inline-text">pyarrow</code> lives in a shared Lambda layer so the function zips stay small. A build script handles everything, including downloading a Linux-compatible <code class="language-inline-text">pyarrow</code> wheel (necessary even on macOS since Lambda runs on Linux):</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">chmod</span> +x scripts/build_lambda.sh
+./scripts/build_lambda.sh</code></pre></div>
+<p>This produces <code class="language-inline-text">lambda/layers/python_deps.zip</code> and a <code class="language-inline-text">deployment.zip</code> in each of the <code class="language-inline-text">bronze/</code>, <code class="language-inline-text">silver/</code>, and <code class="language-inline-text">gold/</code> directories.</p>
+<p><strong>Configure and apply Terraform.</strong> Copy the example vars file, update if needed, and apply:</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">cp</span> terraform/terraform.tfvars.example terraform/terraform.tfvars
+<span class="token comment"># edit aws_region, project_name, s3_bucket_prefix as needed</span>
+
+<span class="token builtin class-name">cd</span> terraform
+terraform init
+terraform apply</code></pre></div>
+<p>S3 bucket names must be globally unique. If the apply fails on a bucket conflict, change <code class="language-inline-text">s3_bucket_prefix</code> in <code class="language-inline-text">terraform.tfvars</code>. The full apply creates roughly 38 resources and takes about 5 minutes.</p>
+<hr>
+<h2 id="data-validation"><a href="#data-validation" aria-hidden="true"><span class="icon icon-link"></span></a>Data Validation</h2>
+<p>Seed DynamoDB, trigger each Lambda manually, and confirm row counts match at each layer.</p>
+<p><strong>Seed the data.</strong> Orders depend on existing customers and products, so generate them in this order:</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">python scripts/generate_data.py <span class="token punctuation">\</span>
+  --customers-table ecommerce-analytics-customers-dev <span class="token punctuation">\</span>
+  --products-table ecommerce-analytics-products-dev <span class="token punctuation">\</span>
+  --orders-table ecommerce-analytics-orders-dev <span class="token punctuation">\</span>
+  --num-customers <span class="token number">100</span> <span class="token punctuation">\</span>
+  --num-products <span class="token number">50</span> <span class="token punctuation">\</span>
+  --num-orders <span class="token number">500</span></code></pre></div>
+<p>DynamoDB Streams fire as records are written and the Bronze Lambda processes them within seconds. Check that Parquet files appeared:</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws s3 <span class="token function">ls</span> s3://ddb-analytics-ecommerce-analytics-<span class="token operator">&lt;</span>account-id<span class="token operator">></span>/bronze/ <span class="token parameter variable">--recursive</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-20</span></code></pre></div>
+<p><strong>Trigger Silver and verify counts.</strong> Rather than waiting 30 minutes for the schedule, invoke it directly:</p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws lambda invoke <span class="token punctuation">\</span>
+  --function-name ecommerce-analytics-silver-processor-dev <span class="token punctuation">\</span>
+  <span class="token parameter variable">--payload</span> <span class="token string">'{}'</span> /tmp/silver-out.json <span class="token operator">&amp;&amp;</span> <span class="token function">cat</span> /tmp/silver-out.json</code></pre></div>
+<p>Then confirm the Silver Iceberg tables have the expected rows in Athena. The count in <code class="language-inline-text">orders_enriched</code> should match the 500 orders you seeded:</p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> <span class="token string">"ecommerce-analytics-silver-dev"</span><span class="token punctuation">.</span>orders_enriched<span class="token punctuation">;</span>
+<span class="token comment">-- expected: 500</span></code></pre></div>
+<p><strong>Trigger Gold and verify aggregates.</strong></p>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws lambda invoke <span class="token punctuation">\</span>
+  --function-name ecommerce-analytics-gold-processor-dev <span class="token punctuation">\</span>
+  <span class="token parameter variable">--payload</span> <span class="token string">'{}'</span> /tmp/gold-out.json <span class="token operator">&amp;&amp;</span> <span class="token function">cat</span> /tmp/gold-out.json</code></pre></div>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token string">"ecommerce-analytics-gold-dev"</span><span class="token punctuation">.</span>daily_sales_by_region
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> order_date <span class="token keyword">DESC</span> <span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span></code></pre></div>
+<p>Rows grouped by date and region with non-zero revenue confirm the full pipeline is working.</p>
+<hr>
+<h2 id="grafana-setup"><a href="#grafana-setup" aria-hidden="true"><span class="icon icon-link"></span></a>Grafana Setup</h2>
+<p>Grafana connects to Athena as a data source and visualizes the Gold layer tables.</p>
+<h3 id="step-1-configure-the-athena-data-source"><a href="#step-1-configure-the-athena-data-source" aria-hidden="true"><span class="icon icon-link"></span></a>Step 1: Configure the Athena Data Source</h3>
+<p>The datasource is configured via provisioning YAML at <code class="language-inline-text">grafana/provisioning/datasources/athena.yml</code>:</p>
+<div class="gridsome-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token key atrule">datasources</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Athena <span class="token punctuation">-</span> E<span class="token punctuation">-</span>commerce Analytics
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> grafana<span class="token punctuation">-</span>athena<span class="token punctuation">-</span>datasource
+    <span class="token key atrule">access</span><span class="token punctuation">:</span> proxy
+    <span class="token key atrule">isDefault</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">jsonData</span><span class="token punctuation">:</span>
+      <span class="token key atrule">authType</span><span class="token punctuation">:</span> keys
+      <span class="token key atrule">defaultRegion</span><span class="token punctuation">:</span> us<span class="token punctuation">-</span>east<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token key atrule">catalog</span><span class="token punctuation">:</span> AwsDataCatalog
+      <span class="token key atrule">database</span><span class="token punctuation">:</span> ecommerce<span class="token punctuation">-</span>analytics<span class="token punctuation">-</span>gold<span class="token punctuation">-</span>dev
+      <span class="token key atrule">workgroup</span><span class="token punctuation">:</span> ecommerce<span class="token punctuation">-</span>analytics<span class="token punctuation">-</span>workgroup<span class="token punctuation">-</span>dev
+      <span class="token key atrule">outputLocation</span><span class="token punctuation">:</span> s3<span class="token punctuation">:</span>//your<span class="token punctuation">-</span>athena<span class="token punctuation">-</span>results<span class="token punctuation">-</span>bucket/grafana<span class="token punctuation">-</span>queries/
+    <span class="token key atrule">secureJsonData</span><span class="token punctuation">:</span>
+      <span class="token key atrule">accessKey</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>AWS_ACCESS_KEY<span class="token punctuation">}</span>
+      <span class="token key atrule">secretKey</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>AWS_SECRET_KEY<span class="token punctuation">}</span>
+    <span class="token key atrule">editable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre></div>
+<h3 id="step-2-create-environment-file"><a href="#step-2-create-environment-file" aria-hidden="true"><span class="icon icon-link"></span></a>Step 2: Create Environment File</h3>
+<p>Create a <code class="language-inline-text">.env</code> file with your AWS credentials and add it to <code class="language-inline-text">.gitignore</code>:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">AWS_ACCESS_KEY=your-access-key
+AWS_SECRET_KEY=your-secret-key</code></pre></div>
+<h3 id="step-3-start-grafana"><a href="#step-3-start-grafana" aria-hidden="true"><span class="icon icon-link"></span></a>Step 3: Start Grafana</h3>
+<div class="gridsome-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span></code></pre></div>
+<p>Access Grafana at <code class="language-inline-text">http://localhost:3000</code> with default credentials <code class="language-inline-text">admin/admin</code>.</p>
+<h3 id="step-4-create-dashboard-panels"><a href="#step-4-create-dashboard-panels" aria-hidden="true"><span class="icon icon-link"></span></a>Step 4: Create Dashboard Panels</h3>
+<p>Navigate to Dashboards, create a new dashboard, and add visualizations using the Athena data source with these queries:</p>
+<p><strong>Revenue by Region (Pie Chart):</strong></p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> region<span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>total_revenue<span class="token punctuation">)</span> <span class="token keyword">as</span> revenue
+<span class="token keyword">FROM</span> daily_sales_by_region
+<span class="token keyword">WHERE</span> order_date <span class="token operator">>=</span> <span class="token keyword">CURRENT_DATE</span> <span class="token operator">-</span> <span class="token keyword">INTERVAL</span> <span class="token string">'30'</span> <span class="token keyword">DAY</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> region</code></pre></div>
+<p><strong>Daily Revenue Trend (Time Series):</strong></p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> order_date <span class="token keyword">as</span> <span class="token keyword">time</span><span class="token punctuation">,</span> <span class="token function">SUM</span><span class="token punctuation">(</span>total_revenue<span class="token punctuation">)</span> <span class="token keyword">as</span> revenue
+<span class="token keyword">FROM</span> daily_sales_by_region
+<span class="token keyword">WHERE</span> order_date <span class="token operator">>=</span> <span class="token keyword">CURRENT_DATE</span> <span class="token operator">-</span> <span class="token keyword">INTERVAL</span> <span class="token string">'30'</span> <span class="token keyword">DAY</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> order_date
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> order_date</code></pre></div>
+<p><strong>Key Metrics (Stat Panels):</strong></p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> metric_name<span class="token punctuation">,</span> metric_value
+<span class="token keyword">FROM</span> key_metrics
+<span class="token keyword">WHERE</span> metric_name <span class="token operator">=</span> <span class="token string">'revenue_30d'</span></code></pre></div>
+<p><strong>Product Stock Status (Table):</strong></p>
+<div class="gridsome-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> product_name<span class="token punctuation">,</span> current_stock<span class="token punctuation">,</span> stock_status
+<span class="token keyword">FROM</span> product_performance
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> current_stock <span class="token keyword">ASC</span></code></pre></div>
+<p>Set the dashboard auto-refresh to 5 to 10 minutes to show updated data as the pipeline runs.</p>
+<figure><img src="/blog/near-real-time-analytics-pipeline/part-2-cover.png" alt="Grafana dashboard showing revenue trends, regional breakdown, and product performance"><figcaption>Grafana dashboard showing revenue trends, regional breakdown, and product performance</figcaption></figure>
+<hr>
+<h2 id="limitations"><a href="#limitations" aria-hidden="true"><span class="icon icon-link"></span></a>Limitations</h2>
+<p>This architecture works well for small to medium workloads, but there are thresholds where you should consider alternatives.</p>
+<p><strong>Lambda Execution Time:</strong> AWS Lambda has a maximum timeout of 15 minutes. The Silver Lambda runs Athena queries and waits for completion, which can take several minutes for large MERGE operations. If processing exceeds this limit, consider moving to AWS Glue ETL jobs or EMR Serverless, which have no execution time ceiling.</p>
+<p><strong>DynamoDB Streams Retention:</strong> Streams retain data for only 24 hours. If your Lambda fails for an extended period, you will miss events. For mission-critical pipelines, consider adding a dead-letter queue or using Kinesis Data Streams as an intermediate buffer.</p>
+<p><strong>Athena Query Concurrency:</strong> Athena has default concurrency limits of 20 to 25 queries per account per region. Since Silver and Gold Lambdas run on schedules rather than event-driven triggers, concurrency is well-controlled. However, if you add more tables or run ad-hoc queries alongside the pipeline, you may approach these limits.</p>
+<p><strong>When to Graduate:</strong></p>
+<ul>
+<li><strong>Kinesis Data Firehose</strong>: When DynamoDB Streams' 24-hour retention becomes a risk. Firehose can sit between DynamoDB Streams and S3, providing automatic batching, buffering, and longer delivery guarantees. If the Bronze Lambda fails for hours, Firehose continues buffering records. It also supports native Parquet delivery to S3, which could replace the Bronze Lambda entirely.</li>
+<li><strong>PySpark on EMR/Glue</strong>: When daily volume exceeds a few million records or Silver processing consistently takes over 10 minutes.</li>
+<li><strong>Apache Airflow (or MWAA)</strong>: When you need complex step dependencies, sophisticated retry logic, or visual monitoring of pipeline runs.</li>
+<li><strong>Databricks</strong>: When you need advanced features like Z-ordering and bloom filters, or your team prefers notebooks over Lambda code.</li>
+</ul>
+<p>The architecture naturally evolves. You can replace the Silver Lambda with a Glue PySpark job while keeping everything else intact. The medallion pattern is the foundation; the specific tools are interchangeable.</p>
+<hr>
+<h2 id="cost-estimates"><a href="#cost-estimates" aria-hidden="true"><span class="icon icon-link"></span></a>Cost Estimates</h2>
+<p>Every component in this architecture is pay-per-use. Here is what to expect at different scales:</p>
+<h3 id="low-volume-1k-ordersday-devstaging"><a href="#low-volume-1k-ordersday-devstaging" aria-hidden="true"><span class="icon icon-link"></span></a>Low Volume (~1K orders/day, dev/staging)</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Usage</th>
+<th>Estimated Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DynamoDB (on-demand)</td>
+<td>~30K writes/month + streams</td>
+<td>~$1–2</td>
+</tr>
+<tr>
+<td>Lambda (3 functions)</td>
+<td>Bronze: ~30K invocations; Silver: ~1,440; Gold: ~720</td>
+<td>~$0–1 (free tier covers most)</td>
+</tr>
+<tr>
+<td>S3 storage</td>
+<td>~100 MB across all layers</td>
+<td>~$0.01</td>
+</tr>
+<tr>
+<td>Athena queries</td>
+<td>~2,160 queries/month (Silver + Gold), scanning &#x3C;1 GB total</td>
+<td>~$0.01–0.05</td>
+</tr>
+<tr>
+<td>Glue Catalog</td>
+<td>3 databases, ~10 tables</td>
+<td>Free (first million objects)</td>
+</tr>
+<tr>
+<td>EventBridge</td>
+<td>~2,160 invocations/month</td>
+<td>Free (first million events)</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>Self-hosted via Docker (local)</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>~$2–5/month</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="medium-volume-50k-ordersday-production"><a href="#medium-volume-50k-ordersday-production" aria-hidden="true"><span class="icon icon-link"></span></a>Medium Volume (~50K orders/day, production)</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Usage</th>
+<th>Estimated Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DynamoDB (on-demand)</td>
+<td>~1.5M writes/month + streams</td>
+<td>~$20–30</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>Bronze: ~15K invocations; Silver/Gold: same schedule</td>
+<td>~$2–5</td>
+</tr>
+<tr>
+<td>S3 storage</td>
+<td>~5–10 GB across all layers</td>
+<td>~$0.25–0.50</td>
+</tr>
+<tr>
+<td>Athena queries</td>
+<td>Same query count, scanning ~10–50 GB/month</td>
+<td>~$0.50–2.50</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>Self-hosted on EC2 (t3.small) or ECS</td>
+<td>~$15–20</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>~$40–60/month</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="grafana-hosting-options"><a href="#grafana-hosting-options" aria-hidden="true"><span class="icon icon-link"></span></a>Grafana Hosting Options</h3>
+<p>In this blog, we run Grafana locally via Docker Compose at zero cost. For production, you have a few options:</p>
+<ul>
+<li><strong>Self-hosted on EC2/ECS</strong>: Run the Grafana Docker container on a small instance (t3.small is roughly $15/month). You manage updates and availability.</li>
+<li><strong>Grafana Cloud (free tier)</strong>: Up to 3 users and 14 days of retention. Just configure the Athena data source plugin and point it at your AWS account.</li>
+<li><strong>Grafana Cloud (paid)</strong>: Starts at $55/month per stack for teams, including alerting, SLOs, and longer retention.</li>
+<li><strong>Amazon Managed Grafana</strong>: AWS-native at roughly $9/editor/month. Integrates with IAM for Athena access so you do not need to pass AWS keys via environment variables.</li>
+</ul>
+<h3 id="what-drives-costs-up"><a href="#what-drives-costs-up" aria-hidden="true"><span class="icon icon-link"></span></a>What Drives Costs Up</h3>
+<ul>
+<li><strong>Athena scans</strong>: Athena charges $5/TB scanned. Parquet and partition pruning keep this low, but unpartitioned Gold tables or <code class="language-inline-text">SELECT *</code> queries can inflate costs.</li>
+<li><strong>DynamoDB writes</strong>: On-demand mode at high volume. Provisioned capacity with auto-scaling is cheaper for predictable workloads.</li>
+<li><strong>Lambda duration</strong>: The Silver Lambda waits for Athena queries; slow MERGEs on large tables add up in duration charges.</li>
+<li><strong>S3 storage</strong>: Iceberg's copy-on-write creates orphaned files. Without periodic cleanup (see Iceberg Snapshot Management above), storage grows faster than expected.</li>
+<li><strong>Grafana dashboard queries</strong>: Each panel refresh triggers an Athena query. With 5 panels auto-refreshing every 5 minutes, that is 1,440 queries per day. Querying pre-computed Gold tables keeps scan sizes small, but be mindful of refresh intervals.</li>
+</ul>
+<p>The pipeline comfortably runs under <strong>$5/month for development</strong> (with Grafana running locally) and under <strong>$60/month for moderate production workloads</strong> including a hosted Grafana instance, a fraction of what a dedicated EMR cluster or Redshift instance would cost.</p>
+<hr>
+<h2 id="conclusion"><a href="#conclusion" aria-hidden="true"><span class="icon icon-link"></span></a>Conclusion</h2>
+<p>We built a complete near real-time analytics pipeline that takes data from DynamoDB, processes it through Bronze, Silver, and Gold layers, and presents it in Grafana dashboards. The pipeline handles deduplication using Iceberg MERGE operations, enriches data by joining across tables in Python, and pre-computes aggregates for fast dashboard queries. The entire infrastructure is defined in Terraform and runs serverlessly with no clusters to manage.</p>
+<p>The key insights: separate concerns into distinct layers, use the right table format for each layer's needs (regular Parquet for immutable data, Iceberg for mutable data), pre-compute aggregates rather than running expensive queries at dashboard load time, and keep transformations simple enough to fit within Lambda's execution limits. When scale demands it, individual components swap out cleanly while the rest of the pipeline stays unchanged.</p>
+<p>The complete source code is available on GitHub: <strong><a href="https://github.com/itzk7/dynamodb-to-grafana" target="_blank" rel="nofollow noopener noreferrer">dynamodb-to-grafana</a></strong></p>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/k7.d295c558.png" alt="Kesavan" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Kesavan</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><a href="https://medium.com/@itzk7" target="_blank" class="heading-size-9" data-v-996dafb6>
+          Medium
+        </a></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/near-real-time-analytics-p1" class="blog-card" data-v-996dafb6><img src="/assets/img/part-1-cover.8760d134.png" alt="Medallion architecture diagram with bronze, silver, and gold layers flowing into Grafana" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 1)</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Kesavan   10 min read
+            </p></div></a><a href="/blogs/building-scalable-ingestion-pipeline-rust" class="blog-card" data-v-996dafb6><img src="/assets/img/pipeline-cover.4796ea68.webp" alt="" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Building a Scalable Ingestion Pipeline with Rust</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Dhruva Sagar   5 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-29237f5f><div class="message heading-size-7" data-v-29237f5f>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-29237f5f><div class="action-button heading-size-5" data-v-29237f5f><div data-v-29237f5f>Get in touch</div><div class="arrow" data-v-29237f5f>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-29237f5f></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-71a2ecff><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-71a2ecff><ul class="main-nav footer" data-v-6f2fee08 data-v-0a037a4b><div class="primary fadeIn" data-v-6f2fee08><li data-v-6f2fee08><a href="/music-tech" data-v-6f2fee08>/MusicTech</a></li><li data-v-6f2fee08><a href="/health-care-tech" data-v-6f2fee08>/HealthCareTech</a></li><li data-v-6f2fee08><a href="/genai" data-v-6f2fee08>/GenAI</a></li><li data-v-6f2fee08><a href="/design" data-v-6f2fee08>/Design</a></li><li data-v-6f2fee08><a href="/develop" data-v-6f2fee08>/Develop</a></li><li data-v-6f2fee08><a href="/case-studies" data-v-6f2fee08>
+        /Case_Studies
+      </a></li><li data-v-6f2fee08><a href="/careers" data-v-6f2fee08>/Careers</a></li><li data-v-6f2fee08><a href="/about" data-v-6f2fee08>/About</a></li><li data-v-6f2fee08><a href="/contact" data-v-6f2fee08>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.b8f16dd0.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.0013229e.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>

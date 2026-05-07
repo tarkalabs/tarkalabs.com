@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 1) · Tarka Labs - Tarka Labs</title><meta name="gridsome:hash" content="8cb24baa9f5088ba116d4262330cf94457b856de"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="viewport" content="width=device-width, initial-scale=1.0"><meta data-vue-tag="ssr" property="og:title" content="Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 1) · Tarka Labs"><meta data-vue-tag="ssr" property="og:description" content="Part 1 covers the architecture, CDC with DynamoDB Streams, S3 plus Glue plus Athena data lake design, and Terraform setup."><meta data-vue-tag="ssr" property="og:image" content="/assets/img/part-1-cover.8760d134.png"><meta data-vue-tag="ssr" property="og:image:height" content="627"><meta data-vue-tag="ssr" property="og:image:width" content="1200"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.92f6d0f06feb6aec5e019521ff224fd8.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.92f6d0f06feb6aec5e019521ff224fd8.png"><link rel="preload" href="/assets/css/0.styles.9e346088.css" as="style"><link rel="preload" href="/assets/js/app.b8f16dd0.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--blog-vue.0013229e.js" as="script"><link rel="stylesheet" href="/assets/css/0.styles.9e346088.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <meta
+      name="google-site-verification"
+      content="j7cLUK-kxGEpMOY7valSkamH4kQe_l38yMMAXbpk19U"
+    />
+    <noscript>
+      <div class="noscript-container">
+        <a href="/" class="noscript-logo">Tarka <br />_Labs</a>
+        <div class="noscript-text-container">
+          <h1>Uh oh! Looks like <span>JavaScript</span> is disabled.</h1>
+          <p>
+            Bitman requires <span>JavaScript</span> to fuel his thirst to end
+            bad UX and lazy design, which is necessary to give you the best
+            viewing experience possible. Please enable it to continue to our
+            website.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </head>
+
+  <body >
+    <div><div id="app" data-server-rendered="true" data-v-71a2ecff><div data-v-71a2ecff><div id="banner-section" data-v-71a2ecff><div class="banner" style="background:;display:none;" data-v-71a2ecff><div class="layout" data-v-71a2ecff><div data-v-71a2ecff></div><div class="hero heading-size-5" style="color:#ffffff;" data-v-71a2ecff></div><div data-v-71a2ecff></div></div></div><div data-v-71a2ecff></div></div><div class="sidebar" data-v-d6d2017e data-v-71a2ecff><div class="nav" data-v-d6d2017e><div class="fixed" data-v-d6d2017e><a href="/" data-v-9b1a4c9c data-v-d6d2017e> TARKA<br data-v-9b1a4c9c>_LABS </a><div class="menu" data-v-50705736 data-v-d6d2017e><div class="control" style="stroke:black;" data-v-50705736><div class="spinner heading-size-9" data-v-02ea7230 data-v-50705736><span class="side-menu-symbol" data-v-02ea7230><span class="menu-symbol rotate180t90" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span><span class="menu-symbol rotate90t0" data-v-02ea7230><svg height="10" width="10" data-v-02ea7230><line x1="0" y1="5" x2="10" y2="5" style="stroke-width: 2" data-v-02ea7230></line></svg></span></span><span style="vertical-align: middle" data-v-02ea7230> menu </span></div><div class="active-page body-jetbrains-size-11 fade-in" data-v-128e5feb data-v-50705736>
+  
+</div></div><div class="items hidden" data-v-50705736><ul class="main-nav" data-v-6f2fee08 data-v-50705736><div class="primary fadeOut sidebar" data-v-6f2fee08><li data-v-6f2fee08><a href="/music-tech" data-v-6f2fee08>/MusicTech</a></li><li data-v-6f2fee08><a href="/health-care-tech" data-v-6f2fee08>/HealthCareTech</a></li><li data-v-6f2fee08><a href="/genai" data-v-6f2fee08>/GenAI</a></li><li data-v-6f2fee08><a href="/design" data-v-6f2fee08>/Design</a></li><li data-v-6f2fee08><a href="/develop" data-v-6f2fee08>/Develop</a></li><li data-v-6f2fee08><a href="/case-studies" data-v-6f2fee08>
+        /Case_Studies
+      </a></li><li data-v-6f2fee08><a href="/careers" data-v-6f2fee08>/Careers</a></li><li data-v-6f2fee08><a href="/about" data-v-6f2fee08>/About</a></li><li data-v-6f2fee08><a href="/contact" data-v-6f2fee08>/Contact</a></li></div></ul><ul class="sub body-jetbrains-size-11 fadeOut sidebar" data-v-3cc3824e data-v-50705736><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul></div></div><a href="/contact" class="heading-size-9" data-v-573e12d8 data-v-d6d2017e>
+  Get in<br data-v-573e12d8>touch<span class="arrow" data-v-573e12d8>-&gt;</span></a></div></div><!----></div><div class="baseLayout" data-v-996dafb6 data-v-71a2ecff><div data-v-996dafb6></div><div data-v-996dafb6><div class="blog-details-page" data-v-996dafb6><div class="inner-section" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>
+        /web - 10 min read
+      </p><h1 class="title" data-v-996dafb6>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 1)</h1><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/k7.d295c558.png" alt="Kesavan" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Kesavan</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div></div><img src="/assets/img/part-1-cover.8760d134.png" alt="Medallion architecture diagram with bronze, silver, and gold layers flowing into Grafana" class="header-img" data-v-996dafb6><div class="toc-wrapper" data-v-996dafb6><h2 class="heading-size-7" data-v-996dafb6>Table of contents</h2><div class="toc" data-v-996dafb6><a href="#content" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/01</p><p data-v-996dafb6>Intro</p></a><a href="#toc-section-1" class="heading-size-9 heading" data-v-996dafb6><p data-v-996dafb6>/02</p><p data-v-996dafb6>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard</p></a></div></div><div id="content" class="content" data-v-996dafb6><h1 id="toc-section-1"><a href="#building-a-near-real-time-analytics-pipeline-from-dynamodb-to-grafana-dashboard" aria-hidden="true"><span class="icon icon-link"></span></a>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard</h1>
+<h2 id="part-1-architecture-concepts-and-infrastructure"><a href="#part-1-architecture-concepts-and-infrastructure" aria-hidden="true"><span class="icon icon-link"></span></a>Part 1: Architecture, Concepts, and Infrastructure</h2>
+<hr>
+<h2 id="introduction"><a href="#introduction" aria-hidden="true"><span class="icon icon-link"></span></a>Introduction</h2>
+<p>This blog post walks you through building a near real-time analytics pipeline that transforms operational data from DynamoDB into actionable dashboards in Grafana. We cover the medallion architecture pattern, how Change Data Capture (CDC) works with DynamoDB Streams, the mechanics of storing and querying data using S3, Glue Catalog, and Athena, and how to visualize everything in Grafana.</p>
+<p>"Near real-time" has a concrete meaning in this system: raw changes land in S3 within about one second of a DynamoDB write. The Silver layer consolidates and enriches those files every 30 minutes. The Gold layer publishes fresh aggregates every hour. That latency profile is deliberate and explained in the architecture section below.</p>
+<p>The entire infrastructure is defined using Terraform, making it reproducible and version-controlled. By the end of this post, you will understand how each component fits together and the trade-offs at different scales.</p>
+<p>The complete source code is available on GitHub: <strong><a href="https://github.com/itzk7/dynamodb-to-grafana" target="_blank" rel="nofollow noopener noreferrer">dynamodb-to-grafana</a></strong></p>
+<blockquote>
+<p>This is Part 1 of a two part series. Part 1 covers the problem, medallion architecture, CDC, the data lake storage and query layer, and Terraform setup. <a href="/blogs/near-real-time-analytics-p2">Part 2</a> covers Lambda implementations, data validation, Grafana setup, limitations, cost estimates, and conclusion.</p>
+</blockquote>
+<hr>
+<h2 id="problem-statement"><a href="#problem-statement" aria-hidden="true"><span class="icon icon-link"></span></a>Problem Statement</h2>
+<p>Let's say you have an e-commerce application with three DynamoDB tables: <strong>Customers</strong>, <strong>Products</strong>, and <strong>Orders</strong>. The operational data lives in DynamoDB because it provides low-latency reads and writes at scale. But now your business team wants dashboards: today's revenue by region, which products are selling well, and order counts for the week.</p>
+<p>The naive approach is to build APIs on top of DynamoDB for analytics queries. The problem is that DynamoDB is optimized for transactional access patterns, not analytical ones. Answering "what's our revenue by region for the last 30 days?" requires scanning the entire Orders table and joining it with Customers data. That scan is expensive, slow, and will throttle your table.</p>
+<p>Global Secondary Indexes (GSIs) are not the answer either. Each table supports at most 20 GSIs, each one consumes additional write capacity, and you still cannot do proper JOINs between tables. Before long, you have a dozen indexes, write costs have tripled, and analytics queries spanning multiple tables still fail.</p>
+<p>The real solution is to move data out of DynamoDB into an analytics-optimized storage layer, transform it into a format suitable for SQL queries, and let a query engine like Athena handle the heavy lifting. That is exactly what this pipeline does.</p>
+<h3 id="our-data-model"><a href="#our-data-model" aria-hidden="true"><span class="icon icon-link"></span></a>Our Data Model</h3>
+<p><strong>Customers</strong></p>
+<div class="gridsome-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"CustomerID"</span><span class="token operator">:</span> <span class="token string">"CUST-ABC123"</span><span class="token punctuation">,</span>
+  <span class="token property">"Name"</span><span class="token operator">:</span> <span class="token string">"Alice Johnson"</span><span class="token punctuation">,</span>
+  <span class="token property">"Email"</span><span class="token operator">:</span> <span class="token string">"alice@example.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"Region"</span><span class="token operator">:</span> <span class="token string">"US-West"</span><span class="token punctuation">,</span>
+  <span class="token property">"JoinDate"</span><span class="token operator">:</span> <span class="token string">"2024-03-15"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>Products</strong></p>
+<div class="gridsome-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"ProductID"</span><span class="token operator">:</span> <span class="token string">"PROD-XYZ789"</span><span class="token punctuation">,</span>
+  <span class="token property">"Name"</span><span class="token operator">:</span> <span class="token string">"Wireless Headphones Pro"</span><span class="token punctuation">,</span>
+  <span class="token property">"Category"</span><span class="token operator">:</span> <span class="token string">"Electronics"</span><span class="token punctuation">,</span>
+  <span class="token property">"Price"</span><span class="token operator">:</span> <span class="token number">79.99</span><span class="token punctuation">,</span>
+  <span class="token property">"StockLevel"</span><span class="token operator">:</span> <span class="token number">150</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>Orders</strong></p>
+<div class="gridsome-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"OrderID"</span><span class="token operator">:</span> <span class="token string">"ORD-M5N6P7"</span><span class="token punctuation">,</span>
+  <span class="token property">"CustomerID"</span><span class="token operator">:</span> <span class="token string">"CUST-ABC123"</span><span class="token punctuation">,</span>
+  <span class="token property">"ProductID"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"PROD-XYZ789"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"OrderDate"</span><span class="token operator">:</span> <span class="token string">"2026-01-26T10:30:00Z"</span><span class="token punctuation">,</span>
+  <span class="token property">"TotalAmount"</span><span class="token operator">:</span> <span class="token number">79.99</span><span class="token punctuation">,</span>
+  <span class="token property">"Status"</span><span class="token operator">:</span> <span class="token string">"delivered"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3 id="the-metrics-we-want"><a href="#the-metrics-we-want" aria-hidden="true"><span class="icon icon-link"></span></a>The Metrics We Want</h3>
+<p>From this data, we want metrics like daily sales by region, revenue trends over 7/30/90 day windows, product performance and stock status, and order counts. These are the questions analytics teams ask daily, and this pipeline answers them automatically.</p>
+<hr>
+<h2 id="medallion-architecture"><a href="#medallion-architecture" aria-hidden="true"><span class="icon icon-link"></span></a>Medallion Architecture</h2>
+<p>The medallion architecture organizes data into three layers: <strong>Bronze</strong>, <strong>Silver</strong>, and <strong>Gold</strong>. Each layer has a specific purpose and quality level. Think of it as a refinement process where raw materials get processed into finished goods.</p>
+<figure><img src="/blog/near-real-time-analytics-pipeline/part-1-cover.png" alt="Medallion Architecture"><figcaption>Medallion Architecture</figcaption></figure>
+<h3 id="bronze-layer-raw-data-ingestion"><a href="#bronze-layer-raw-data-ingestion" aria-hidden="true"><span class="icon icon-link"></span></a>Bronze Layer: Raw Data Ingestion</h3>
+<p>The Bronze layer captures data exactly as it arrives. When a record is inserted, modified, or removed in DynamoDB, the stream event triggers a Lambda function that writes the raw event to S3. Nothing is transformed or validated here. The goal is to land data quickly and preserve its original form for auditability.</p>
+<p>Bronze data includes metadata like the event type (<code class="language-inline-text">INSERT</code>/<code class="language-inline-text">MODIFY</code>/<code class="language-inline-text">REMOVE</code>), the timestamp when the event occurred, and the source table name. This raw data acts as our system of record. If something goes wrong downstream, we can always go back to Bronze and reprocess.</p>
+<h3 id="silver-layer-cleaned-and-enriched-data"><a href="#silver-layer-cleaned-and-enriched-data" aria-hidden="true"><span class="icon icon-link"></span></a>Silver Layer: Cleaned and Enriched Data</h3>
+<p>The Silver layer is where we clean, deduplicate, and enrich the data. When an order arrives, it carries only a <code class="language-inline-text">CustomerID</code>. For analytics, we need to know which region that customer belongs to. The Silver Lambda reads Bronze data, looks up the customer's region from DynamoDB, and adds it to the order record.</p>
+<p>This layer uses Apache Iceberg tables, which provide ACID transactions and in-place updates. When the same order arrives multiple times due to retries or updates, the <code class="language-inline-text">MERGE</code> operation keeps only the latest version without duplicates.</p>
+<h3 id="gold-layer-business-ready-aggregates"><a href="#gold-layer-business-ready-aggregates" aria-hidden="true"><span class="icon icon-link"></span></a>Gold Layer: Business-Ready Aggregates</h3>
+<p>The Gold layer contains pre-calculated metrics ready for dashboard consumption. Instead of running a complex aggregation on every dashboard load, we compute aggregates once per hour and store the results. When Grafana loads, it reads from these pre-computed tables, keeping queries fast and cheap.</p>
+<p>The Gold layer includes <code class="language-inline-text">daily_sales_by_region</code> which aggregates orders by date and region, <code class="language-inline-text">product_performance</code> which shows stock levels and pricing, and <code class="language-inline-text">key_metrics</code> which contains revenue totals for different time windows. All three are Iceberg tables.</p>
+<p><code class="language-inline-text">daily_sales_by_region</code> uses a delta refresh strategy: only the last few days of data are recomputed on each run while historical aggregates are preserved. <code class="language-inline-text">product_performance</code> and <code class="language-inline-text">key_metrics</code> do a full replace on each run since they are small snapshot tables where every row can change.</p>
+<h3 id="why-this-layered-approach-works"><a href="#why-this-layered-approach-works" aria-hidden="true"><span class="icon icon-link"></span></a>Why This Layered Approach Works</h3>
+<p>Each layer has a single responsibility: Bronze for capture, Silver for transformation, Gold for presentation. When something breaks, you know exactly where to look. When requirements change, you modify one layer without affecting the others.</p>
+<p>This separation also enables different latency tiers. Bronze lands data within one second of a DynamoDB write. Silver processes new Bronze files every 30 minutes. Gold publishes fresh aggregates every hour.</p>
+<hr>
+<h2 id="cdc-stream"><a href="#cdc-stream" aria-hidden="true"><span class="icon icon-link"></span></a>CDC Stream</h2>
+<p>Change Data Capture is the technique of recording data changes as they happen. DynamoDB Streams implements CDC by maintaining a time-ordered sequence of item-level modifications. When you insert, update, or delete a record, DynamoDB writes that change to the stream.</p>
+<h3 id="how-dynamodb-streams-work"><a href="#how-dynamodb-streams-work" aria-hidden="true"><span class="icon icon-link"></span></a>How DynamoDB Streams Work</h3>
+<p>Enabling streams with <code class="language-inline-text">stream_view_type = "NEW_AND_OLD_IMAGES"</code> means every write produces a stream record with the event type (<code class="language-inline-text">INSERT</code>, <code class="language-inline-text">MODIFY</code>, or <code class="language-inline-text">REMOVE</code>), the record's state before the change, and its state after. Stream records are retained for 24 hours and multiple consumers can read from the same stream independently.</p>
+<hr>
+<h2 id="the-data-lake-storage-and-query-layer"><a href="#the-data-lake-storage-and-query-layer" aria-hidden="true"><span class="icon icon-link"></span></a>The Data Lake: Storage and Query Layer</h2>
+<p>Once a Parquet file lands in S3, three AWS services work together to make it queryable with standard SQL.</p>
+<p><strong>S3</strong> is the storage layer. It holds all Parquet files organized by layer, table name, and date partitions. S3 has no concept of tables or schemas; it just stores files.</p>
+<p><strong>Glue Catalog</strong> is the metadata layer. It stores table definitions including column names, data types, file format, and S3 location. Think of it as a phone book that maps logical table names to physical file locations.</p>
+<p><strong>Athena</strong> is the query engine. When you run a SQL query, Athena looks up the table definition in Glue Catalog, determines which S3 files to read, executes the query in parallel across those files, and returns results.</p>
+<h3 id="s3-path-structure"><a href="#s3-path-structure" aria-hidden="true"><span class="icon icon-link"></span></a>S3 Path Structure</h3>
+<p>The data lake follows a consistent folder structure:</p>
+<div class="gridsome-highlight" data-language="text"><pre class="language-text"><code class="language-text">s3://my-bucket/
+├── bronze/
+│   ├── orders-table/
+│   │   └── year=2026/month=01/day=26/
+│   │       ├── 20260126120530_a3f8b2c1.parquet
+│   │       └── 20260126120530_7e2d4f09.parquet
+│   ├── products-table/
+│   └── customers-table/
+├── silver/
+│   ├── watermark.json            # Tracks last processed timestamp
+│   ├── staging/                  # Temporary files (auto-cleaned after MERGE)
+│   └── iceberg/
+│       ├── orders/
+│       │   ├── data/             # Parquet data files (managed by Iceberg)
+│       │   └── metadata/         # Iceberg snapshots and manifests
+│       ├── products/
+│       └── customers/
+└── gold/
+    ├── daily_sales_by_region/
+    │   ├── data/                 # Iceberg-managed data files
+    │   └── metadata/             # Iceberg metadata
+    ├── product_performance/
+    └── key_metrics/</code></pre></div>
+<p>Bronze uses date partitioning in Hive style (<code class="language-inline-text">year=2026/month=01/day=26</code>). This enables partition pruning: when a query filters on <code class="language-inline-text">WHERE year = '2026' AND month = '01'</code>, Athena skips all other prefixes instead of scanning the full table.</p>
+<p>The Bronze Lambda writes each batch as a Parquet file rather than JSON or CSV. Parquet is a columnar format, so data is stored by column rather than by row. When Athena needs only three columns out of twenty, it reads just those three from disk. This directly reduces scanned data and cost, since Athena charges $5 per TB scanned. Parquet also uses Snappy compression, typically cutting file sizes by <strong>70 to 80 percent</strong> compared to raw JSON, and it embeds schema information so Athena can infer structure without manual definition.</p>
+<h3 id="table-types-regular-vs-iceberg"><a href="#table-types-regular-vs-iceberg" aria-hidden="true"><span class="icon icon-link"></span></a>Table Types: Regular vs Iceberg</h3>
+<p>Notice that Bronze stores plain Parquet files while Silver and Gold have <code class="language-inline-text">iceberg/</code> directories with <code class="language-inline-text">data/</code> and <code class="language-inline-text">metadata/</code> subdirectories. That reflects a fundamental difference in table type.</p>
+<p>Bronze tables are <strong>regular</strong> external tables. Each Parquet file is immutable once written. Athena can read them but cannot update individual rows.</p>
+<p>Silver and Gold use <strong>Apache Iceberg</strong> tables. Iceberg adds transactional capabilities on top of Parquet by maintaining metadata files that track which data files are current, which are superseded, and the full schema history. This enables two operations that plain Parquet cannot support.</p>
+<p>The Silver layer needs <strong>MERGE</strong>. When you run <code class="language-inline-text">MERGE INTO table USING source ON key WHEN MATCHED THEN UPDATE WHEN NOT MATCHED THEN INSERT</code>, Iceberg determines which files to modify, writes updated versions, and atomically swaps the metadata pointer. Without Iceberg, you would delete and rewrite the entire table on every run.</p>
+<p>The Gold layer needs row-level <strong>DELETE</strong>. Delta refresh works by deleting only the last N days of aggregates and inserting fresh ones, preserving historical data beyond that window. Without Iceberg, you would drop and recreate the entire table on every run, losing all historical aggregates.</p>
+<p>Iceberg writes do accumulate snapshots over time. The implications of that and how to manage them are covered in Part 2 after the Silver and Gold Lambda implementations.</p>
+<hr>
+<h2 id="terraform-setup"><a href="#terraform-setup" aria-hidden="true"><span class="icon icon-link"></span></a>Terraform Setup</h2>
+<p>The entire infrastructure is defined in Terraform, organized into logical files based on resource type.</p>
+<p><strong><code class="language-inline-text">main.tf</code></strong> configures the Terraform backend and AWS provider. It sets up default tags applied to all resources, which helps with cost tracking and organization.</p>
+<p><strong><code class="language-inline-text">dynamodb.tf</code></strong> creates the three DynamoDB tables. Each table has streams enabled with <code class="language-inline-text">NEW_AND_OLD_IMAGES</code>, meaning DynamoDB captures both the before and after states of every change. Each table also has a Global Secondary Index for operational queries the application may need.</p>
+<div class="gridsome-highlight" data-language="hcl"><pre class="language-hcl"><code class="language-hcl"><span class="token keyword">resource <span class="token type variable">"aws_dynamodb_table"</span></span> <span class="token string">"orders"</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span>             <span class="token punctuation">=</span> <span class="token string">"<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">project_name</span><span class="token punctuation">}</span></span>-orders-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>"</span>
+  <span class="token property">billing_mode</span>     <span class="token punctuation">=</span> <span class="token string">"PAY_PER_REQUEST"</span>
+  <span class="token property">hash_key</span>         <span class="token punctuation">=</span> <span class="token string">"OrderID"</span>
+  <span class="token property">stream_enabled</span>   <span class="token punctuation">=</span> <span class="token boolean">true</span>
+  <span class="token property">stream_view_type</span> <span class="token punctuation">=</span> <span class="token string">"NEW_AND_OLD_IMAGES"</span>
+  <span class="token comment"># ...</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong><code class="language-inline-text">s3.tf</code></strong> creates two S3 buckets. The data lake bucket stores all Bronze, Silver, and Gold layer data. The Athena results bucket stores query output. Lifecycle policies transition older Bronze data to cheaper storage classes (Standard-IA after 90 days, Glacier after 180 days).</p>
+<p><strong><code class="language-inline-text">lambda.tf</code></strong> defines the three Lambda functions and their triggers. The Bronze Lambda is triggered by DynamoDB Streams via event source mappings. Silver and Gold are triggered by EventBridge schedule rules, with Silver running every 30 minutes and Gold running every hour.</p>
+<div class="gridsome-highlight" data-language="hcl"><pre class="language-hcl"><code class="language-hcl"><span class="token comment"># Silver runs every 30 minutes, scans for new Bronze files</span>
+<span class="token keyword">resource <span class="token type variable">"aws_cloudwatch_event_rule"</span></span> <span class="token string">"silver_processing_schedule"</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span>                <span class="token punctuation">=</span> <span class="token string">"<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">project_name</span><span class="token punctuation">}</span></span>-silver-processing-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>"</span>
+  <span class="token property">schedule_expression</span> <span class="token punctuation">=</span> <span class="token string">"rate(30 minutes)"</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># Gold runs on an hourly schedule</span>
+<span class="token keyword">resource <span class="token type variable">"aws_cloudwatch_event_rule"</span></span> <span class="token string">"gold_processing_schedule"</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span>                <span class="token punctuation">=</span> <span class="token string">"<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">project_name</span><span class="token punctuation">}</span></span>-gold-processing-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>"</span>
+  <span class="token property">schedule_expression</span> <span class="token punctuation">=</span> <span class="token string">"rate(1 hour)"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong><code class="language-inline-text">glue.tf</code></strong> creates three Glue Catalog databases, one per layer. These are logical containers that group related tables. When Athena runs a query, it looks up table definitions from the Glue Catalog.</p>
+<p><strong><code class="language-inline-text">athena.tf</code></strong> creates the Athena workgroup with engine version 3, which supports Iceberg tables. The workgroup specifies a default output location for query results.</p>
+<p><strong><code class="language-inline-text">iam.tf</code></strong> defines IAM roles and policies for each Lambda following least-privilege. The Bronze Lambda needs permissions to read from DynamoDB Streams and write to S3. The Silver Lambda needs read/write/delete on S3, read from DynamoDB for customer lookups, Athena query execution, and Glue table management. The Gold Lambda needs the same S3 and Athena permissions. <code class="language-inline-text">s3:DeleteObject</code> is required for cleaning up temporary staging files after MERGE operations. Iceberg uses a copy-on-write strategy where old data files become orphaned rather than deleted, but the staging Parquet files that feed MERGE queries must be cleaned up explicitly.</p>
+<p><strong><code class="language-inline-text">tables.tf</code></strong> defines Bronze layer table schemas in the Glue Catalog with partition projection enabled. Silver and Gold tables are not defined here because Iceberg tables must be created by Athena's <code class="language-inline-text">CREATE TABLE</code> command to get proper metadata. Pre-creating them via Terraform causes cryptic errors.</p>
+<p>To deploy, run <code class="language-inline-text">terraform init</code> followed by <code class="language-inline-text">terraform apply</code>. The deployment creates approximately 40 AWS resources and takes about 5 minutes.</p>
+<hr>
+<blockquote>
+<p>Continue to <a href="/blogs/near-real-time-analytics-p2">Part 2</a> for Lambda implementations, data validation, Grafana setup, limitations, cost estimates, and conclusion.</p>
+</blockquote>
+</div><hr data-v-996dafb6><div class="inner-section" data-v-996dafb6><div class="author-basic-info" data-v-996dafb6><img src="/assets/img/k7.d295c558.png" alt="Kesavan" width="64" data-v-996dafb6><div data-v-996dafb6><p class="heading-size-9 capitalize" data-v-996dafb6>Kesavan</p><p class="body-jetbrains-size-10" data-v-996dafb6>
+            Developer
+          </p></div></div><p class="body-opensans-size-9" data-v-996dafb6>He is still thinking what to write about him</p><div class="social-links" data-v-996dafb6><!----><!----><a href="https://medium.com/@itzk7" target="_blank" class="heading-size-9" data-v-996dafb6>
+          Medium
+        </a></div></div><hr data-v-996dafb6><div class="related-articles" data-v-996dafb6><div class="flex-space-between" data-v-996dafb6><p class="heading-size-7" data-v-996dafb6>_related articles</p><a href="/blogs" class="heading-size-9 underline" data-v-996dafb6>View all</a></div><div class="flex-space-between blog-card-wrapper" data-v-996dafb6><a href="/blogs/near-real-time-analytics-p2" class="blog-card" data-v-996dafb6><img src="/assets/img/part-2-cover.a66ac8b6.png" alt="Grafana dashboard showing key metrics, product stock status, daily revenue trend, and region-wise revenue" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Building a Near Real-Time Analytics Pipeline: From DynamoDB to Grafana Dashboard (Part 2)</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Kesavan   10 min read
+            </p></div></a><a href="/blogs/building-scalable-ingestion-pipeline-rust" class="blog-card" data-v-996dafb6><img src="/assets/img/pipeline-cover.4796ea68.webp" alt="" class="thumbnail" data-v-996dafb6><div class="info" data-v-996dafb6><p class="heading-size-10 capitalize" data-v-996dafb6>/web</p><h3 data-v-996dafb6>Building a Scalable Ingestion Pipeline with Rust</h3><p class="body-jetbrains-size-10" data-v-996dafb6>
+              Dhruva Sagar   5 min read
+            </p></div></a></div></div><div class="lets-talk" data-v-29237f5f><div class="message heading-size-7" data-v-29237f5f>
+    Let’s build digital solutions together.
+  </div><div class="action-container" data-v-29237f5f><div class="action-button heading-size-5" data-v-29237f5f><div data-v-29237f5f>Get in touch</div><div class="arrow" data-v-29237f5f>-&gt;</div></div><img src="/assets/img/talk.71d1d2f3.svg" alt="Lenny Face" data-v-29237f5f></div></div></div></div><div data-v-996dafb6></div></div><div id="footer" class="baseLayout" data-v-996dafb6 data-v-71a2ecff><div data-v-996dafb6></div><div data-v-996dafb6><div class="site-footer" data-v-0a037a4b data-v-71a2ecff><ul class="main-nav footer" data-v-6f2fee08 data-v-0a037a4b><div class="primary fadeIn" data-v-6f2fee08><li data-v-6f2fee08><a href="/music-tech" data-v-6f2fee08>/MusicTech</a></li><li data-v-6f2fee08><a href="/health-care-tech" data-v-6f2fee08>/HealthCareTech</a></li><li data-v-6f2fee08><a href="/genai" data-v-6f2fee08>/GenAI</a></li><li data-v-6f2fee08><a href="/design" data-v-6f2fee08>/Design</a></li><li data-v-6f2fee08><a href="/develop" data-v-6f2fee08>/Develop</a></li><li data-v-6f2fee08><a href="/case-studies" data-v-6f2fee08>
+        /Case_Studies
+      </a></li><li data-v-6f2fee08><a href="/careers" data-v-6f2fee08>/Careers</a></li><li data-v-6f2fee08><a href="/about" data-v-6f2fee08>/About</a></li><li data-v-6f2fee08><a href="/contact" data-v-6f2fee08>/Contact</a></li></div></ul><div class="subnav" data-v-0a037a4b><ul class="sub body-jetbrains-size-11 footer fadeIn" data-v-3cc3824e data-v-0a037a4b><li data-v-3cc3824e><a href="/blogs" class="active" data-v-3cc3824e>/blogs</a></li><li data-v-3cc3824e><a href="/talks" data-v-3cc3824e>/talks</a></li><li data-v-3cc3824e><a href="/train" data-v-3cc3824e>/train</a></li></ul><div data-v-fae945d8 data-v-0a037a4b><a href="https://twitter.com/tarkalabs" target="_blank" rel="noopener" class="external" data-v-fae945d8>Twitter</a><a href="https://in.linkedin.com/company/tarka-labs" target="_blank" rel="noopener" class="external" data-v-fae945d8>LinkedIn</a></div><div class="sedin" data-v-0a037a4b><a href="https://sedintechnologies.com/" target="_blank" rel="noopener" class="external" data-v-0a037a4b>Tarka Labs is a division of Sedin Technologies</a></div></div></div></div><div data-v-996dafb6></div></div></div></div></div>
+    <script src="/assets/js/app.b8f16dd0.js" defer></script><script src="/assets/js/page--src--templates--blog-vue.0013229e.js" defer></script><script data-vue-tag="ssr" src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js" data-body="true"></script>
+  </body>
+</html>
